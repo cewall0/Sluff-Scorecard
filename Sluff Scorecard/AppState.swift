@@ -12,5 +12,8 @@ import Observation
 class AppState {
     var person = Person()
     var game = Game()
+    
+    func fetchPerson() {
+        person = Person(name: "Amy")
     }
-
+}
