@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 import Observation
 
-struct ContentView: View {
+struct ContentView: View {//Masons Comment
     
     @State private var viewState = ViewState()
     @Environment(AppState.self) var appState
