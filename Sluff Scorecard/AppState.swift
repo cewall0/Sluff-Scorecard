@@ -10,10 +10,10 @@ import Observation
 
 @Observable
 class AppState {
-    var person = Person()
+    var person = Player()
     var game = Game()
     
     func fetchPerson() {
-        person = Person(name: "Amy")
+        person = Player(name: "Amy")
     }
 }
