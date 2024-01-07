@@ -8,9 +8,16 @@
 import Foundation
 
 class Player{
+    // ******************************************
+    // Start Variables
+    // ******************************************
+    
     var playerName: String = ""
     var didSluff: Bool = false
     var playerBid: Int = 0
     var playerPosition: Int = 0
-
+    
+    // ******************************************
+    // End Variables
+    // ******************************************
 }

@@ -19,10 +19,7 @@ struct ContentView: View {//Masons Comment
             Button("DetailView"){
                 viewState.isDetailViewPresented.toggle()
             }
-            Text(appState.person.name)
-            Button("Fetch"){
-                appState.fetchPerson()
-            }
+            Text(appState.player.playerName)
             .padding()
             .sheet(isPresented: $viewState.isDetailViewPresented) {
                 DetailView()

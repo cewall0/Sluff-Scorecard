@@ -54,5 +54,22 @@ class Game {
     // ******************************************
     // The functions
     // ******************************************
-
+    
+    
+    
+    // Builds all the players
+    
+    // Assign Players to their teams
+    
+    // Give Names for each team
+    
+    // Change Next Dealer
+    
+    // Collects tricks won for each team
+    
+    // Asks about each sluff if its won or loss
+    
+    // Figure round score
+    
+    // Add to the total scores
 } // End Class
