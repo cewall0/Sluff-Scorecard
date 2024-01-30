@@ -7,11 +7,11 @@
 
 import Foundation
 import SwiftUI
-import SwiftData
+import Observation
 
 struct DetailView: View {
     
-    @Environment(AppState.self) var appState
+//    @Environment(AppState.self) var appState
     
     var body: some View {
         Text("Hello, DetailView!")
@@ -20,5 +20,5 @@ struct DetailView: View {
 
 #Preview {
     DetailView()
-        .environment(AppState())
+//        .environment(AppState())
 }

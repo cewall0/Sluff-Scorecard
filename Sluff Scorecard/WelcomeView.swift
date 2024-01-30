@@ -9,7 +9,8 @@ import SwiftUI
 
 struct WelcomeView: View {
     
-    @Environment(AppState.self) var appState
+//    @Environment(AppState.self) var appState
+    @Binding var game = Game()
     
     var body: some View {
         VStack{
@@ -20,13 +21,13 @@ struct WelcomeView: View {
             HStack {
                 Menu("Number of players:") {
                     Button("6") {
-                        appState.game.numPlayers = 6
+                        game.numPlayers = 6
                     }
                     Button("8") {
-                        appState.game.numPlayers = 8
+                        game.numPlayers = 8
                     }
                     Button("10") {
-                        appState.game.numPlayers = 10
+                        game.numPlayers = 10
                     }
                     
                 }

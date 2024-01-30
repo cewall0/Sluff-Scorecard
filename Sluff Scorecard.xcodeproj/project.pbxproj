@@ -8,27 +8,35 @@
 
 /* Begin PBXBuildFile section */
 		0B4821E62B43B712001FDA98 /* Sluff_ScorecardApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4821E52B43B712001FDA98 /* Sluff_ScorecardApp.swift */; };
-		0B4821E82B43B712001FDA98 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4821E72B43B712001FDA98 /* ContentView.swift */; };
+		0B4821E82B43B712001FDA98 /* ScorecardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4821E72B43B712001FDA98 /* ScorecardView.swift */; };
 		0B4821EA2B43B713001FDA98 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B4821E92B43B713001FDA98 /* Assets.xcassets */; };
 		0B4821ED2B43B713001FDA98 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B4821EC2B43B713001FDA98 /* Preview Assets.xcassets */; };
 		0B4821F42B43B726001FDA98 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4821F32B43B726001FDA98 /* DetailView.swift */; };
-		0B4821F62B43B89D001FDA98 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4821F52B43B89D001FDA98 /* AppState.swift */; };
 		0B4821F82B43B8B1001FDA98 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4821F72B43B8B1001FDA98 /* Player.swift */; };
-		0B4821FA2B43CAC2001FDA98 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4821F92B43CAC2001FDA98 /* WelcomeView.swift */; };
 		0B4821FC2B43CBBE001FDA98 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4821FB2B43CBBE001FDA98 /* Game.swift */; };
+		0B4B152A2B656AF400A4E9CD /* ScorecardViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4B15292B656AF400A4E9CD /* ScorecardViewViewModel.swift */; };
+		0B4B152C2B657ED500A4E9CD /* BidView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4B152B2B657ED500A4E9CD /* BidView.swift */; };
+		0B4B152E2B657EE200A4E9CD /* BidViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4B152D2B657EE200A4E9CD /* BidViewViewModel.swift */; };
+		0B4B15322B694BF000A4E9CD /* AddPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4B15312B694BF000A4E9CD /* AddPlayerView.swift */; };
+		0B4B15362B69736700A4E9CD /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4B15352B69736700A4E9CD /* GameViewModel.swift */; };
+		0BB1F1F92B6984DE006201F8 /* NumPlayersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB1F1F82B6984DE006201F8 /* NumPlayersView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0B4821E22B43B712001FDA98 /* Sluff Scorecard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sluff Scorecard.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B4821E52B43B712001FDA98 /* Sluff_ScorecardApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sluff_ScorecardApp.swift; sourceTree = "<group>"; };
-		0B4821E72B43B712001FDA98 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		0B4821E72B43B712001FDA98 /* ScorecardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScorecardView.swift; sourceTree = "<group>"; };
 		0B4821E92B43B713001FDA98 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0B4821EC2B43B713001FDA98 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		0B4821F32B43B726001FDA98 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
-		0B4821F52B43B89D001FDA98 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		0B4821F72B43B8B1001FDA98 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
-		0B4821F92B43CAC2001FDA98 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		0B4821FB2B43CBBE001FDA98 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		0B4B15292B656AF400A4E9CD /* ScorecardViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScorecardViewViewModel.swift; sourceTree = "<group>"; };
+		0B4B152B2B657ED500A4E9CD /* BidView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BidView.swift; sourceTree = "<group>"; };
+		0B4B152D2B657EE200A4E9CD /* BidViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BidViewViewModel.swift; sourceTree = "<group>"; };
+		0B4B15312B694BF000A4E9CD /* AddPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlayerView.swift; sourceTree = "<group>"; };
+		0B4B15352B69736700A4E9CD /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
+		0BB1F1F82B6984DE006201F8 /* NumPlayersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumPlayersView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,12 +70,10 @@
 			isa = PBXGroup;
 			children = (
 				0B4821E52B43B712001FDA98 /* Sluff_ScorecardApp.swift */,
-				0B4821E72B43B712001FDA98 /* ContentView.swift */,
-				0B4821F32B43B726001FDA98 /* DetailView.swift */,
-				0B4821F92B43CAC2001FDA98 /* WelcomeView.swift */,
-				0B4821F72B43B8B1001FDA98 /* Player.swift */,
-				0B4821FB2B43CBBE001FDA98 /* Game.swift */,
-				0B4821F52B43B89D001FDA98 /* AppState.swift */,
+				0B4B15282B656A4700A4E9CD /* Other */,
+				0B4B15262B656A2500A4E9CD /* Models */,
+				0B4B15272B656A3B00A4E9CD /* ViewModels */,
+				0B4B15252B656A0100A4E9CD /* Views */,
 				0B4821E92B43B713001FDA98 /* Assets.xcassets */,
 				0B4821EB2B43B713001FDA98 /* Preview Content */,
 			);
@@ -80,6 +86,44 @@
 				0B4821EC2B43B713001FDA98 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		0B4B15252B656A0100A4E9CD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0B4821E72B43B712001FDA98 /* ScorecardView.swift */,
+				0B4B152B2B657ED500A4E9CD /* BidView.swift */,
+				0B4B15312B694BF000A4E9CD /* AddPlayerView.swift */,
+				0BB1F1F82B6984DE006201F8 /* NumPlayersView.swift */,
+				0B4821F32B43B726001FDA98 /* DetailView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0B4B15262B656A2500A4E9CD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0B4821F72B43B8B1001FDA98 /* Player.swift */,
+				0B4821FB2B43CBBE001FDA98 /* Game.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		0B4B15272B656A3B00A4E9CD /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				0B4B15292B656AF400A4E9CD /* ScorecardViewViewModel.swift */,
+				0B4B152D2B657EE200A4E9CD /* BidViewViewModel.swift */,
+				0B4B15352B69736700A4E9CD /* GameViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		0B4B15282B656A4700A4E9CD /* Other */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Other;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -152,13 +196,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B4B152A2B656AF400A4E9CD /* ScorecardViewViewModel.swift in Sources */,
 				0B4821F82B43B8B1001FDA98 /* Player.swift in Sources */,
-				0B4821FA2B43CAC2001FDA98 /* WelcomeView.swift in Sources */,
 				0B4821FC2B43CBBE001FDA98 /* Game.swift in Sources */,
-				0B4821E82B43B712001FDA98 /* ContentView.swift in Sources */,
+				0B4B15362B69736700A4E9CD /* GameViewModel.swift in Sources */,
+				0B4821E82B43B712001FDA98 /* ScorecardView.swift in Sources */,
+				0B4B15322B694BF000A4E9CD /* AddPlayerView.swift in Sources */,
+				0BB1F1F92B6984DE006201F8 /* NumPlayersView.swift in Sources */,
 				0B4821F42B43B726001FDA98 /* DetailView.swift in Sources */,
 				0B4821E62B43B712001FDA98 /* Sluff_ScorecardApp.swift in Sources */,
-				0B4821F62B43B89D001FDA98 /* AppState.swift in Sources */,
+				0B4B152C2B657ED500A4E9CD /* BidView.swift in Sources */,
+				0B4B152E2B657EE200A4E9CD /* BidViewViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
