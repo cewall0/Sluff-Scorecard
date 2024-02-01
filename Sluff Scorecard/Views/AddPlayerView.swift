@@ -11,8 +11,9 @@ import Observation
 
 struct AddPlayerView: View {
     
-    @Bindable private var viewModel = GameViewModel()
-    
+//    @Bindable private var viewModel = GameViewModel()
+    @Environment(AppState.self) private var appState
+
     var body: some View {
         
         NavigationView {
@@ -28,11 +29,11 @@ struct AddPlayerView: View {
                         Text(" ")
                         Text(" ")
                         
-                        List(viewModel.playersList) { player in
+                        List(appState.playersList) { player in
                             Text(player.name)
                         }
-//                        ForEach($viewModel.playersList) { $player in
-//                            TextField("Hint", text: $player.name)
+//                        ForEach(appState.playersList) { $player in
+//                            TextField("Hint", text: appState.player.name)
 //                        }
                     } // end VStack
                     
@@ -48,4 +49,5 @@ struct AddPlayerView: View {
 
 #Preview {
     AddPlayerView()
+        .environment(AppState())
 }

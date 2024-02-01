@@ -8,6 +8,7 @@
 import Foundation
 import Observation
 
+
 @Observable
 class ScorecardViewViewModel {
     var bid = "0"
