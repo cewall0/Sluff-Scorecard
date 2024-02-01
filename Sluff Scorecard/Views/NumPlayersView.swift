@@ -18,9 +18,7 @@ import Observation
 
 struct NumPlayersView: View {
     
-//    @Bindable private var viewModel = GameViewModel()
     @Environment(AppState.self) private var appState
-//    @State var numberOfPlayers = 0
     
     var body: some View {
         NavigationView {
@@ -28,8 +26,12 @@ struct NumPlayersView: View {
             VStack{
 //                Form{
                     VStack{
-                        Text("First things first. . .")
-                            .font(.title)
+                        Text("")
+                        Text("")
+                        Text("Welcome to")
+                            .font(.largeTitle)
+                        Text("Sluff Scorecard")
+                            .font(.largeTitle)
                         Text(" ")
                         Text("How many players will be playing?")
                             .font(.title3)
@@ -37,19 +39,17 @@ struct NumPlayersView: View {
                         Text(" ")
                         
                         NumPlayersPickerView(appState: appState)
-                        .pickerStyle(.segmented)
-                        .onChange(of: appState.numberOfPlayers) {appState.setNumberOfPlayers(appState.numberOfPlayers)}
+                            .onChange(of: appState.numberOfPlayers) {appState.setNumberOfPlayers(appState.numberOfPlayers)}
                         
                         NavigationLink("Let's Go") {
                             AddPlayerView()
                         }
                         .padding()
                         .foregroundColor(.white)
-                        .background(appState.numPlayersIsSelected ? .blue.opacity(1.0) : .blue.opacity(0.4))
+                        .background(appState.numPlayersIsSelected ? .blue.opacity(1.0): .blue.opacity(0.5))
+                        .disabled(!appState.numPlayersIsSelected)
                         .clipShape(Capsule())
                         .padding()
-                        .disabled(!appState.numPlayersIsSelected)
-                        
                     }
                     
                     Spacer()

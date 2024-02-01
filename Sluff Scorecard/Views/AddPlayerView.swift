@@ -29,9 +29,20 @@ struct AddPlayerView: View {
                         Text(" ")
                         Text(" ")
                         
-                        List(appState.playersList) { player in
-                            Text(player.name)
+                        EditablePlayerListView(appState: appState)
+                        
+                        NavigationLink("Go to Sluff Scorecard") {
+                            ScorecardView()
                         }
+                        .padding()
+                        .foregroundColor(.white)
+                        .background(.blue)
+                        .clipShape(Capsule())
+                        .padding()
+
+//                        List(appState.playersList) { player in
+//                            Text(player.name)
+//                        }
 //                        ForEach(appState.playersList) { $player in
 //                            TextField("Hint", text: appState.player.name)
 //                        }

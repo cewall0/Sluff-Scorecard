@@ -22,6 +22,7 @@
 		0BB1F1F92B6984DE006201F8 /* NumPlayersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB1F1F82B6984DE006201F8 /* NumPlayersView.swift */; };
 		0BB1F1FB2B6B032F006201F8 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB1F1FA2B6B032F006201F8 /* AppState.swift */; };
 		0BB1F1FD2B6B4786006201F8 /* NumPlayersPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB1F1FC2B6B4786006201F8 /* NumPlayersPickerView.swift */; };
+		0BB1F1FF2B6B562B006201F8 /* EditablePlayerListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB1F1FE2B6B562B006201F8 /* EditablePlayerListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 		0BB1F1F82B6984DE006201F8 /* NumPlayersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumPlayersView.swift; sourceTree = "<group>"; };
 		0BB1F1FA2B6B032F006201F8 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		0BB1F1FC2B6B4786006201F8 /* NumPlayersPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumPlayersPickerView.swift; sourceTree = "<group>"; };
+		0BB1F1FE2B6B562B006201F8 /* EditablePlayerListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditablePlayerListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 				0B4821E72B43B712001FDA98 /* ScorecardView.swift */,
 				0B4B152B2B657ED500A4E9CD /* BidView.swift */,
 				0B4B15312B694BF000A4E9CD /* AddPlayerView.swift */,
+				0BB1F1FE2B6B562B006201F8 /* EditablePlayerListView.swift */,
 				0BB1F1F82B6984DE006201F8 /* NumPlayersView.swift */,
 				0BB1F1FC2B6B4786006201F8 /* NumPlayersPickerView.swift */,
 				0B4821F32B43B726001FDA98 /* DetailView.swift */,
@@ -207,6 +210,7 @@
 				0B4821FC2B43CBBE001FDA98 /* Game.swift in Sources */,
 				0BB1F1FD2B6B4786006201F8 /* NumPlayersPickerView.swift in Sources */,
 				0BB1F1FB2B6B032F006201F8 /* AppState.swift in Sources */,
+				0BB1F1FF2B6B562B006201F8 /* EditablePlayerListView.swift in Sources */,
 				0B4B15362B69736700A4E9CD /* GameViewModel.swift in Sources */,
 				0B4821E82B43B712001FDA98 /* ScorecardView.swift in Sources */,
 				0B4B15322B694BF000A4E9CD /* AddPlayerView.swift in Sources */,
