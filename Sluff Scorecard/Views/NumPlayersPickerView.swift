@@ -19,7 +19,10 @@ struct NumPlayersPickerView: View {
             
             HStack {
                 Text("Number of Players:")
-                Text(String(appState.numberOfPlayers))
+                Text(String(appState.numberOfPlayers) == "0" ? "Select below" : String(appState.numberOfPlayers))
+                    .fontWeight(.bold)
+                    .foregroundColor(Color.red)
+                    
             }
             
             Picker("Number of Players", selection: $appState.numberOfPlayers) {

@@ -11,23 +11,29 @@ import Observation
 
 struct AddPlayerView: View {
     
-//    @Bindable private var viewModel = GameViewModel()
     @Environment(AppState.self) private var appState
 
     var body: some View {
         
-        NavigationView {
             
-            VStack{
-                Form{
                     VStack{
                         Text("Setup Players")
                             .font(.title)
                         Text(" ")
-                        Text("Add player names starting with first dealer in position 1.")
-                            .font(.title3)
-                        Text(" ")
-                        Text(" ")
+                        Text("Add player names.").font(.title3)
+                        Text("")
+                        VStack(alignment: .leading, spacing: 4){
+                            
+                            Text("• Position 1 is the first dealer.").font(.headline).fontWeight(.medium)
+                            Text("• Position 2 is the next player going around the table clockwise. ")
+                                .font(.headline)
+                                .fontWeight(.medium)
+                            Text("• Continue until all player names are entered. ")
+                                .font(.headline)
+                                .fontWeight(.medium)
+
+                        }
+                        
                         
                         EditablePlayerListView(appState: appState)
                         
@@ -39,22 +45,12 @@ struct AddPlayerView: View {
                         .background(.blue)
                         .clipShape(Capsule())
                         .padding()
-
-//                        List(appState.playersList) { player in
-//                            Text(player.name)
-//                        }
-//                        ForEach(appState.playersList) { $player in
-//                            TextField("Hint", text: appState.player.name)
-//                        }
+                        
+                        Spacer()
+                        
                     } // end VStack
-                    
-                    
-                    Spacer()
-                    
-                    
-                } // end Form
-            } // end VStack
-        }// end Navigation View
+                    .padding()
+
     }
 }
 

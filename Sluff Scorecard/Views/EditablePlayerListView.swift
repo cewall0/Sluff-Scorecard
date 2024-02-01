@@ -13,18 +13,31 @@ struct EditablePlayerListView: View {
     @State var newName: String = ""
     
     var body: some View {
-        VStack {
-            List {
-                ForEach(appState.playersList.indices, id: \.self) { index in
-                    VStack(alignment: .leading) {
-                        Text("Position \(index + 1):")
-                            .fontWeight(.bold)
-                        TextField("Enter name", text: $appState.playersList[index].name)
-                            .textFieldStyle(RoundedBorderTextFieldStyle())
-                    } // end VStack
-                } // end ForEach
-            } // end List
-        } // end VStack
+        
+
+            VStack {
+                Text("")
+                Text("")
+                ScrollView {
+                    ForEach(appState.playersList.indices, id: \.self) { index in
+                        VStack(alignment: .leading) {
+                            HStack{
+                                Text("Position \(index + 1):")
+                                    .fontWeight(.bold)
+                                TextField("Enter name", text: $appState.playersList[index].name)
+                                    .textFieldStyle(PlainTextFieldStyle())
+                                    .accentColor(.pink)
+                                    .foregroundColor(.blue)
+                                    .padding(4)
+                                    .background(.teal.opacity(0.3))
+                                    .cornerRadius(8)
+                            }
+                            
+                        } // end VStack
+                    } // end ForEach
+                } // end ScrollView
+            } // end VStack
+        
     }
 }
 

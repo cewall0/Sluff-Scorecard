@@ -10,7 +10,7 @@ import Observation
 
 @Observable
 class AppState {
-    var playersList: [Player] = [Player(name:"Player1")]
+    var playersList: [Player] = [Player(name:"Player1"), Player(name:"Player2"), Player(name:"Player3"), Player(name:"Player4"), Player(name:"Player5"), Player(name:"Player6"), Player(name:"Player7"), Player(name:"Player8")]
     var numberOfPlayers: Int = 0
     var numPlayersIsSelected: Bool = false
 
@@ -20,7 +20,10 @@ class AppState {
         numPlayersIsSelected = true
 
         for index in 1...numberOfPlayers {
-            playersList.append(Player(name: "Player \(index)"))
+            playersList.append(Player(name: "Change to Player \(index)'s name."))
         }
-    }
-}
+    } // end func setNumberOfPlayers
+    
+    
+    
+} // end class AppState
