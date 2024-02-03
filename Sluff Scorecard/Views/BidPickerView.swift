@@ -10,28 +10,37 @@ import SwiftUI
 struct BidPickerView: View {
     
     @Bindable var appState: AppState
-    @State var currentBid: Int = 0
-
+    var playerIndex: Int
+    
     var body: some View {
         HStack {
-            Text("Bid:")
-            Text(String(currentBid))
-                .fontWeight(.bold)
-                .foregroundColor(Color.red)
-                
-        }
-        
-        Picker("Player's Bid:", selection: $currentBid) {
-            ForEach(0...14, id: \.self) { currentBid in
-                Text("\(currentBid)")
+            
+//            Picker("", selection: $currentBid) {
+//                ForEach(0...14, id: \.self) { currentBid in
+//                    Text("\(currentBid)").foregroundColor(.blue)
+//                }
+//            }
+            Picker("Bid:", selection: $appState.playersList[playerIndex].playerBid) {
+                Text("Sluff").tag(0)
+                Text("0").tag(0)
+                Text("1").tag(1)
+                Text("2").tag(2)
+                Text("3").tag(3)
+                Text("4").tag(4)
+                Text("5").tag(5)
+                Text("6").tag(6)
+                Text("7").tag(7)
+                Text("8").tag(8)
+                Text("9").tag(9)
+                Text("10").tag(10)
             }
         }
     }
 }
 
-#Preview {
-    BidPickerView(appState: AppState())
-}
+//#Preview {
+//    BidPickerView(appState: AppState())
+//}
 
 /*
 ScrollView {

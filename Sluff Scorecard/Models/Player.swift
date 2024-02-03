@@ -13,4 +13,5 @@ struct Player: Identifiable {
     var name: String
     var didSluff = false
     var playerBid = 0
+    var checkCircle = false
 }

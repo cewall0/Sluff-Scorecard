@@ -20,7 +20,7 @@ class AppState {
         numPlayersIsSelected = true
 
         for index in 1...numberOfPlayers {
-            playersList.append(Player(name: "Change to Player \(index)'s name."))
+            playersList.append(Player(name: "Player \(index)'s name."))
         }
     } // end func setNumberOfPlayers
     

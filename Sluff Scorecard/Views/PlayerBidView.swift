@@ -11,6 +11,7 @@ import Observation
 struct PlayerBidView: View {
     
     @Environment(AppState.self) private var appState
+    @State var player: Player
     
     var body: some View {
         VStack{
@@ -19,7 +20,7 @@ struct PlayerBidView: View {
                 .bold()
                 .padding(.vertical, 10)
             
-            BidPickerView(appState: appState)
+//            BidPickerView(appState: appState)
                     
                 Text("Toggle isSluffing View")
 //                Toggle("Is Sluffing", isOn: $appState.didSluff)
@@ -32,7 +33,7 @@ struct PlayerBidView: View {
     } // end body: some View
 } // end struct NewItemView
 
-#Preview {
-    PlayerBidView()
-        .environment(AppState())
-}
+//#Preview {
+//    PlayerBidView(player: Player())
+//        .environment(AppState())
+//}
