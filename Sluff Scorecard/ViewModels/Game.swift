@@ -9,7 +9,7 @@ import SwiftUI
 import Observation
 
 @Observable
-class AppState {
+class Game {
     var playersList: [Player] = [Player(name:"Player1"), Player(name:"Player2"), Player(name:"Player3"), Player(name:"Player4"), Player(name:"Player5"), Player(name:"Player6"), Player(name:"Player7"), Player(name:"Player8")]
     var numberOfPlayers: Int = 0
     var numPlayersIsSelected: Bool = false
@@ -44,21 +44,19 @@ class AppState {
         }
     } // end func setNumberOfPlayers
     
-    func setTeamBids(from playersList: [Player]) -> (team1Bids: Int, team2Bids: Int) {
-        var team1Bids = 0
-        var team2Bids = 0
+    func setTeamBids(from playersList: [Player]) -> () {
+        team1TotalBid = 0
+        team2TotalBid = 0
         
         for index in playersList.indices {
             guard let bid = Int(playersList[index].playerBid) else { continue }
             if index % 2 == 0 {
-                team1Bids += bid
+                team1TotalBid += bid
             } else {
-                team2Bids += bid
+                team2TotalBid += bid
             }
         }
-        return (team1Bids, team2Bids)
     }
-    
     
     
 } // end class AppState

@@ -10,7 +10,7 @@ import SwiftUI
 
 struct TeamNameView: View {
     
-    @Bindable var appState: AppState
+    @Bindable var game: Game
     
     let twoColumnGrid = [GridItem(.flexible()), GridItem(.flexible())]
     
@@ -19,8 +19,8 @@ struct TeamNameView: View {
         VStack{
             
             LazyVGrid(columns: twoColumnGrid, alignment: .center, spacing: 10) {
-                TextField(appState.team1Name, text: $appState.team1Name).multilineTextAlignment(.center)
-                TextField(appState.team2Name, text: $appState.team2Name).multilineTextAlignment(.center)
+                TextField(game.team1Name, text: $game.team1Name).multilineTextAlignment(.center)
+                TextField(game.team2Name, text: $game.team2Name).multilineTextAlignment(.center)
                 
             }.font(.title) // end LazyVGrid
             
@@ -32,5 +32,5 @@ struct TeamNameView: View {
 }
 
 #Preview {
-    TeamNameView(appState: AppState())
+    TeamNameView(game: Game())
 }

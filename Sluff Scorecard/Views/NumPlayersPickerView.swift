@@ -11,7 +11,7 @@ import SwiftUI
 
 struct NumPlayersPickerView: View {
     
-    @Bindable var appState: AppState
+    @Bindable var game: Game
     
     
     var body: some View {
@@ -19,13 +19,13 @@ struct NumPlayersPickerView: View {
             
             HStack {
                 Text("Number of Players:")
-                Text(String(appState.numberOfPlayers) == "0" ? "Select below" : String(appState.numberOfPlayers))
+                Text(String(game.numberOfPlayers) == "0" ? "Select below" : String(game.numberOfPlayers))
                     .fontWeight(.bold)
                     .foregroundColor(Color.red)
                     
             }
             
-            Picker("Number of Players", selection: $appState.numberOfPlayers) {
+            Picker("Number of Players", selection: $game.numberOfPlayers) {
                 Text("6")
                     .tag(6)
                 
@@ -41,6 +41,6 @@ struct NumPlayersPickerView: View {
 }
 
 #Preview {
-    NumPlayersPickerView(appState: AppState())
+    NumPlayersPickerView(game: Game())
         
 }

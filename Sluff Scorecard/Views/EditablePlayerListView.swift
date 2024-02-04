@@ -9,7 +9,7 @@ import SwiftUI
 
 struct EditablePlayerListView: View {
     
-    @Bindable var appState: AppState
+    @Bindable var game: Game
     @State var newName: String = ""
     
     var body: some View {
@@ -19,12 +19,12 @@ struct EditablePlayerListView: View {
                 Text("")
                 Text("")
                 ScrollView {
-                    ForEach(appState.playersList.indices, id: \.self) { index in
+                    ForEach(game.playersList.indices, id: \.self) { index in
                         VStack(alignment: .leading) {
                             HStack{
                                 Text("Position \(index + 1):")
                                     .fontWeight(.bold)
-                                TextField("Enter name", text: $appState.playersList[index].name)
+                                TextField("Enter name", text: $game.playersList[index].name)
                                     .textFieldStyle(PlainTextFieldStyle())
                                     .accentColor(.pink)
                                     .foregroundColor(.blue)
@@ -42,5 +42,5 @@ struct EditablePlayerListView: View {
 }
 
 #Preview {
-    EditablePlayerListView(appState: AppState())
+    EditablePlayerListView(game: Game())
 }

@@ -11,7 +11,7 @@ import SwiftUI
 @main
 struct Sluff_ScorecardApp: App {
     
- @State private var appState = AppState()
+ @State private var appState = Game()
     
     
     var body: some Scene {

@@ -17,7 +17,7 @@ import Observation
 
 struct NumPlayersView: View {
     
-    @Environment(AppState.self) private var appState
+    @Environment(Game.self) private var game
     
     var body: some View {
         NavigationView() {
@@ -36,16 +36,16 @@ struct NumPlayersView: View {
                     Text(" ")
                     Text(" ")
                     
-                    NumPlayersPickerView(appState: appState)
-                        .onChange(of: appState.numberOfPlayers) {appState.setNumberOfPlayers(appState.numberOfPlayers)}
+                    NumPlayersPickerView(game: game)
+                        .onChange(of: game.numberOfPlayers) {game.setNumberOfPlayers(game.numberOfPlayers)}
                     
                     NavigationLink(destination: ScorecardView()) {
                         Text("Let's go. . .")
                     }
                     .padding()
                     .foregroundColor(.white)
-                    .background(appState.numPlayersIsSelected ? .blue.opacity(1.0): .blue.opacity(0.5))
-                    .disabled(!appState.numPlayersIsSelected)
+                    .background(game.numPlayersIsSelected ? .blue.opacity(1.0): .blue.opacity(0.5))
+                    .disabled(!game.numPlayersIsSelected)
                     .clipShape(Capsule())
                     .padding()
                     
@@ -60,5 +60,5 @@ struct NumPlayersView: View {
 
 #Preview {
     NumPlayersView()
-        .environment(AppState())
+        .environment(Game())
 }

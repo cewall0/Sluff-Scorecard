@@ -11,7 +11,7 @@ import Observation
 
 struct AddPlayerView: View {
     
-    @Environment(AppState.self) private var appState
+    @Environment(Game.self) private var game
 
     var body: some View {
         
@@ -35,7 +35,7 @@ struct AddPlayerView: View {
                         }
                         
                         
-                        EditablePlayerListView(appState: appState)
+                        EditablePlayerListView(game: game)
                         
                         NavigationLink("Go to Sluff Scorecard") {
                             ScorecardView()
@@ -56,5 +56,5 @@ struct AddPlayerView: View {
 
 #Preview {
     AddPlayerView()
-        .environment(AppState())
+        .environment(Game())
 }
