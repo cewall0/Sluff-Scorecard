@@ -16,8 +16,8 @@ struct BidPickerView: View {
     var body: some View {
         HStack {
             Picker("Bid:", selection: $game.playersList[playerIndex].playerBid) {
-//                Text("--").tag("--")
-//                Text("Sluff").tag("Sluff")
+                Text("--").tag("--")
+                Text("Sluff").tag("Sluff")
                 Text("0").tag("0")
                 Text("1").tag("1")
                 Text("2").tag("2")

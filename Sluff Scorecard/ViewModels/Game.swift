@@ -47,8 +47,21 @@ class Game {
     func setTeamBids(from playersList: [Player]) -> () {
         team1TotalBid = 0
         team2TotalBid = 0
+        team1TotalSluffs = 0
+        team2TotalSluffs = 0
         
         for index in playersList.indices {
+            
+            let sluffOrBid = playersList[index].playerBid
+            
+            if sluffOrBid == "--" { continue }
+            
+            if (sluffOrBid == "Sluff") && (index % 2 == 0) {
+                    team1TotalSluffs += 1
+                } else if (sluffOrBid == "Sluff") && (index % 2 == 1) {
+                    team2TotalSluffs += 1
+                }
+            
             guard let bid = Int(playersList[index].playerBid) else { continue }
             if index % 2 == 0 {
                 team1TotalBid += bid
@@ -57,6 +70,8 @@ class Game {
             }
         }
     }
+    
+    
     
     
 } // end class AppState

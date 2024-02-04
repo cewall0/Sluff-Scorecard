@@ -24,15 +24,16 @@ struct ScorecardView: View {
             
             Text("Sluff Scorecard")
                 .font(.system(size: 32))
+                .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
                 .bold()
                 .padding(.top, 10)
             
             TeamNameView(game: game)
             
             LazyVGrid(columns: twoColumnGrid, alignment: .center, spacing: 10) {
-                Text(String(game.team1TotalScore))
+                Text (String(game.team1TotalScore))
                 Text (String(game.team2TotalScore))
-            }.font(.title) // end LazyVGrid
+            }.font(.title)
             
             VStack{
                 LazyVGrid(columns: twoColumnGrid, alignment: .center, spacing: 10) {
@@ -41,32 +42,9 @@ struct ScorecardView: View {
                     }
                     HStack{
                         Text("Team Bid: \(game.team2TotalBid)")
-                    } // end LazyVGrid
+                    }
                 }.font(.headline)
             }
-            
-            List {
-                ForEach(game.playersList.indices, id: \.self) { index in
-                    HStack{
-                        
-                        PlayerNameView(game: game, playerIndex: index)
-                        
-                        BidPickerView(game: game, playerIndex: index, onBidChanged: {
-                            game.setTeamBids(from: game.playersList)
-//                            self.teamBids = game.setTeamBids(from: game.playersList)
-                        }
-                    )}
-                }
-                
-                HStack{
-                    Text("Team1 Bid: \(game.team1TotalBid)")
-                    Text("Team2 Bid: \(game.team2TotalBid)")
-                }
-            } // end List
-          
-            
-           
-            
             
             LazyVGrid(columns: twoColumnGrid, alignment: .center, spacing: 10) {
                 HStack{
@@ -76,9 +54,21 @@ struct ScorecardView: View {
                 HStack{
                     Text("Team Sluffs: ")
                     Text(String(game.team2TotalSluffs))
-                } // end LazyVGrid
+                }
             }.font(.headline)
             
+            List {
+                ForEach(game.playersList.indices, id: \.self) { index in
+                    HStack{
+                        
+                        PlayerNameView(game: game, playerIndex: index)
+                        
+                        BidPickerView(game: game, playerIndex: index, onBidChanged: {
+                            game.setTeamBids(from: game.playersList)
+                        }
+                    )}
+                }
+            } // end List
         } // end VStack
     }
 }

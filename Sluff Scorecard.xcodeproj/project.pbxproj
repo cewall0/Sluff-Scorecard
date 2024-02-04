@@ -113,7 +113,6 @@
 			isa = PBXGroup;
 			children = (
 				0B4821F72B43B8B1001FDA98 /* Player.swift */,
-				0B4821FB2B43CBBE001FDA98 /* OldGame.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -121,8 +120,6 @@
 		0B4B15272B656A3B00A4E9CD /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				0B4B15292B656AF400A4E9CD /* OldScorecardViewViewModel.swift */,
-				0B4B15352B69736700A4E9CD /* OldGameViewModel.swift */,
 				0BB1F1FA2B6B032F006201F8 /* Game.swift */,
 			);
 			path = ViewModels;
@@ -131,6 +128,9 @@
 		0B4B15282B656A4700A4E9CD /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				0B4821FB2B43CBBE001FDA98 /* OldGame.swift */,
+				0B4B15292B656AF400A4E9CD /* OldScorecardViewViewModel.swift */,
+				0B4B15352B69736700A4E9CD /* OldGameViewModel.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
