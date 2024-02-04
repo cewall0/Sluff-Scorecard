@@ -12,14 +12,13 @@ import Observation
 struct ScorecardView: View {
     
     @Environment(AppState.self) private var appState
+    @State var teamBids: (team1Bids: Int, team2Bids: Int) = (0, 0)
     
-    var twoColumnGrid = [GridItem(.fixed(140)), GridItem(.fixed(140))]
+    let twoColumnGrid = [GridItem(.flexible()), GridItem(.flexible())]
     
     var sixColumnGrid = [GridItem(.fixed(20)),GridItem(.flexible()), GridItem(.fixed(105))]
     
     var body: some View {
-        
-//        let playersList = appState.playersList.enumerated().map({ $0, $1 })
         
         VStack{
             
@@ -28,32 +27,55 @@ struct ScorecardView: View {
                 .bold()
                 .padding(.top, 10)
             
+            TeamNameView(appState: appState)
             
             LazyVGrid(columns: twoColumnGrid, alignment: .center, spacing: 10) {
-                Text("Team 1")
-                Text ("Team 2")
+                Text(String(appState.team1TotalScore))
+                Text (String(appState.team2TotalScore))
             }.font(.title) // end LazyVGrid
-            LazyVGrid(columns: twoColumnGrid, alignment: .center, spacing: 10) {
-                Text("50")
-                Text ("200")
-            }.font(.title3) // end LazyVGrid
-            
             
             List {
                 ForEach(appState.playersList.indices, id: \.self) { index in
                     HStack{
-                        Text(appState.playersList[index].name)
-                        BidPickerView(appState: appState, playerIndex: index)
+                        
+                        PlayerNameView(appState: appState, playerIndex: index)
+                        
+                        BidPickerView(appState: appState, playerIndex: index, onBidChanged: {
+                            self.teamBids = appState.setTeamBids(from: appState.playersList)
+                        }
+                    )}
+                }
+                
+                HStack{
+                    Text("Team1 Bid: \(teamBids.team1Bids)")
+                    Text("Team2 Bid: \(teamBids.team2Bids)")
+                }
+            } // end List
+            VStack{
+                LazyVGrid(columns: twoColumnGrid, alignment: .center, spacing: 10) {
+                    HStack{
+                        Text("Team Bid: \(teamBids.team1Bids)")
                     }
-                   
-                       }
-                   }
-            
-            HStack{
-                Text("1 bid")
-                Text(String(appState.playersList[0].playerBid))
+                    HStack{
+                        Text("Team Bid: \(teamBids.team2Bids)")
+                    } // end LazyVGrid
+                }.font(.headline)
             }
-
+            
+           
+            
+            
+            LazyVGrid(columns: twoColumnGrid, alignment: .center, spacing: 10) {
+                HStack{
+                    Text("Team Sluffs: ")
+                    Text(String(appState.team1TotalSluffs))
+                }
+                HStack{
+                    Text("Team Sluffs: ")
+                    Text(String(appState.team2TotalSluffs))
+                } // end LazyVGrid
+            }.font(.headline)
+            
         } // end VStack
     }
 }

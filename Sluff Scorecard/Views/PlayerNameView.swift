@@ -10,18 +10,19 @@ import SwiftUI
 struct PlayerNameView: View {
     
     @Bindable var appState: AppState
+    var playerIndex: Int
     
     var body: some View {
-        TextField("Enter name", text: $appState.playersList[0].name)
+        TextField("Enter name", text: $appState.playersList[playerIndex].name)
             .textFieldStyle(PlainTextFieldStyle())
             .accentColor(.pink)
-            .foregroundColor(.blue)
+            .foregroundColor(.black)
             .padding(4)
-            .background(.teal.opacity(0.3))
+            .background(playerIndex%2 == 0 ? .teal.opacity(0.3) : .gray.opacity(0.3))
             .cornerRadius(8)
     }
 }
 
 #Preview {
-    PlayerNameView(appState: AppState())
+    PlayerNameView(appState: AppState(), playerIndex: 0)
 }

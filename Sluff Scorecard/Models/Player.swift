@@ -12,6 +12,6 @@ struct Player: Identifiable {
     let id = UUID()
     var name: String
     var didSluff = false
-    var playerBid = 0
+    var playerBid = "bid"
     var checkCircle = false
 }

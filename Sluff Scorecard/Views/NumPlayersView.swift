@@ -39,7 +39,7 @@ struct NumPlayersView: View {
                     NumPlayersPickerView(appState: appState)
                         .onChange(of: appState.numberOfPlayers) {appState.setNumberOfPlayers(appState.numberOfPlayers)}
                     
-                    NavigationLink(destination: AddPlayerView()) {
+                    NavigationLink(destination: ScorecardView()) {
                         Text("Let's go. . .")
                     }
                     .padding()
