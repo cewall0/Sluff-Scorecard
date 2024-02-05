@@ -20,11 +20,18 @@ struct ScorecardView: View {
     
     var body: some View {
         
-        NavigationView() {
+        NavigationStack() {
         
             VStack{
 
             HStack{
+                Image(systemName: "gear").opacity(0).padding(.leading)
+                Spacer()
+                Text("Sluff Scorecard")
+                    .font(.system(size: 32))
+                    .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
+                    .bold()
+                    .padding(.top, 10)
                 Spacer()
                 NavigationLink(destination: SettingsView()) {
                     Image(systemName: "gear")
@@ -32,11 +39,7 @@ struct ScorecardView: View {
                         .foregroundColor(.gray)
                     }
             }
-            Text("Sluff Scorecard")
-                .font(.system(size: 32))
-                .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
-                .bold()
-                .padding(.top, 10)
+           
             
             TeamNameView(game: game)
             
@@ -58,27 +61,38 @@ struct ScorecardView: View {
             
             LazyVGrid(columns: twoColumnGrid, alignment: .center, spacing: 10) {
                 HStack{
-                    Text("Team Sluffs: ")
-                    Text(String(game.team1TotalSluffs))
+                    Text("Team Sluffs: \(game.team1TotalSluffs)")
                 }
                 HStack{
-                    Text("Team Sluffs: ")
-                    Text(String(game.team2TotalSluffs))
+                    Text("Team Sluffs: \(game.team2TotalSluffs)")
                 }
             }.font(.headline)
             
-            List {
-                ForEach(game.playersList.indices, id: \.self) { index in
-                    HStack{
-                        
-                        PlayerNameView(game: game, playerIndex: index)
-                        
-                        BidPickerView(game: game, playerIndex: index, onBidChanged: {
-                            game.setTeamBids(from: game.playersList)
+                NavigationStack {
+                    VStack{
+
+                    List {
+                        ForEach(game.playersList.indices, id: \.self) { index in
+                            HStack{
+                                
+                                PlayerNameView(game: game, playerIndex: index)
+                                
+                                BidPickerView(game: game, playerIndex: index, onBidChanged: {
+                                    game.setTeamBids(from: game.playersList)
+                                }
+                            )}
                         }
-                    )}
+                    }// end List
+                    .listStyle(.plain)
+                    
+                        NavigationLink(destination: ScoreHandView(game: game)) {
+                        Text("Score This Hand")
+                        }
                 }
-            } // end List
+                    
+                }
+                
+                
         } // end VStack
             
         }

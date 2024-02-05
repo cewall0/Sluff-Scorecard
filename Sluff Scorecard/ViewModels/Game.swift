@@ -25,12 +25,12 @@ class Game {
     var team2TotalBid: Int = 0
     var team1TotalSluffs: Int = 0// The total team sluffs
     var team2TotalSluffs: Int = 0
-    //    var team1TricksWon: Int // The total tricks won for a team on that round
-    //    var team2TricksWon: Int
-    //    var team1SluffsWon: Int // The total sluffs won for a team on that round
-    //    var team2SluffsWon: Int
-    //    var team1SluffsLost: Int // The total sluffs lost for a team on that round
-    //    var team2SluffsLost: Int
+    var team1TricksWon: Int = 0 // The total tricks won for a team on that round
+    var team2TricksWon: Int = 0
+    var team1SluffsWon: Int = 0 // The total sluffs won for a team on that round
+    var team2SluffsWon: Int = 0
+    
+    var navPath: [String] = ["ScorecardView"]
     //    var dealerPosition: Int // Position of the current dealer
     //    var round: Int // What is the current round
     
@@ -71,7 +71,42 @@ class Game {
         }
     }
     
-    
+    func updateScore() -> () {
+
+        var team1TrickPoints = 0
+        var team1SluffPoints = 0
+        var team2TrickPoints = 0
+        var team2SluffPoints = 0
+
+        
+        // a successful bid gets 10 points for each trick bid + 1 for every bonus trick
+        if team1TricksWon >= team1TotalBid {
+            team1TrickPoints = (10 * team1TotalBid) + (team1TricksWon-team1TotalBid)
+        } else {
+            team1TrickPoints = 0
+        }
+        
+        if team1SluffsWon == team1TotalSluffs {
+            team1SluffPoints = team1TotalSluffs * 50
+        } else {
+            team1SluffPoints = (team1SluffsWon * 50) - ((team1TotalSluffs - team1SluffsWon) * 50)
+        }
+        
+        team1TotalScore = team1TotalScore + team1TrickPoints + team1SluffPoints
+        
+        if team2TricksWon >= team2TotalBid {
+            team2TrickPoints = (10 * team2TotalBid) + (team2TricksWon-team2TotalBid)
+        } else {
+            team1TrickPoints = 0
+        }
+        
+        if team2SluffsWon == team2TotalSluffs {
+            team2SluffPoints = team2TotalSluffs * 50
+        } else {
+            team2SluffPoints = (team2SluffsWon * 50) - ((team2TotalSluffs - team2SluffsWon) * 50)
+        }
+        team2TotalScore = team2TotalScore + team2TrickPoints + team2SluffPoints
+    }
     
     
 } // end class AppState
