@@ -16,7 +16,7 @@
 		0B4B152A2B656AF400A4E9CD /* OldScorecardViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4B15292B656AF400A4E9CD /* OldScorecardViewViewModel.swift */; };
 		0B4B15322B694BF000A4E9CD /* AddPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4B15312B694BF000A4E9CD /* AddPlayerView.swift */; };
 		0B4B15362B69736700A4E9CD /* OldGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4B15352B69736700A4E9CD /* OldGameViewModel.swift */; };
-		0BB1F1F92B6984DE006201F8 /* NumPlayersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB1F1F82B6984DE006201F8 /* NumPlayersView.swift */; };
+		0BB1F1F92B6984DE006201F8 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB1F1F82B6984DE006201F8 /* SettingsView.swift */; };
 		0BB1F1FB2B6B032F006201F8 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB1F1FA2B6B032F006201F8 /* Game.swift */; };
 		0BB1F1FD2B6B4786006201F8 /* NumPlayersPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB1F1FC2B6B4786006201F8 /* NumPlayersPickerView.swift */; };
 		0BB1F1FF2B6B562B006201F8 /* EditablePlayerListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB1F1FE2B6B562B006201F8 /* EditablePlayerListView.swift */; };
@@ -36,7 +36,7 @@
 		0B4B15292B656AF400A4E9CD /* OldScorecardViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldScorecardViewViewModel.swift; sourceTree = "<group>"; };
 		0B4B15312B694BF000A4E9CD /* AddPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlayerView.swift; sourceTree = "<group>"; };
 		0B4B15352B69736700A4E9CD /* OldGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldGameViewModel.swift; sourceTree = "<group>"; };
-		0BB1F1F82B6984DE006201F8 /* NumPlayersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumPlayersView.swift; sourceTree = "<group>"; };
+		0BB1F1F82B6984DE006201F8 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		0BB1F1FA2B6B032F006201F8 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		0BB1F1FC2B6B4786006201F8 /* NumPlayersPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumPlayersPickerView.swift; sourceTree = "<group>"; };
 		0BB1F1FE2B6B562B006201F8 /* EditablePlayerListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditablePlayerListView.swift; sourceTree = "<group>"; };
@@ -103,7 +103,7 @@
 				0BB1F2022B6E8E76006201F8 /* PlayerNameView.swift */,
 				0B4B15312B694BF000A4E9CD /* AddPlayerView.swift */,
 				0BB1F1FE2B6B562B006201F8 /* EditablePlayerListView.swift */,
-				0BB1F1F82B6984DE006201F8 /* NumPlayersView.swift */,
+				0BB1F1F82B6984DE006201F8 /* SettingsView.swift */,
 				0BB1F1FC2B6B4786006201F8 /* NumPlayersPickerView.swift */,
 			);
 			path = Views;
@@ -216,7 +216,7 @@
 				0B4B15362B69736700A4E9CD /* OldGameViewModel.swift in Sources */,
 				0B4821E82B43B712001FDA98 /* ScorecardView.swift in Sources */,
 				0B4B15322B694BF000A4E9CD /* AddPlayerView.swift in Sources */,
-				0BB1F1F92B6984DE006201F8 /* NumPlayersView.swift in Sources */,
+				0BB1F1F92B6984DE006201F8 /* SettingsView.swift in Sources */,
 				0BB1F2052B6EBB1F006201F8 /* TeamNameView.swift in Sources */,
 				0B4821E62B43B712001FDA98 /* Sluff_ScorecardApp.swift in Sources */,
 			);

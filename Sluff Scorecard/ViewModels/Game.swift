@@ -11,7 +11,7 @@ import Observation
 @Observable
 class Game {
     var playersList: [Player] = [Player(name:"Player1"), Player(name:"Player2"), Player(name:"Player3"), Player(name:"Player4"), Player(name:"Player5"), Player(name:"Player6"), Player(name:"Player7"), Player(name:"Player8")]
-    var numberOfPlayers: Int = 0
+    var numberOfPlayers: Int = 8
     var numPlayersIsSelected: Bool = false
     
     var team1Name: String = "Team 1"

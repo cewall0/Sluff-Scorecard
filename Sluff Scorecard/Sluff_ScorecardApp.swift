@@ -16,7 +16,7 @@ struct Sluff_ScorecardApp: App {
     
     var body: some Scene {
         WindowGroup {
-           NumPlayersView()
+           ScorecardView()
                 .environment(appState)
         }
     }

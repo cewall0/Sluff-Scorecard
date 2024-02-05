@@ -20,8 +20,18 @@ struct ScorecardView: View {
     
     var body: some View {
         
-        VStack{
-            
+        NavigationView() {
+        
+            VStack{
+
+            HStack{
+                Spacer()
+                NavigationLink(destination: SettingsView()) {
+                    Image(systemName: "gear")
+                        .padding(.trailing)
+                        .foregroundColor(.gray)
+                    }
+            }
             Text("Sluff Scorecard")
                 .font(.system(size: 32))
                 .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
@@ -70,6 +80,8 @@ struct ScorecardView: View {
                 }
             } // end List
         } // end VStack
+            
+        }
     }
 }
 

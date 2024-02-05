@@ -18,13 +18,10 @@ struct NumPlayersPickerView: View {
         VStack{
             
             HStack {
-                Text("Number of Players:")
-                Text(String(game.numberOfPlayers) == "0" ? "Select below" : String(game.numberOfPlayers))
-                    .fontWeight(.bold)
-                    .foregroundColor(Color.red)
-                    
-            }
-            
+                Text("Change Number of Players:")
+//                Text(String(game.numberOfPlayers) == "0" ? "Select below" : String(game.numberOfPlayers))
+//                    .fontWeight(.bold)
+
             Picker("Number of Players", selection: $game.numberOfPlayers) {
                 Text("6")
                     .tag(6)
@@ -34,6 +31,8 @@ struct NumPlayersPickerView: View {
                 
                 Text("10")
                     .tag(10)
+            }.foregroundColor(Color.red)
+                
             }
             
         }
