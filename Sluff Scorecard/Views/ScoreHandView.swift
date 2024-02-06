@@ -16,6 +16,12 @@ struct ScoreHandView: View {
         NavigationStack{
 
         VStack{
+            TitleView()
+            
+            TeamNameView(game: game)
+            
+            TeamScoresView()
+            
             LazyVGrid(columns: twoColumnGrid, alignment: .center, spacing: 10) {
                 HStack{
                     Text("Tricks Won:")
@@ -57,20 +63,31 @@ struct ScoreHandView: View {
                 } // end HStack
             } // end lazygrid
             
-            NavigationLink(destination: ScorecardView().onAppear {
-                self.game.updateScore()
-            }) {
+            NavigationLink {
+                ScorecardView().onAppear {
+                    self.game.updateScore()
+                    self.game.resetBids()
+                    self.game.nextDealer()
+                }
+            } label: {
                 Text("Update Scores")
-            }
+            }.buttonStyle(.borderedProminent)
+                .navigationBarBackButtonHidden(true) 
+            
+//            NavigationLink(destination: ScorecardView().onAppear {
+//                self.game.updateScore()
+//            }) {
+//                Text("Update Scores")
+//            }.buttonStyle(.borderedProminent)
 
             Spacer()
-        }.navigationBarBackButtonHidden(true) // end Vstack
+        } // end Vstack
             
         }
     }
 }
 
-#Preview {
-    ScoreHandView(game: Game())
-}
+//#Preview {
+//    ScoreHandView(game: Game())
+//}
 

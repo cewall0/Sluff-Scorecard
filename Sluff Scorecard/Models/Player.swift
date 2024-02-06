@@ -14,4 +14,5 @@ struct Player: Identifiable {
     var didSluff = false
     var playerBid = "bid"
     var checkCircle = false
+    var isDealer: Bool
 }

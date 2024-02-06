@@ -12,7 +12,8 @@ import Observation
 struct ScorecardView: View {
     
     @Environment(Game.self) private var game
-    @State var teamBids: (team1Bids: Int, team2Bids: Int) = (0, 0)
+    
+    
     
     let twoColumnGrid = [GridItem(.flexible()), GridItem(.flexible())]
     
@@ -21,80 +22,46 @@ struct ScorecardView: View {
     var body: some View {
         
         NavigationStack() {
-        
-            VStack{
-
-            HStack{
-                Image(systemName: "gear").opacity(0).padding(.leading)
-                Spacer()
-                Text("Sluff Scorecard")
-                    .font(.system(size: 32))
-                    .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
-                    .bold()
-                    .padding(.top, 10)
-                Spacer()
-                NavigationLink(destination: SettingsView()) {
-                    Image(systemName: "gear")
-                        .padding(.trailing)
-                        .foregroundColor(.gray)
-                    }
-            }
-           
-            
-            TeamNameView(game: game)
-            
-            LazyVGrid(columns: twoColumnGrid, alignment: .center, spacing: 10) {
-                Text (String(game.team1TotalScore))
-                Text (String(game.team2TotalScore))
-            }.font(.title)
             
             VStack{
-                LazyVGrid(columns: twoColumnGrid, alignment: .center, spacing: 10) {
-                    HStack{
-                        Text("Team Bid: \(game.team1TotalBid)")
-                    }
-                    HStack{
-                        Text("Team Bid: \(game.team2TotalBid)")
-                    }
-                }.font(.headline)
-            }
-            
-            LazyVGrid(columns: twoColumnGrid, alignment: .center, spacing: 10) {
-                HStack{
-                    Text("Team Sluffs: \(game.team1TotalSluffs)")
-                }
-                HStack{
-                    Text("Team Sluffs: \(game.team2TotalSluffs)")
-                }
-            }.font(.headline)
-            
+                
+                TitleView()
+                
+                TeamNameView(game: game)
+                
+                TeamScoresView()
+                
                 NavigationStack {
                     VStack{
-
-                    List {
-                        ForEach(game.playersList.indices, id: \.self) { index in
-                            HStack{
-                                
-                                PlayerNameView(game: game, playerIndex: index)
-                                
-                                BidPickerView(game: game, playerIndex: index, onBidChanged: {
-                                    game.setTeamBids(from: game.playersList)
-                                }
-                            )}
-                        }
-                    }// end List
-                    .listStyle(.plain)
-                    
-                        NavigationLink(destination: ScoreHandView(game: game)) {
-                        Text("Score This Hand")
-                        }
+                        
+                        List {
+                            ForEach(game.playersList.indices, id: \.self) { index in
+                                HStack{
+                                    Text("D")
+                                        .fontWeight(.bold)
+                                        .foregroundColor(game.playersList[index].isDealer ? .yellow.opacity(1.0): .yellow.opacity(0.0))
+                                    
+                                    PlayerNameView(game: game, playerIndex: index)
+                                    
+                                    BidPickerView(game: game, playerIndex: index, onBidChanged: {
+                                        game.setTeamBids(from: game.playersList)
+                                    }
+                                    )}
+                            }
+                        }// end List
+                        .listStyle(.plain)
+                        
+                        NavigationLink {
+                            ScoreHandView(game: game).onAppear {
+                                self.game.resetTricksSluffsWon()
+                            }
+                        } label: {
+                            Text("Score this hand")
+                        }.buttonStyle(.borderedProminent)
+                            .navigationBarBackButtonHidden(true)
+                    }
                 }
-                    
-                }
-                
-                
-        } // end VStack
-            
+            }
         }
     }
 }
@@ -103,5 +70,7 @@ struct ScorecardView: View {
     ScorecardView()
         .environment(Game())
 }
+
+
 
 

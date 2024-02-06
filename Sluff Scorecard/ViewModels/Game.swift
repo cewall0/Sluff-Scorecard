@@ -10,7 +10,7 @@ import Observation
 
 @Observable
 class Game {
-    var playersList: [Player] = [Player(name:"Player1"), Player(name:"Player2"), Player(name:"Player3"), Player(name:"Player4"), Player(name:"Player5"), Player(name:"Player6"), Player(name:"Player7"), Player(name:"Player8")]
+    var playersList: [Player] = [Player(name:"Player1", isDealer: true), Player(name:"Player2", isDealer: false), Player(name:"Player3", isDealer: false), Player(name:"Player4", isDealer: false), Player(name:"Player5", isDealer: false), Player(name:"Player6", isDealer: false), Player(name:"Player7", isDealer: false), Player(name:"Player8", isDealer: false)]
     var numberOfPlayers: Int = 8
     var numPlayersIsSelected: Bool = false
     
@@ -30,7 +30,7 @@ class Game {
     var team1SluffsWon: Int = 0 // The total sluffs won for a team on that round
     var team2SluffsWon: Int = 0
     
-    var navPath: [String] = ["ScorecardView"]
+    
     //    var dealerPosition: Int // Position of the current dealer
     //    var round: Int // What is the current round
     
@@ -40,7 +40,13 @@ class Game {
         numPlayersIsSelected = true
         
         for index in 1...numberOfPlayers {
-            playersList.append(Player(name: "Player \(index)"))
+            if index == 1{
+                playersList.append(Player(name: "Player \(index)", isDealer: true))
+            } else {
+                playersList.append(Player(name: "Player \(index)", isDealer: false))
+
+            }
+            
         }
     } // end func setNumberOfPlayers
     
@@ -78,7 +84,6 @@ class Game {
         var team2TrickPoints = 0
         var team2SluffPoints = 0
 
-        
         // a successful bid gets 10 points for each trick bid + 1 for every bonus trick
         if team1TricksWon >= team1TotalBid {
             team1TrickPoints = (10 * team1TotalBid) + (team1TricksWon-team1TotalBid)
@@ -108,5 +113,33 @@ class Game {
         team2TotalScore = team2TotalScore + team2TrickPoints + team2SluffPoints
     }
     
+    func resetBids() -> () {
+        team1TotalBid = 0
+        team2TotalBid = 0
+        team1TotalSluffs = 0
+        team2TotalSluffs = 0
+        
+        for index in playersList.indices {
+            
+            playersList[index].playerBid = "--"
+        }
+    }
+    
+    func resetTricksSluffsWon() -> () {
+        team1TricksWon = 0
+        team1SluffsWon = 0
+        team2TricksWon = 0
+        team2SluffsWon = 0
+    }
+    
+    func nextDealer() -> () {
+        for index in playersList.indices {
+            if playersList[index].isDealer == true {
+                playersList[index].isDealer = false
+                playersList[index+1].isDealer = true
+                break
+            }
+        }
+    }
     
 } // end class AppState

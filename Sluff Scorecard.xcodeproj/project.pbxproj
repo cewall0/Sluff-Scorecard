@@ -24,6 +24,8 @@
 		0BB1F2032B6E8E76006201F8 /* PlayerNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB1F2022B6E8E76006201F8 /* PlayerNameView.swift */; };
 		0BB1F2052B6EBB1F006201F8 /* TeamNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB1F2042B6EBB1F006201F8 /* TeamNameView.swift */; };
 		0BB1F2072B70961D006201F8 /* ScoreHandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB1F2062B70961D006201F8 /* ScoreHandView.swift */; };
+		0BB1F20B2B71D48C006201F8 /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB1F20A2B71D48C006201F8 /* TitleView.swift */; };
+		0BB1F20D2B71D614006201F8 /* TeamScoresView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB1F20C2B71D614006201F8 /* TeamScoresView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +47,8 @@
 		0BB1F2022B6E8E76006201F8 /* PlayerNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerNameView.swift; sourceTree = "<group>"; };
 		0BB1F2042B6EBB1F006201F8 /* TeamNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamNameView.swift; sourceTree = "<group>"; };
 		0BB1F2062B70961D006201F8 /* ScoreHandView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreHandView.swift; sourceTree = "<group>"; };
+		0BB1F20A2B71D48C006201F8 /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
+		0BB1F20C2B71D614006201F8 /* TeamScoresView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamScoresView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +104,8 @@
 			isa = PBXGroup;
 			children = (
 				0B4821E72B43B712001FDA98 /* ScorecardView.swift */,
+				0BB1F20C2B71D614006201F8 /* TeamScoresView.swift */,
+				0BB1F20A2B71D48C006201F8 /* TitleView.swift */,
 				0BB1F2042B6EBB1F006201F8 /* TeamNameView.swift */,
 				0BB1F2002B6C0059006201F8 /* BidPickerView.swift */,
 				0BB1F2022B6E8E76006201F8 /* PlayerNameView.swift */,
@@ -215,6 +221,7 @@
 				0BB1F1FD2B6B4786006201F8 /* NumPlayersPickerView.swift in Sources */,
 				0BB1F1FB2B6B032F006201F8 /* Game.swift in Sources */,
 				0BB1F1FF2B6B562B006201F8 /* OldEditablePlayerListView.swift in Sources */,
+				0BB1F20B2B71D48C006201F8 /* TitleView.swift in Sources */,
 				0BB1F2032B6E8E76006201F8 /* PlayerNameView.swift in Sources */,
 				0B4B15362B69736700A4E9CD /* OldGameViewModel.swift in Sources */,
 				0B4821E82B43B712001FDA98 /* ScorecardView.swift in Sources */,
@@ -223,6 +230,7 @@
 				0BB1F1F92B6984DE006201F8 /* SettingsView.swift in Sources */,
 				0BB1F2052B6EBB1F006201F8 /* TeamNameView.swift in Sources */,
 				0B4821E62B43B712001FDA98 /* Sluff_ScorecardApp.swift in Sources */,
+				0BB1F20D2B71D614006201F8 /* TeamScoresView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
