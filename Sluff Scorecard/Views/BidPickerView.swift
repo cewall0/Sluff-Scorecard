@@ -14,6 +14,8 @@ struct BidPickerView: View {
     let onBidChanged: () -> Void
     
     var body: some View {
+
+
         HStack {
             Picker("Bid:", selection: $game.playersList[playerIndex].playerBid) {
                 Text("--").tag("--")
@@ -30,7 +32,13 @@ struct BidPickerView: View {
                 Text("10").tag("10")
             }.onChange(of: game.playersList[playerIndex].playerBid) { _, _ in
                 onBidChanged()
+                
             }
+            .foregroundColor(.black)
+//            .padding(4)
+//            .background(playerIndex%2 == 0 ? .teal.opacity(0.3) : .gray.opacity(0.3))
+//            .cornerRadius(8)
+
         }
     }
 }

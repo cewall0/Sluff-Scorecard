@@ -29,10 +29,8 @@ class Game {
     var team2TricksWon: Int = 0
     var team1SluffsWon: Int = 0 // The total sluffs won for a team on that round
     var team2SluffsWon: Int = 0
-    
-    
-    //    var dealerPosition: Int // Position of the current dealer
-    //    var round: Int // What is the current round
+    var round: Int = 1 // What is the current round
+    var gameOver: Bool = false
     
     func setNumberOfPlayers(_ numberOfPlayers: Int) {
         playersList.removeAll()
@@ -139,6 +137,13 @@ class Game {
                 playersList[index+1].isDealer = true
                 break
             }
+        }
+        round = round + 1
+    }
+    
+    func isGameOver() -> () {
+        if round > numberOfPlayers {
+           gameOver = true
         }
     }
     

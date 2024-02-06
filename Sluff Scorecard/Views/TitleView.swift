@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct TitleView: View {
+    
+    @Environment(Game.self) private var game
+
     var body: some View {
         HStack{
             Image(systemName: "gear").opacity(0).padding(.leading)
@@ -24,10 +27,13 @@ struct TitleView: View {
                     .foregroundColor(.gray)
             }
         }
+        Text("(Round: \(game.round))")
     }
 }
 
 
 #Preview {
     TitleView()
+        .environment(Game())
 }
+ 

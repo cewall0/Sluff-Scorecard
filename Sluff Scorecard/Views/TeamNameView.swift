@@ -19,14 +19,11 @@ struct TeamNameView: View {
         VStack{
             
             LazyVGrid(columns: twoColumnGrid, alignment: .center, spacing: 10) {
-                TextField(game.team1Name, text: $game.team1Name).multilineTextAlignment(.center)
-                TextField(game.team2Name, text: $game.team2Name).multilineTextAlignment(.center)
+    
+                    TextField(game.team1Name, text: $game.team1Name).multilineTextAlignment(.center)
+                    TextField(game.team2Name, text: $game.team2Name).multilineTextAlignment(.center)
                 
             }.font(.title) // end LazyVGrid
-            
-            
-          
-            
         }
     }
 }

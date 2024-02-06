@@ -68,17 +68,12 @@ struct ScoreHandView: View {
                     self.game.updateScore()
                     self.game.resetBids()
                     self.game.nextDealer()
+                    self.game.isGameOver()
                 }
             } label: {
                 Text("Update Scores")
             }.buttonStyle(.borderedProminent)
-                .navigationBarBackButtonHidden(true) 
-            
-//            NavigationLink(destination: ScorecardView().onAppear {
-//                self.game.updateScore()
-//            }) {
-//                Text("Update Scores")
-//            }.buttonStyle(.borderedProminent)
+                .navigationBarBackButtonHidden(true)
 
             Spacer()
         } // end Vstack
