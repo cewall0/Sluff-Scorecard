@@ -12,7 +12,6 @@ import Observation
 final class Game {
     var playersList: [Player] = [Player(name:"Player1", isDealer: true), Player(name:"Player2", isDealer: false), Player(name:"Player3", isDealer: false), Player(name:"Player4", isDealer: false), Player(name:"Player5", isDealer: false), Player(name:"Player6", isDealer: false), Player(name:"Player7", isDealer: false), Player(name:"Player8", isDealer: false)]
     var numberOfPlayers: Int = 8
-    var numPlayersIsSelected: Bool = false
     
     var team1Name: String = "Team 1"
     var team2Name: String = "Team 2"
@@ -33,12 +32,33 @@ final class Game {
     var gameOver: Bool = false
     
     
+    
+    init() {
+        self.playersList = playersList
+        self.numberOfPlayers = numberOfPlayers
+        self.team1Name = team1Name
+        self.team2Name = team2Name
+        self.team1RoundScore = team1RoundScore
+        self.team2RoundScore = team2RoundScore
+        self.team1TotalScore = team1TotalScore
+        self.team2TotalScore = team2TotalScore
+        self.team1TotalBid = team1TotalBid
+        self.team2TotalBid = team2TotalBid
+        self.team1TotalSluffs = team1TotalSluffs
+        self.team2TotalSluffs = team2TotalSluffs
+        self.team1TricksWon = team1TricksWon
+        self.team2TricksWon = team2TricksWon
+        self.team1SluffsWon = team1SluffsWon
+        self.team2SluffsWon = team2SluffsWon
+        self.round = round
+        self.gameOver = gameOver
+    }
+    
+    
     /// setNumberOfPlayers function with an integer parameter for the number of players in the game. A playersList array of Player structs is formed that contains the appropriate number of players for the game.
     func setNumberOfPlayers(_ numberOfPlayers: Int) {
         playersList.removeAll()
-        
-        numPlayersIsSelected = true
-        
+                
         for index in 1...numberOfPlayers {
             if index == 1{
                 playersList.append(Player(name: "Player \(index)", isDealer: true))

@@ -66,18 +66,18 @@ struct ScorecardView: View {
                     }) {
                         Text("Score this hand")
                     }
-                    .navigationDestination(for: Int.self) { destination in
-                        switch destination {
-                        case 1:
-                            ScoreHandView().environmentObject(router)
-                        case 2:
-                            SettingsView().environmentObject(router)
-                        default:
-                            EmptyView()
-                        }
-                    }
-                    
+                   
                     Spacer()
+                    
+                } .navigationDestination(for: Int.self) { destination in
+                    switch destination {
+                    case 1:
+                        ScoreHandView().environmentObject(router)
+                    case 2:
+                        SettingsView().environmentObject(router)
+                    default:
+                        EmptyView()
+                    }
                 }
             } // end NavigationStack
         }

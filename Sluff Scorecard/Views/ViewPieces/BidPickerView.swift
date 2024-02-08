@@ -31,6 +31,11 @@ struct BidPickerView: View {
                 Text("8").tag("8")
                 Text("9").tag("9")
                 Text("10").tag("10")
+                Text("11").tag("11")
+                Text("12").tag("12")
+                Text("13").tag("13")
+                Text("14").tag("14")
+                Text("15").tag("15")
             }.onChange(of: game.playersList[playerIndex].playerBid) { _, _ in
                 onBidChanged()
                 
