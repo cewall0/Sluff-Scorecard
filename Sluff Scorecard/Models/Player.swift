@@ -12,7 +12,7 @@ struct Player: Identifiable {
     let id = UUID()
     var name: String
     var didSluff = false
-    var playerBid = "bid"
+    var playerBid: String = "--"
     var checkCircle = false
     var isDealer: Bool
 }

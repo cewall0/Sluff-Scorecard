@@ -11,13 +11,14 @@ import SwiftUI
 @main
 struct Sluff_ScorecardApp: App {
     
- @State private var appState = Game()
-    
-    
+    @State private var game = Game()
+    @StateObject var router = Router()
+
     var body: some Scene {
         WindowGroup {
-           ScorecardView()
-                .environment(appState)
+                ScorecardView()
+                .environment(game)
+                .environmentObject(router)
         }
     }
 }

@@ -10,7 +10,8 @@ import SwiftUI
 struct TitleView: View {
     
     @Environment(Game.self) private var game
-
+    @EnvironmentObject var router: Router
+    
     var body: some View {
         HStack{
             Image(systemName: "gear").opacity(0).padding(.leading)
@@ -21,11 +22,15 @@ struct TitleView: View {
                 .bold()
                 .padding(.top, 10)
             Spacer()
-            NavigationLink(destination: SettingsView()) {
+            Button {
+                router.reset()
+                router.path.append(2)
+            } label: {
                 Image(systemName: "gear")
-                    .padding(.trailing)
-                    .foregroundColor(.gray)
             }
+            .padding(.trailing)
+            .foregroundColor(.gray)
+
         }
         Text("(Round: \(game.round))")
     }

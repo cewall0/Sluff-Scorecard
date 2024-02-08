@@ -10,12 +10,13 @@ import SwiftUI
 
 struct TeamNameView: View {
     
-    @Bindable var game: Game
+    @Environment(Game.self) private var game
     
     let twoColumnGrid = [GridItem(.flexible()), GridItem(.flexible())]
     
     var body: some View {
-        
+        @Bindable var game = game
+
         VStack{
             
             LazyVGrid(columns: twoColumnGrid, alignment: .center, spacing: 10) {
@@ -29,5 +30,6 @@ struct TeamNameView: View {
 }
 
 #Preview {
-    TeamNameView(game: Game())
+    TeamNameView()
+        .environment(Game())
 }

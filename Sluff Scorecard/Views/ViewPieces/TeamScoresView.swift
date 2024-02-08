@@ -10,6 +10,8 @@ import SwiftUI
 struct TeamScoresView: View {
     
     @Environment(Game.self) private var game
+    @EnvironmentObject var router: Router
+
     @State var teamBids: (team1Bids: Int, team2Bids: Int) = (0, 0)
     let twoColumnGrid = [GridItem(.flexible()), GridItem(.flexible())]
     

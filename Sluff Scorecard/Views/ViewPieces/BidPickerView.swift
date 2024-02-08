@@ -13,6 +13,7 @@ struct BidPickerView: View {
     var playerIndex: Int
     let onBidChanged: () -> Void
     
+    
     var body: some View {
 
 

@@ -9,16 +9,18 @@ import SwiftUI
 
 struct ScoreHandView: View {
     
-    @Bindable var game: Game
+    @Environment(Game.self) private var game
+    @EnvironmentObject var router: Router
+
     let twoColumnGrid = [GridItem(.flexible()), GridItem(.flexible())]
 
     var body: some View {
-        NavigationStack{
+        @Bindable var game = game
 
         VStack{
             TitleView()
-            
-            TeamNameView(game: game)
+
+            TeamNameView()
             
             TeamScoresView()
             
@@ -63,26 +65,25 @@ struct ScoreHandView: View {
                 } // end HStack
             } // end lazygrid
             
-            NavigationLink {
-                ScorecardView().onAppear {
-                    self.game.updateScore()
-                    self.game.resetBids()
-                    self.game.nextDealer()
-                    self.game.isGameOver()
-                }
-            } label: {
+            Button(action: {
+                self.game.updateScore()
+                self.game.resetBids()
+                self.game.nextDealer()
+                self.game.isGameOver()
+                router.reset()
+            }, label: {
                 Text("Update Scores")
-            }.buttonStyle(.borderedProminent)
-                .navigationBarBackButtonHidden(true)
-
+            })
+            
             Spacer()
         } // end Vstack
             
         }
     }
-}
 
-//#Preview {
-//    ScoreHandView(game: Game())
-//}
+
+#Preview {
+    ScoreHandView()
+        .environment(Game())
+}
 

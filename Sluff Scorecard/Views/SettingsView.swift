@@ -11,6 +11,8 @@ import Observation
 struct SettingsView: View {
     
     @Environment(Game.self) private var game
+    @EnvironmentObject var router: Router
+
     
     var body: some View {
 
@@ -34,6 +36,13 @@ struct SettingsView: View {
                         }
                         Text(" ")
                         Link("Rules of Sluff (gamesrules.com)", destination: URL(string: "https://gamerules.com/rules/rook-sluff-card-game/")!)
+                        
+                        Button(action: {
+                            router.reset()
+                        }) {
+                            Text("Return")
+                        }
+                        
                     }
                     
                     Spacer()
