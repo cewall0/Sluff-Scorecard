@@ -44,6 +44,7 @@ struct ScorecardView: View {
                                     
                                     BidPickerView(game: game, playerIndex: index, onBidChanged: {
                                         game.setTeamBids(from: game.playersList)
+                                        game.checkAllBid()
                                     }
                                     )
                                     .frame(width: CGFloat(geo.size.width*0.30))
@@ -62,10 +63,12 @@ struct ScorecardView: View {
                     
                     Button(action: {
                         game.resetTricksSluffsWon()
-                        router.path.append(1)
+                        router.path.append(1) // case 1 sends to ScoreHandView() See NavigationDestination below
                     }) {
                         Text("Score this hand")
                     }
+                    .buttonStyle(.borderedProminent)
+                    .disabled(game.notAllBid)
                    
                     Spacer()
                     

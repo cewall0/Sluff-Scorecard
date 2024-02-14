@@ -30,6 +30,7 @@ final class Game {
     var team2SluffsWon: Int = 0
     var round: Int = 1 // What is the current round
     var gameOver: Bool = false
+    var notAllBid: Bool = true
     
     
     
@@ -52,6 +53,7 @@ final class Game {
         self.team2SluffsWon = team2SluffsWon
         self.round = round
         self.gameOver = gameOver
+        self.notAllBid = notAllBid
     }
     
     
@@ -96,6 +98,8 @@ final class Game {
             } else {
                 team2TotalBid += bid
             }
+            
+            
         }
     }
     
@@ -144,6 +148,7 @@ final class Game {
         team2TotalBid = 0
         team1TotalSluffs = 0
         team2TotalSluffs = 0
+        notAllBid = true
         
         for index in playersList.indices {
             
@@ -170,6 +175,19 @@ final class Game {
             }
         }
         round = round + 1
+    }
+    
+    func checkAllBid() -> () {
+        notAllBid = false
+        
+        for index in playersList.indices {
+            
+            if playersList[index].playerBid == "--" {
+                notAllBid = true
+            break
+                
+            }
+        }
     }
     
     /// This function changes the gameOver boolean to true after each of the players in the game had dealt one hand.
