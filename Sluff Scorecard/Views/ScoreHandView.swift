@@ -28,8 +28,9 @@ struct ScoreHandView: View {
                 HStack{
                     Text("Tricks Won:")
                     Picker("Tricks Won:", selection: $game.team1TricksWon) {
+                        Text("--").tag("--")
                         ForEach(0...14,id:\.self){
-                            Text("\($0)")
+                            Text("\($0)").tag("\($0)")
                         }
                     }
                 } // end HStack
@@ -37,8 +38,9 @@ struct ScoreHandView: View {
                 HStack{
                     Text("Tricks Won:")
                     Picker("Tricks Won:", selection: $game.team2TricksWon) {
+                        Text("--").tag("--")
                         ForEach(0...14,id:\.self){
-                            Text("\($0)")
+                            Text("\($0)").tag("\($0)")
                         }
                     }
                 } // end HStack
@@ -48,8 +50,9 @@ struct ScoreHandView: View {
                 HStack{
                     Text("Sluffs Won:")
                     Picker("Sluffs Won:", selection: $game.team1SluffsWon) {
+                        Text("--").tag("--")
                         ForEach(0...game.team1TotalSluffs,id:\.self){
-                            Text("\($0)")
+                            Text("\($0)").tag("\($0)")
                         }
                     }
                 } // end HStack
@@ -57,13 +60,16 @@ struct ScoreHandView: View {
                 HStack{
                     Text("Sluffs Won:")
                     Picker("Sluffs Won:", selection: $game.team2SluffsWon) {
+                        Text("--").tag("--")
                         ForEach(0...game.team2TotalSluffs,id:\.self){
-                            Text("\($0)")
+                            Text("\($0)").tag("\($0)")
                         }
 
                     } // end picker
                 } // end HStack
             } // end lazygrid
+            
+            Spacer()
             
             Button(action: {
                 self.game.updateScore()
@@ -74,8 +80,10 @@ struct ScoreHandView: View {
             }, label: {
                 Text("Update Scores")
             })
+            .buttonStyle(.borderedProminent)
+//            .disabled()
             
-            Spacer()
+           
         } // end Vstack
             
         }

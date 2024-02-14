@@ -31,9 +31,10 @@ final class Game {
     var round: Int = 1 // What is the current round
     var gameOver: Bool = false
     var notAllBid: Bool = true
+    var dontUpdateScores: Bool = true
     
     
-    
+
     init() {
         self.playersList = playersList
         self.numberOfPlayers = numberOfPlayers
@@ -98,8 +99,6 @@ final class Game {
             } else {
                 team2TotalBid += bid
             }
-            
-            
         }
     }
     
@@ -112,6 +111,9 @@ final class Game {
         var team2TrickPoints = 0
         var team2SluffPoints = 0
 
+        
+        
+        
         // a successful bid gets 10 points for each trick bid + 1 for every bonus trick
         if team1TricksWon >= team1TotalBid {
             team1TrickPoints = (10 * team1TotalBid) + (team1TricksWon-team1TotalBid)
@@ -119,11 +121,12 @@ final class Game {
             team1TrickPoints = 0
         }
         
-        if team1SluffsWon == team1TotalSluffs {
-            team1SluffPoints = team1TotalSluffs * 50
-        } else {
-            team1SluffPoints = (team1SluffsWon * 50) - ((team1TotalSluffs - team1SluffsWon) * 50)
-        }
+//        if team1SluffsWon == team1TotalSluffs {
+//            team1SluffPoints = team1TotalSluffs * 50
+//        } else {
+//            team1SluffPoints = (team1SluffsWon * 50) - ((team1TotalSluffs - team1SluffsWon) * 50)
+//        }
+        team1SluffPoints = (team1SluffsWon * 50) - ((team1TotalSluffs - team1SluffsWon) * 50)
         
         team1TotalScore = team1TotalScore + team1TrickPoints + team1SluffPoints
         
@@ -133,11 +136,14 @@ final class Game {
             team1TrickPoints = 0
         }
         
-        if team2SluffsWon == team2TotalSluffs {
-            team2SluffPoints = team2TotalSluffs * 50
-        } else {
-            team2SluffPoints = (team2SluffsWon * 50) - ((team2TotalSluffs - team2SluffsWon) * 50)
-        }
+//        if team2SluffsWon == team2TotalSluffs {
+//            team2SluffPoints = team2TotalSluffs * 50
+//        } else {
+//            team2SluffPoints = (team2SluffsWon * 50) - ((team2TotalSluffs - team2SluffsWon) * 50)
+//        }
+       
+        team2SluffPoints = (team2SluffsWon * 50) - ((team2TotalSluffs - team2SluffsWon) * 50)
+
         team2TotalScore = team2TotalScore + team2TrickPoints + team2SluffPoints
     }
     
@@ -152,7 +158,8 @@ final class Game {
         
         for index in playersList.indices {
             
-            playersList[index].playerBid = "--"
+            playersList[index].playerBid = "--" // reset all playerBid's to --
+            
         }
     }
     
@@ -189,6 +196,16 @@ final class Game {
             }
         }
     }
+    
+//    func checkAllScoresEntered() -> () {
+//        dontUpdateScores = false
+//    
+//        if team1TricksWon == "--" || team2TricksWon == "--" ||  team1SluffsWon == "--" || team2SluffsWon == "--" {
+//                dontUpdateScores = true
+//                
+//            }
+//        }
+//    }
     
     /// This function changes the gameOver boolean to true after each of the players in the game had dealt one hand.
     func isGameOver() -> () {
