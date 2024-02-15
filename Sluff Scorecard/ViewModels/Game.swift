@@ -24,10 +24,10 @@ final class Game {
     var team2TotalBid: Int = 0
     var team1TotalSluffs: Int = 0// The total team sluffs
     var team2TotalSluffs: Int = 0
-    var team1TricksWon: Int = 0 // The total tricks won for a team on that round
-    var team2TricksWon: Int = 0
-    var team1SluffsWon: Int = 0 // The total sluffs won for a team on that round
-    var team2SluffsWon: Int = 0
+    var team1TricksWonStr: String = "--" // The total tricks won for a team on that round
+    var team2TricksWonStr: String = "--"
+    var team1SluffsWonStr: String = "--" // The total sluffs won for a team on that round
+    var team2SluffsWonStr: String = "--"
     var round: Int = 1 // What is the current round
     var gameOver: Bool = false
     var notAllBid: Bool = true
@@ -48,10 +48,10 @@ final class Game {
         self.team2TotalBid = team2TotalBid
         self.team1TotalSluffs = team1TotalSluffs
         self.team2TotalSluffs = team2TotalSluffs
-        self.team1TricksWon = team1TricksWon
-        self.team2TricksWon = team2TricksWon
-        self.team1SluffsWon = team1SluffsWon
-        self.team2SluffsWon = team2SluffsWon
+        self.team1TricksWonStr = team1TricksWonStr
+        self.team2TricksWonStr = team2TricksWonStr
+        self.team1SluffsWonStr = team1SluffsWonStr
+        self.team2SluffsWonStr = team2SluffsWonStr
         self.round = round
         self.gameOver = gameOver
         self.notAllBid = notAllBid
@@ -110,23 +110,25 @@ final class Game {
         var team1SluffPoints = 0
         var team2TrickPoints = 0
         var team2SluffPoints = 0
-
         
-        
+        let team1TricksWon = Int(team1TricksWonStr)
+        let team2TricksWon = 14-team1TricksWon!
+        let team1SluffsWon = Int(team1SluffsWonStr)
+        let team2SluffsWon = Int(team2SluffsWonStr)
         
         // a successful bid gets 10 points for each trick bid + 1 for every bonus trick
-        if team1TricksWon >= team1TotalBid {
-            team1TrickPoints = (10 * team1TotalBid) + (team1TricksWon-team1TotalBid)
+        if team1TricksWon! >= team1TotalBid {
+            team1TrickPoints = (10 * team1TotalBid) + ((team1TricksWon!)-team1TotalBid)
         } else {
             team1TrickPoints = 0
         }
         
-//        if team1SluffsWon == team1TotalSluffs {
-//            team1SluffPoints = team1TotalSluffs * 50
-//        } else {
-//            team1SluffPoints = (team1SluffsWon * 50) - ((team1TotalSluffs - team1SluffsWon) * 50)
-//        }
-        team1SluffPoints = (team1SluffsWon * 50) - ((team1TotalSluffs - team1SluffsWon) * 50)
+        if team1SluffsWon == team1TotalSluffs {
+            team1SluffPoints = team1TotalSluffs * 50
+        } else {
+            team1SluffPoints = (team1SluffsWon! * 50) - ((team1TotalSluffs - team1SluffsWon!) * 50)
+        }
+        team1SluffPoints = (team1SluffsWon! * 50) - ((team1TotalSluffs - team1SluffsWon!) * 50)
         
         team1TotalScore = team1TotalScore + team1TrickPoints + team1SluffPoints
         
@@ -136,13 +138,13 @@ final class Game {
             team1TrickPoints = 0
         }
         
-//        if team2SluffsWon == team2TotalSluffs {
-//            team2SluffPoints = team2TotalSluffs * 50
-//        } else {
-//            team2SluffPoints = (team2SluffsWon * 50) - ((team2TotalSluffs - team2SluffsWon) * 50)
-//        }
+        if team2SluffsWon == team2TotalSluffs {
+            team2SluffPoints = team2TotalSluffs * 50
+        } else {
+            team2SluffPoints = (team2SluffsWon! * 50) - ((team2TotalSluffs - team2SluffsWon!) * 50)
+        }
        
-        team2SluffPoints = (team2SluffsWon * 50) - ((team2TotalSluffs - team2SluffsWon) * 50)
+        team2SluffPoints = (team2SluffsWon! * 50) - ((team2TotalSluffs - team2SluffsWon!) * 50)
 
         team2TotalScore = team2TotalScore + team2TrickPoints + team2SluffPoints
     }
@@ -166,10 +168,10 @@ final class Game {
     
     ///This resets the number of tricks and sluffs each team won so we can begin a new hand.
     func resetTricksSluffsWon() -> () {
-        team1TricksWon = 0
-        team1SluffsWon = 0
-        team2TricksWon = 0
-        team2SluffsWon = 0
+        team1TricksWonStr = "--"
+        team1SluffsWonStr = "--"
+        team2TricksWonStr = "--"
+        team2SluffsWonStr = "--"
     }
     
     /// this function moves the dealer indicator to the next player. We call this at the conclusion of each hand.

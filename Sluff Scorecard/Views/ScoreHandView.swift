@@ -27,7 +27,7 @@ struct ScoreHandView: View {
             LazyVGrid(columns: twoColumnGrid, alignment: .center, spacing: 10) {
                 HStack{
                     Text("Tricks Won:")
-                    Picker("Tricks Won:", selection: $game.team1TricksWon) {
+                    Picker("Tricks Won:", selection: $game.team1TricksWonStr) {
                         Text("--").tag("--")
                         ForEach(0...14,id:\.self){
                             Text("\($0)").tag("\($0)")
@@ -37,19 +37,25 @@ struct ScoreHandView: View {
                 
                 HStack{
                     Text("Tricks Won:")
-                    Picker("Tricks Won:", selection: $game.team2TricksWon) {
-                        Text("--").tag("--")
-                        ForEach(0...14,id:\.self){
-                            Text("\($0)").tag("\($0)")
-                        }
+                    if game.team1TricksWonStr != "--" {
+                        Text(String(14-Int(game.team1TricksWonStr)!))
+                    } else {
+                        Text("--")
                     }
+//                    Picker("Tricks Won:", selection: $game.team2TricksWonStr) {
+                      
+//                        Text("--").tag("--")
+//                        ForEach(0...14,id:\.self){
+//                            Text("\($0)").tag("\($0)")
+//                        }
+//                    }
                 } // end HStack
             } // end lazygrid
             
             LazyVGrid(columns: twoColumnGrid, alignment: .center, spacing: 10) {
                 HStack{
                     Text("Sluffs Won:")
-                    Picker("Sluffs Won:", selection: $game.team1SluffsWon) {
+                    Picker("Sluffs Won:", selection: $game.team1SluffsWonStr) {
                         Text("--").tag("--")
                         ForEach(0...game.team1TotalSluffs,id:\.self){
                             Text("\($0)").tag("\($0)")
@@ -59,7 +65,7 @@ struct ScoreHandView: View {
                 
                 HStack{
                     Text("Sluffs Won:")
-                    Picker("Sluffs Won:", selection: $game.team2SluffsWon) {
+                    Picker("Sluffs Won:", selection: $game.team2SluffsWonStr) {
                         Text("--").tag("--")
                         ForEach(0...game.team2TotalSluffs,id:\.self){
                             Text("\($0)").tag("\($0)")
@@ -81,7 +87,7 @@ struct ScoreHandView: View {
                 Text("Update Scores")
             })
             .buttonStyle(.borderedProminent)
-//            .disabled()
+            .disabled(game.team1TricksWonStr == "--" || game.team1SluffsWonStr == "--"  || game.team2SluffsWonStr == "--")
             
            
         } // end Vstack
