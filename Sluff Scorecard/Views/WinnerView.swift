@@ -24,6 +24,8 @@ struct WinnerView: View {
             
             Spacer()
             
+            Text("Game Over!").font(.title)
+            Text("")
             HStack{
                 if game.winner == "Tie" {
                     Text("We have a tie!")

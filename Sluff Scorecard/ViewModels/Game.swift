@@ -32,7 +32,7 @@ final class Game {
     var gameOver: Bool = false
     var notAllBid: Bool = true
     var dontUpdateScores: Bool = true
-    var winner: String = ""
+    var winner: String = "Tie"
     
     
 

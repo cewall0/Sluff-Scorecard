@@ -25,11 +25,17 @@ struct TeamNameView: View {
                     .multilineTextAlignment(.center)
                     .background(.teal.opacity(0.3))
                     .foregroundStyle(.black)
+                    .cornerRadius(8)
+                    .padding(.horizontal, 8.0)
+
                     
                     TextField(game.team2Name, text: $game.team2Name)
                     .foregroundStyle(.black).opacity(1.0)
                     .multilineTextAlignment(.center)
                     .background(.gray.opacity(0.3))
+                    .cornerRadius(8)
+                    .padding(.horizontal, 8.0)
+
                     
                     
                 
