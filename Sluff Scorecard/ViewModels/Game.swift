@@ -118,6 +118,8 @@ final class Game {
         let team1SluffsWon = Int(team1SluffsWonStr)
         let team2SluffsWon = Int(team2SluffsWonStr)
         
+        // if team1 won the their bid for tricks, they get some points. If not, they get 0.
+
         // a successful bid gets 10 points for each trick bid + 1 for every bonus trick
         if team1TricksWon! >= team1TotalBid {
             team1TrickPoints = (10 * team1TotalBid) + ((team1TricksWon!)-team1TotalBid)
@@ -125,28 +127,42 @@ final class Game {
             team1TrickPoints = 0
         }
         
-        if team1SluffsWon! == team1TotalSluffs {
-            team1SluffPoints = team1TotalSluffs * 50
-        } else {
+        
+        // if team1 won the their bid for tricks, they get some points. If not, they get 0.
+
+        if team1TricksWon! >= team1TotalBid {
+            if team1SluffsWon! == team1TotalSluffs {
+                team1SluffPoints = team1TotalSluffs * 50
+            } else {
+                team1SluffPoints = (team1SluffsWon! * 50) - ((team1TotalSluffs - team1SluffsWon!) * 50)
+            }
             team1SluffPoints = (team1SluffsWon! * 50) - ((team1TotalSluffs - team1SluffsWon!) * 50)
+        } else {
+            team1TrickPoints = 0
+            team1SluffPoints = 0
         }
-        team1SluffPoints = (team1SluffsWon! * 50) - ((team1TotalSluffs - team1SluffsWon!) * 50)
         
         team1TotalScore = team1TotalScore + team1TrickPoints + team1SluffPoints
-        
+
+// if team2 won the their bid for tricks, they get some points. If not, they get 0.
+
         if team2TricksWon >= team2TotalBid {
             team2TrickPoints = (10 * team2TotalBid) + (team2TricksWon-team2TotalBid)
         } else {
             team1TrickPoints = 0
         }
         
-        if team2SluffsWon! == team2TotalSluffs {
-            team2SluffPoints = team2TotalSluffs * 50
+// if team2 won the their bid for tricks, they get some points. If not, they get 0.
+        if team2TricksWon >= team2TotalBid {
+            if team2SluffsWon! == team2TotalSluffs {
+                team2SluffPoints = team2TotalSluffs * 50
+            } else {
+                team2SluffPoints = (team2SluffsWon! * 50) - ((team2TotalSluffs - team2SluffsWon!) * 50)
+            }
         } else {
-            team2SluffPoints = (team2SluffsWon! * 50) - ((team2TotalSluffs - team2SluffsWon!) * 50)
+            team2TrickPoints = 0
+            team2SluffPoints = 0
         }
-       
-        team2SluffPoints = (team2SluffsWon! * 50) - ((team2TotalSluffs - team2SluffsWon!) * 50)
 
         team2TotalScore = team2TotalScore + team2TrickPoints + team2SluffPoints
     }
