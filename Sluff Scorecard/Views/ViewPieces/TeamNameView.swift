@@ -21,8 +21,17 @@ struct TeamNameView: View {
             
             LazyVGrid(columns: twoColumnGrid, alignment: .center, spacing: 10) {
     
-                    TextField(game.team1Name, text: $game.team1Name).multilineTextAlignment(.center)
-                    TextField(game.team2Name, text: $game.team2Name).multilineTextAlignment(.center)
+                    TextField(game.team1Name, text: $game.team1Name)
+                    .multilineTextAlignment(.center)
+                    .background(.teal.opacity(0.3))
+                    .foregroundStyle(.black)
+                    
+                    TextField(game.team2Name, text: $game.team2Name)
+                    .foregroundStyle(.black).opacity(1.0)
+                    .multilineTextAlignment(.center)
+                    .background(.gray.opacity(0.3))
+                    
+                    
                 
             }.font(.title) // end LazyVGrid
         }
