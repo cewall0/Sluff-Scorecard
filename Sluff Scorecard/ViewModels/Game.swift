@@ -32,6 +32,7 @@ final class Game {
     var gameOver: Bool = false
     var notAllBid: Bool = true
     var dontUpdateScores: Bool = true
+    var winner: String = ""
     
     
 
@@ -55,6 +56,7 @@ final class Game {
         self.round = round
         self.gameOver = gameOver
         self.notAllBid = notAllBid
+        self.winner = winner
     }
     
     
@@ -123,7 +125,7 @@ final class Game {
             team1TrickPoints = 0
         }
         
-        if team1SluffsWon == team1TotalSluffs {
+        if team1SluffsWon! == team1TotalSluffs {
             team1SluffPoints = team1TotalSluffs * 50
         } else {
             team1SluffPoints = (team1SluffsWon! * 50) - ((team1TotalSluffs - team1SluffsWon!) * 50)
@@ -138,7 +140,7 @@ final class Game {
             team1TrickPoints = 0
         }
         
-        if team2SluffsWon == team2TotalSluffs {
+        if team2SluffsWon! == team2TotalSluffs {
             team2SluffPoints = team2TotalSluffs * 50
         } else {
             team2SluffPoints = (team2SluffsWon! * 50) - ((team2TotalSluffs - team2SluffsWon!) * 50)
@@ -179,7 +181,12 @@ final class Game {
         for index in playersList.indices {
             if playersList[index].isDealer == true {
                 playersList[index].isDealer = false
-                playersList[index+1].isDealer = true
+                if index+1 < playersList.count {
+                    playersList[index+1].isDealer = true
+                } else {
+                    playersList[0].isDealer = true
+                }
+                
                 break
             }
         }
@@ -199,15 +206,6 @@ final class Game {
         }
     }
     
-//    func checkAllScoresEntered() -> () {
-//        dontUpdateScores = false
-//    
-//        if team1TricksWon == "--" || team2TricksWon == "--" ||  team1SluffsWon == "--" || team2SluffsWon == "--" {
-//                dontUpdateScores = true
-//                
-//            }
-//        }
-//    }
     
     /// This function changes the gameOver boolean to true after each of the players in the game had dealt one hand.
     func isGameOver() -> () {
@@ -216,6 +214,35 @@ final class Game {
         }
     }
     
+    func declareWinner() -> () {
+        if team1TotalScore > team2TotalScore {
+            winner = team1Name
+        } else if team1TotalScore < team2TotalScore {
+            winner = team2Name
+        } else {
+            winner = "Tie"
+        }
+    }
+    
+    func resetGame() -> () {
+        team1RoundScore = 0 // The current round score
+        team2RoundScore = 0
+        team1TotalScore = 0 // The total team score
+        team2TotalScore = 0
+        team1TotalBid = 0 // The total team bid
+        team2TotalBid = 0
+        team1TotalSluffs = 0// The total team sluffs
+        team2TotalSluffs = 0
+        team1TricksWonStr = "--" // The total tricks won for a team on that round
+        team2TricksWonStr = "--"
+        team1SluffsWonStr = "--" // The total sluffs won for a team on that round
+        team2SluffsWonStr = "--"
+        round = 1 // What is the current round
+        gameOver = false
+        notAllBid = true
+        dontUpdateScores = true
+        winner = ""
+    }
    
     
 } // end class Game

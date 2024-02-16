@@ -78,6 +78,8 @@ struct ScorecardView: View {
                         ScoreHandView().environmentObject(router)
                     case 2:
                         SettingsView().environmentObject(router)
+                    case 3:
+                        WinnerView().environmentObject(router)
                     default:
                         EmptyView()
                     }

@@ -41,31 +41,8 @@ struct SettingsView: View {
                 
                 Text(" ")
                 HStack{
-                    Text("Change the number of players:")
-                    
-                    //                            Button(action: {
-                    //                                self.game.playersList.removeAll()
-                    //                                self.game.numberOfPlayers = 6
-                    //                                self.game.setNumberOfPlayers()
-                    //                            }, label: {
-                    //                                Text("6")
-                    //                            })
-                    //
-                    //                            Button(action: {
-                    //                                self.game.playersList.removeAll()
-                    //                                self.game.numberOfPlayers = 8
-                    //                                self.game.setNumberOfPlayers()
-                    //                            }, label: {
-                    //                                Text("8")
-                    //                            })
-                    //
-                    //                            Button(action: {
-                    //                                self.game.playersList.removeAll()
-                    //                                self.game.numberOfPlayers = 10
-                    //                                self.game.setNumberOfPlayers()
-                    //                            }, label: {
-                    //                                Text("10")
-                    //                            })
+                    Text("Change the dealer")
+           
                 } // end HStack
                 
                 Text(" ")

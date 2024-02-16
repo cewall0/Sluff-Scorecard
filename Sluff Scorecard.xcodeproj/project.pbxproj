@@ -22,6 +22,7 @@
 		0BB1F20B2B71D48C006201F8 /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB1F20A2B71D48C006201F8 /* TitleView.swift */; };
 		0BB1F20D2B71D614006201F8 /* TeamScoresView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB1F20C2B71D614006201F8 /* TeamScoresView.swift */; };
 		0BB1F22A2B72B14C006201F8 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB1F2292B72B14C006201F8 /* Router.swift */; };
+		0BD384D82B7EDF750003C98E /* WinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD384D72B7EDF750003C98E /* WinnerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 		0BB1F20A2B71D48C006201F8 /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
 		0BB1F20C2B71D614006201F8 /* TeamScoresView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamScoresView.swift; sourceTree = "<group>"; };
 		0BB1F2292B72B14C006201F8 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		0BD384D72B7EDF750003C98E /* WinnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinnerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 				0B4821E72B43B712001FDA98 /* ScorecardView.swift */,
 				0BB1F1F82B6984DE006201F8 /* SettingsView.swift */,
 				0BB1F2062B70961D006201F8 /* ScoreHandView.swift */,
+				0BD384D72B7EDF750003C98E /* WinnerView.swift */,
 				0BB1F2282B727FE5006201F8 /* ViewPieces */,
 			);
 			path = Views;
@@ -211,6 +214,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0BB1F2012B6C0059006201F8 /* BidPickerView.swift in Sources */,
+				0BD384D82B7EDF750003C98E /* WinnerView.swift in Sources */,
 				0B4821F82B43B8B1001FDA98 /* Player.swift in Sources */,
 				0BB1F22A2B72B14C006201F8 /* Router.swift in Sources */,
 				0BB1F1FD2B6B4786006201F8 /* NumPlayersPickerView.swift in Sources */,
