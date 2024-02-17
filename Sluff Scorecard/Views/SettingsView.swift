@@ -17,16 +17,12 @@ struct SettingsView: View {
     var body: some View {
         @Bindable var game = game
         VStack{
-            Text("")
-            Text("")
-            Text("Sluff Scorecard")
-                .font(.system(size: 32))
-                .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
-                .bold()
-                .padding(.top, 10)
+            Image("Sluff Scorecard")
+                .resizable()
+                .frame(width: 200, height: 80)
             Text("(Settings)")
                 .font(.system(size: 26))
-                .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
+                .foregroundColor(.accentColor)
                 .bold()
             Text(" ")
             Text(" ")
@@ -81,7 +77,9 @@ struct SettingsView: View {
                             router.path.append(1)
                         }) {
                             Text("Return")
-                        }.buttonStyle(.borderedProminent) // end button
+                        }.buttonStyle(.borderedProminent)
+                            .tint(.accentColor)
+                            .padding()
                         Spacer()
                     }
                 } // end VStack

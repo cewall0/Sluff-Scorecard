@@ -18,13 +18,12 @@ struct AskNumPlayersView: View {
         NavigationStack(path: $router.path) {
             
             VStack{
-                Text("Sluff Scorecard")
-                    .font(.title)
-                    .fontWeight(.bold)
-                    .foregroundColor(.blue)
+                Image("Sluff Scorecard")
+                    .resizable()
+                    .frame(width: 200, height: 80)
                 Text("")
                 Text("")
-                Text("Welcome!").font(.title3)
+                Text("Welcome!").font(.title)
                 Text("")
                 Text("How many players will be playing?").font(.title3)
                 Picker("", selection: $game.numberOfPlayers) {
@@ -43,6 +42,7 @@ struct AskNumPlayersView: View {
                 }, label: {
                     Text("Let's play")
                 }).buttonStyle(.borderedProminent)
+                    .tint(.accentColor)
             }
             .navigationDestination(for: Int.self) { destination in
                 switch destination {

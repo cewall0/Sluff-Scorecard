@@ -24,11 +24,10 @@ struct ScoreHandView: View {
         @Bindable var game = game
 
         VStack{
-            Text("Sluff Scorecard")
-                .font(.system(size: 32))
-                .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
-                .bold()
-                .padding(.top, 10)
+            Image("Sluff Scorecard")
+                .resizable()
+                .frame(width: 200, height: 80)
+
 
             TeamNameView()
             
@@ -152,6 +151,7 @@ struct ScoreHandView: View {
                 Text("Update Scores")
             })
             .buttonStyle(.borderedProminent)
+            .tint(.accentColor)
             .disabled(game.team1TricksWonStr == "--" || game.team1SluffsWonStr == "--"  || game.team2SluffsWonStr == "--")
             
            

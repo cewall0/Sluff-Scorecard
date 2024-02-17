@@ -16,11 +16,10 @@ struct TitleView: View {
         HStack{
             Image(systemName: "gear").opacity(0).padding(.leading)
             Spacer()
-            Text("Sluff Scorecard")
-                .font(.system(size: 32))
-                .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
-                .bold()
-                .padding(.top, 10)
+            Image("Sluff Scorecard")
+                .resizable()
+                .frame(width: 200, height: 80)
+                
             Spacer()
             Button {
                 router.path.append(3)

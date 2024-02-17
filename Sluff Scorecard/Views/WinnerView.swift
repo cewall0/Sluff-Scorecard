@@ -43,6 +43,7 @@ struct WinnerView: View {
             } label: {
                 Text("New Game")
             }.buttonStyle(.borderedProminent)
+                .tint(.accentColor)
         }.navigationBarBackButtonHidden(true)
     }
 }

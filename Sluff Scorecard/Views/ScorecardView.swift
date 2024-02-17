@@ -73,6 +73,7 @@ struct ScorecardView: View {
                         Text("Score this hand")
                     }
                     .buttonStyle(.borderedProminent)
+                    .tint(.accentColor)
                     .disabled(game.notAllBid)
                     
                     Spacer()
