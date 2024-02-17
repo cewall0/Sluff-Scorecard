@@ -26,10 +26,10 @@ struct TeamScoresView: View {
             if game.gameOver == false {
                 LazyVGrid(columns: twoColumnGrid, alignment: .center, spacing: 10) {
                     HStack{
-                        Text("Team Bid: \(game.team1TotalBid)")
+                        Text("Team Bid: \(game.team1TotalBid)").foregroundColor(game.team1TotalBid <= 14 ? .black : .red)
                     }
                     HStack{
-                        Text("Team Bid: \(game.team2TotalBid)")
+                        Text("Team Bid: \(game.team2TotalBid)").foregroundColor(game.team2TotalBid <= 14 ? .black : .red)
                     }
                 }.font(.headline)
             

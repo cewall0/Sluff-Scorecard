@@ -31,59 +31,63 @@ struct SettingsView: View {
             Text(" ")
             Text(" ")
             
-            VStack(alignment: .leading){
+            ScrollView{
                 
-                HStack{
-                    Text("• ").foregroundColor(.black)
-                    Text("You can edit the team and player names by tapping on them.").foregroundColor(.black)
-                    Spacer()
-                } // end HStack
-                
-                Text(" ")
-                
-                HStack{
-                    Text("• ").foregroundColor(.black)
-                    Text("D").foregroundColor(.yellow)
-                    Text("indicates the current dealer.").foregroundColor(.black)
-                    Spacer()
-                } // end HStack
-                
-                Text(" ")
-                
-                HStack{
-                    Text("• ").foregroundColor(.black)
-                    Link("Rules of Sluff (gamesrules.com)", destination: URL(string: "https://gamerules.com/rules/rook-sluff-card-game/")!)
-                    Spacer()
-                }
-                
-                
-                Text(" ")
-                
-                HStack{
-                    Text("• ").foregroundColor(.black)
-                    Button {
-                        game.resetGame()
-                        router.reset()
-                    } label: {
-                        Text("Change the number of players")
+                VStack(alignment: .leading){
+                    
+                    HStack{
+                        Text("• ").foregroundColor(.black)
+                        Text("You can edit the team and player names by tapping on them.").foregroundColor(.black)
+                        Spacer()
+                    } // end HStack
+                    
+                    Text(" ")
+                    
+                    HStack{
+                        Text("• ").foregroundColor(.black)
+                        Text("D").foregroundColor(.yellow)
+                        Text("indicates the current dealer.").foregroundColor(.black)
+                        Spacer()
+                    } // end HStack
+                    
+                    Text(" ")
+                    
+                    HStack{
+                        Text("• ").foregroundColor(.black)
+                        Link("Rules of Sluff (gamesrules.com)", destination: URL(string: "https://gamerules.com/rules/rook-sluff-card-game/")!)
+                        Spacer()
                     }
-                }
-               
-                
-                Spacer()
-                
-                HStack{
+                    
+                    
+                    Text(" ")
+                    
+                    HStack{
+                        Text("• ").foregroundColor(.black)
+                        Button {
+                            game.resetGame()
+                            router.reset()
+                        } label: {
+                            Text("Change the number of players")
+                        }
+                    }
+                    
+                    
                     Spacer()
-                    Button(action: {
-                        router.reset()
-                        router.path.append(1)
-                    }) {
-                        Text("Return")
-                    }.buttonStyle(.borderedProminent) // end button
-                    Spacer()
-                }
-            } // end VStack
-            .padding(.horizontal)
+                    
+                    HStack{
+                        Spacer()
+                        Button(action: {
+                            router.reset()
+                            router.path.append(1)
+                        }) {
+                            Text("Return")
+                        }.buttonStyle(.borderedProminent) // end button
+                        Spacer()
+                    }
+                } // end VStack
+                .padding(.horizontal)
+                
+            }
         } // end VStack
     } // end View body
 } // end struct
