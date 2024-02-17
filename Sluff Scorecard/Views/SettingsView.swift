@@ -34,22 +34,33 @@ struct SettingsView: View {
             VStack(alignment: .leading){
                 
                 HStack{
+                    Text("• ").foregroundColor(.black)
                     Text("D").foregroundColor(.yellow)
-                    Text("= Current Dealer")
+                    Text("= Current Dealer").foregroundColor(.black)
+                    Spacer()
                 } // end HStack
                 
                 Text(" ")
                 
-                Link("Rules of Sluff (gamesrules.com)", destination: URL(string: "https://gamerules.com/rules/rook-sluff-card-game/")!)
+                HStack{
+                    Text("• ").foregroundColor(.black)
+                    Link("Rules of Sluff (gamesrules.com)", destination: URL(string: "https://gamerules.com/rules/rook-sluff-card-game/")!)
+                    Spacer()
+                }
+                
                 
                 Text(" ")
                 
-                Button {
-                    game.resetGame()
-                    router.reset()
-                } label: {
-                    Text("Change number of players")
+                HStack{
+                    Text("• ").foregroundColor(.black)
+                    Button {
+                        game.resetGame()
+                        router.reset()
+                    } label: {
+                        Text("Change number of players")
+                    }
                 }
+               
                 
                 Spacer()
                 
@@ -62,9 +73,8 @@ struct SettingsView: View {
                     }.buttonStyle(.borderedProminent) // end button
                     Spacer()
                 }
-              
-                
             } // end VStack
+            .padding(.horizontal)
         } // end VStack
     } // end View body
 } // end struct
