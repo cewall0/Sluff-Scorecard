@@ -182,9 +182,10 @@ struct ScoreHandView: View {
                 if game.gameOver == true {
                     game.declareWinner()
                     router.reset()
-                    router.path.append(3)
+                    router.path.append(4)
                 } else {
                     router.reset()
+                    router.path.append(1)
                 }
             }, label: {
                 Text("Update Scores")

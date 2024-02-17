@@ -23,6 +23,7 @@
 		0BB1F20D2B71D614006201F8 /* TeamScoresView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB1F20C2B71D614006201F8 /* TeamScoresView.swift */; };
 		0BB1F22A2B72B14C006201F8 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB1F2292B72B14C006201F8 /* Router.swift */; };
 		0BD384D82B7EDF750003C98E /* WinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD384D72B7EDF750003C98E /* WinnerView.swift */; };
+		0BD384DC2B8075430003C98E /* AskNumPlayersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD384DB2B8075430003C98E /* AskNumPlayersView.swift */; };
 		C8A2DB5E2B7FF92600569050 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A2DB5D2B7FF92600569050 /* SplashScreenView.swift */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +45,7 @@
 		0BB1F20C2B71D614006201F8 /* TeamScoresView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamScoresView.swift; sourceTree = "<group>"; };
 		0BB1F2292B72B14C006201F8 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		0BD384D72B7EDF750003C98E /* WinnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinnerView.swift; sourceTree = "<group>"; };
+		0BD384DB2B8075430003C98E /* AskNumPlayersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskNumPlayersView.swift; sourceTree = "<group>"; };
 		C8A2DB5D2B7FF92600569050 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -104,6 +106,7 @@
 				0BB1F2062B70961D006201F8 /* ScoreHandView.swift */,
 				0BD384D72B7EDF750003C98E /* WinnerView.swift */,
 				C8A2DB5D2B7FF92600569050 /* SplashScreenView.swift */,
+				0BD384DB2B8075430003C98E /* AskNumPlayersView.swift */,
 				0BB1F2282B727FE5006201F8 /* ViewPieces */,
 			);
 			path = Views;
@@ -228,6 +231,7 @@
 				0B4821E82B43B712001FDA98 /* ScorecardView.swift in Sources */,
 				0BB1F2072B70961D006201F8 /* ScoreHandView.swift in Sources */,
 				0BB1F1F92B6984DE006201F8 /* SettingsView.swift in Sources */,
+				0BD384DC2B8075430003C98E /* AskNumPlayersView.swift in Sources */,
 				0BB1F2052B6EBB1F006201F8 /* TeamNameView.swift in Sources */,
 				0B4821E62B43B712001FDA98 /* Sluff_ScorecardApp.swift in Sources */,
 				0BB1F20D2B71D614006201F8 /* TeamScoresView.swift in Sources */,
@@ -371,7 +375,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -404,7 +408,7 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

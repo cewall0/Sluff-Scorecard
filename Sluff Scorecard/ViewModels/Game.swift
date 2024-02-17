@@ -10,8 +10,8 @@ import Observation
 
 @Observable
 final class Game {
-    var playersList: [Player] = [Player(name:"Player1", isDealer: true), Player(name:"Player2", isDealer: false), Player(name:"Player3", isDealer: false), Player(name:"Player4", isDealer: false), Player(name:"Player5", isDealer: false), Player(name:"Player6", isDealer: false), Player(name:"Player7", isDealer: false), Player(name:"Player8", isDealer: false)]
-    var numberOfPlayers: Int = 8
+    var playersList: [Player] = [Player(name:"Player1", isDealer: true), Player(name:"Player2", isDealer: false), Player(name:"Player3", isDealer: false), Player(name:"Player4", isDealer: false), Player(name:"Player5", isDealer: false), Player(name:"Player6", isDealer: false)]
+    var numberOfPlayers: Int = 6
     
     var team1Name: String = "Team 1"
     var team2Name: String = "Team 2"
@@ -61,7 +61,7 @@ final class Game {
     
     
     /// setNumberOfPlayers function with an integer parameter for the number of players in the game. A playersList array of Player structs is formed that contains the appropriate number of players for the game.
-    func setNumberOfPlayers(_ numberOfPlayers: Int) {
+    func setNumberOfPlayers() {
         playersList.removeAll()
                 
         for index in 1...numberOfPlayers {

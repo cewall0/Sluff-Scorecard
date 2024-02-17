@@ -39,6 +39,7 @@ struct WinnerView: View {
             Button {
                 game.resetGame()
                 router.reset()
+                router.path.append(1)
             } label: {
                 Text("New Game")
             }.buttonStyle(.borderedProminent)

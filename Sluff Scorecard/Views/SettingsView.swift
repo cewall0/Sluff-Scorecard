@@ -20,16 +20,19 @@ struct SettingsView: View {
             Text("")
             Text("")
             Text("Sluff Scorecard")
-                .font(.largeTitle)
+                .font(.system(size: 32))
+                .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
+                .bold()
+                .padding(.top, 10)
             Text("(Settings)")
-                .font(.title2)
+                .font(.system(size: 26))
+                .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
+                .bold()
             Text(" ")
             Text(" ")
             
             VStack(alignment: .leading){
                 
-                //                    NumPlayersPickerView(game: game)
-                //                        .onChange(of: game.numberOfPlayers) {game.setNumberOfPlayers(game.numberOfPlayers)}
                 HStack{
                     Text("D").foregroundColor(.yellow)
                     Text("= Current Dealer")
@@ -40,20 +43,26 @@ struct SettingsView: View {
                 Link("Rules of Sluff (gamesrules.com)", destination: URL(string: "https://gamerules.com/rules/rook-sluff-card-game/")!)
                 
                 Text(" ")
-                HStack{
-                    Text("Change the dealer")
-           
-                } // end HStack
                 
-                Text(" ")
-                
-                Button(action: {
+                Button {
+                    game.resetGame()
                     router.reset()
-                }) {
-                    Text("Return")
-                } // end button
+                } label: {
+                    Text("Change number of players")
+                }
                 
                 Spacer()
+                
+                HStack{
+                    Spacer()
+                    Button(action: {
+                        router.reset()
+                    }) {
+                        Text("Return")
+                    }.buttonStyle(.borderedProminent) // end button
+                    Spacer()
+                }
+              
                 
             } // end VStack
         } // end VStack

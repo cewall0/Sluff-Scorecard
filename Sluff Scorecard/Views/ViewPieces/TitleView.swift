@@ -24,7 +24,7 @@ struct TitleView: View {
             Spacer()
             Button {
                 router.reset()
-                router.path.append(2)
+                router.path.append(3)
             } label: {
                 Image(systemName: "gear")
             }
