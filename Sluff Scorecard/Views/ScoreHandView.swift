@@ -85,49 +85,6 @@ struct ScoreHandView: View {
                             }
                         }
                     }
-
-//                    if game.team1TotalSluffs == 0 {
-//                        Text("Sluffs Won:")
-//                        Picker("Sluffs Won:", selection: $game.team1SluffsWonStr) {
-//                            Text("--").tag("--")
-//                            Text("0").tag("0")
-//                        }
-//                    } else if game.team1TotalSluffs == 1 {
-//                        Text("Sluffs Won:")
-//                        Picker("Sluffs Won:", selection: $game.team1SluffsWonStr) {
-//                            Text("--").tag("--")
-//                            Text("0").tag("0")
-//                            Text("1").tag("1")
-//                        }
-//                    } else if game.team1TotalSluffs == 2 {
-//                        Text("Sluffs Won:")
-//                        Picker("Sluffs Won:", selection: $game.team1SluffsWonStr) {
-//                            Text("--").tag("--")
-//                            Text("0").tag("0")
-//                            Text("1").tag("1")
-//                            Text("2").tag("2")
-//                        }
-//                    } else if game.team1TotalSluffs == 3 {
-//                        Text("Sluffs Won:")
-//                        Picker("Sluffs Won:", selection: $game.team1SluffsWonStr) {
-//                            Text("--").tag("--")
-//                            Text("0").tag("0")
-//                            Text("1").tag("1")
-//                            Text("2").tag("2")
-//                            Text("3").tag("3")
-//                        }
-//                    } else {
-//                        Text("Sluffs Won:")
-//                        Picker("Sluffs Won:", selection: $game.team1SluffsWonStr) {
-//                            Text("--").tag("--")
-//                            Text("0").tag("0")
-//                            Text("1").tag("1")
-//                            Text("2").tag("2")
-//                            Text("3").tag("3")
-//                            Text("4").tag("4")
-//                        }
-//                    }
-   
                 } // end HStack
                 
                 HStack{
