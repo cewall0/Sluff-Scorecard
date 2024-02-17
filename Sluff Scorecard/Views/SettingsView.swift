@@ -35,8 +35,16 @@ struct SettingsView: View {
                 
                 HStack{
                     Text("• ").foregroundColor(.black)
+                    Text("You can edit the team and player names by tapping on them.").foregroundColor(.black)
+                    Spacer()
+                } // end HStack
+                
+                Text(" ")
+                
+                HStack{
+                    Text("• ").foregroundColor(.black)
                     Text("D").foregroundColor(.yellow)
-                    Text("= Current Dealer").foregroundColor(.black)
+                    Text("indicates the current dealer.").foregroundColor(.black)
                     Spacer()
                 } // end HStack
                 
@@ -57,7 +65,7 @@ struct SettingsView: View {
                         game.resetGame()
                         router.reset()
                     } label: {
-                        Text("Change number of players")
+                        Text("Change the number of players")
                     }
                 }
                
