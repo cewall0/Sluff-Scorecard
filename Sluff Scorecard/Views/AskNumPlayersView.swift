@@ -23,15 +23,18 @@ struct AskNumPlayersView: View {
                     .fontWeight(.bold)
                     .foregroundColor(.blue)
                 Text("")
-                Text("Welcome! How many players will be playing?").font(.title3)
+                Text("")
+                Text("Welcome!").font(.title3)
+                Text("")
+                Text("How many players will be playing?").font(.title3)
                 Picker("", selection: $game.numberOfPlayers) {
                     Text("6").tag(6)
                     Text("8").tag(8)
                     Text("10").tag(10)
                 }
                 .pickerStyle(.wheel)
+                .padding(.top, -80.0)
                 
-                Spacer()
                 
                 Button(action: {
                     game.setNumberOfPlayers()
@@ -53,6 +56,8 @@ struct AskNumPlayersView: View {
                     WinnerView().environmentObject(router)
                 default:
                     EmptyView()
+                    
+                    Spacer()
                 }// end NavigationStack
             }
         }
