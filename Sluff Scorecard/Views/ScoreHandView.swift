@@ -24,7 +24,11 @@ struct ScoreHandView: View {
         @Bindable var game = game
 
         VStack{
-            TitleView()
+            Text("Sluff Scorecard")
+                .font(.system(size: 32))
+                .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
+                .bold()
+                .padding(.top, 10)
 
             TeamNameView()
             

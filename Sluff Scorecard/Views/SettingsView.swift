@@ -68,6 +68,7 @@ struct SettingsView: View {
                     Spacer()
                     Button(action: {
                         router.reset()
+                        router.path.append(1)
                     }) {
                         Text("Return")
                     }.buttonStyle(.borderedProminent) // end button
