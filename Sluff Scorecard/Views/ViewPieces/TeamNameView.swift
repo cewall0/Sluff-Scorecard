@@ -23,10 +23,12 @@ struct TeamNameView: View {
     
                     TextField(game.team1Name, text: $game.team1Name)
                     .multilineTextAlignment(.center)
-                    .background(.teal.opacity(0.3))
+                    .background(.blue.opacity(0.3))
                     .foregroundStyle(.black)
                     .cornerRadius(8)
-                    .padding(.horizontal, 8.0)
+                    .padding(.leading, 6.0)
+                    .padding(.trailing, -4.0)
+            
 
                     
                     TextField(game.team2Name, text: $game.team2Name)
@@ -34,7 +36,8 @@ struct TeamNameView: View {
                     .multilineTextAlignment(.center)
                     .background(.gray.opacity(0.3))
                     .cornerRadius(8)
-                    .padding(.horizontal, 8.0)
+                    .padding(.trailing, 6.0)
+                    .padding(.leading, -4.0)
 
                     
                     

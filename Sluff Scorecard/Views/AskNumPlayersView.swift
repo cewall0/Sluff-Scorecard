@@ -18,9 +18,11 @@ struct AskNumPlayersView: View {
         NavigationStack(path: $router.path) {
             
             VStack{
-                Image("Sluff Scorecard")
+                Text("")
+                Text("")
+                Image("color sluff scorecard")
                     .resizable()
-                    .frame(width: 200, height: 80)
+                    .frame(width: 240, height: 96)
                 Text("")
                 Text("")
                 Text("Welcome!").font(.title)
@@ -32,7 +34,7 @@ struct AskNumPlayersView: View {
                     Text("10").tag(10)
                 }
                 .pickerStyle(.wheel)
-                .padding(.top, -80.0)
+                .padding(.top, -50.0)
                 
                 
                 Button(action: {
@@ -58,8 +60,9 @@ struct AskNumPlayersView: View {
                     EmptyView()
                     
                     Spacer()
-                }// end NavigationStack
+                }
             }
+            Spacer()
         }
     }
 }

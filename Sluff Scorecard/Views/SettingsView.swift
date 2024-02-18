@@ -17,15 +17,14 @@ struct SettingsView: View {
     var body: some View {
         @Bindable var game = game
         VStack{
-            Image("Sluff Scorecard")
+            Text(" ")
+
+            Image("color sluff scorecard")
                 .resizable()
                 .frame(width: 200, height: 80)
-            Text("(Settings)")
-                .font(.system(size: 26))
-                .foregroundColor(.accentColor)
-                .bold()
+
             Text(" ")
-            Text(" ")
+
             
             ScrollView{
                 
@@ -37,7 +36,8 @@ struct SettingsView: View {
                         Spacer()
                     } // end HStack
                     
-                    Text(" ")
+//                    Text(" ")
+                    Divider()
                     
                     HStack{
                         Text("• ").foregroundColor(.black)
@@ -46,16 +46,18 @@ struct SettingsView: View {
                         Spacer()
                     } // end HStack
                     
-                    Text(" ")
+//                    Text(" ")
+                    Divider()
                     
                     HStack{
-                        Text("• ").foregroundColor(.black)
-                        Link("Rules of Sluff (gamesrules.com)", destination: URL(string: "https://gamerules.com/rules/rook-sluff-card-game/")!)
+                        Text("• ")
+                        Link("Read the rules of Sluff at gamerules.com", destination: URL(string: "https://gamerules.com/rules/rook-sluff-card-game/")!)
                         Spacer()
                     }
                     
                     
-                    Text(" ")
+//                    Text(" ")
+                    Divider()
                     
                     HStack{
                         Text("• ").foregroundColor(.black)
@@ -70,18 +72,18 @@ struct SettingsView: View {
                     
                     Spacer()
                     
-                    HStack{
-                        Spacer()
-                        Button(action: {
-                            router.reset()
-                            router.path.append(1)
-                        }) {
-                            Text("Return")
-                        }.buttonStyle(.borderedProminent)
-                            .tint(.accentColor)
-                            .padding()
-                        Spacer()
-                    }
+//                    HStack{
+//                        Spacer()
+//                        Button(action: {
+//                            router.reset()
+//                            router.path.append(1)
+//                        }) {
+//                            Text("Return")
+//                        }.buttonStyle(.borderedProminent)
+//                            .tint(.accentColor)
+//                            .padding()
+//                        Spacer()
+//                    }
                 } // end VStack
                 .padding(.horizontal)
                 

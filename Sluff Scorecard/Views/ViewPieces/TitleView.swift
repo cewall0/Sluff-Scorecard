@@ -16,7 +16,7 @@ struct TitleView: View {
         HStack{
             Image(systemName: "gear").opacity(0).padding(.leading)
             Spacer()
-            Image("Sluff Scorecard")
+            Image("color sluff scorecard")
                 .resizable()
                 .frame(width: 200, height: 80)
                 
@@ -30,7 +30,7 @@ struct TitleView: View {
             .foregroundColor(.gray)
 
         }
-        Text("(Round: \(game.round))")
+        Text("(Round: \(game.round)/\(game.numberOfPlayers))")
     }
 }
 

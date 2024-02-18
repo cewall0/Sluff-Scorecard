@@ -56,7 +56,7 @@ struct ScorecardView: View {
                                 .frame(width: CGFloat(geo.size.width*0.95))
                                 .foregroundColor(.black.opacity(1.0))
                                 .tint(.black)
-                                .background(index % 2 == 0 ? .teal.opacity(0.3) : .gray.opacity(0.3))
+                                .background(index % 2 == 0 ? .blue.opacity(0.3) : .gray.opacity(0.3))
                                 .cornerRadius(8)
                                 
                                 

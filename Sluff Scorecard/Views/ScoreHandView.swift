@@ -24,7 +24,7 @@ struct ScoreHandView: View {
         @Bindable var game = game
 
         VStack{
-            Image("Sluff Scorecard")
+            Image("color sluff scorecard")
                 .resizable()
                 .frame(width: 200, height: 80)
 
@@ -47,9 +47,9 @@ struct ScoreHandView: View {
                 HStack{
                     Text("Tricks Won:")
                     if game.team1TricksWonStr != "--" {
-                        Text(String(14-Int(game.team1TricksWonStr)!)).foregroundColor(.blue)
+                        Text(String(14-Int(game.team1TricksWonStr)!)).foregroundColor(.accentColor)
                     } else {
-                        Text("--").foregroundColor(.blue)
+                        Text("--").foregroundColor(.accentColor)
                     }
 
                 } // end HStack
@@ -129,7 +129,7 @@ struct ScoreHandView: View {
                         }
                     }
    
-                } // end HStack
+                }// end HStack
             } // end lazygrid
             
             Spacer()
