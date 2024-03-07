@@ -135,10 +135,12 @@ struct ScoreHandView: View {
             Spacer()
             
             Button(action: {
+                
                 self.game.updateScore()
                 self.game.resetBids()
                 self.game.nextDealer()
                 self.game.isGameOver()
+                
                 if game.gameOver == true {
                     game.declareWinner()
                     router.reset()

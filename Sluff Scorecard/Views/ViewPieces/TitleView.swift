@@ -14,7 +14,16 @@ struct TitleView: View {
     
     var body: some View {
         HStack{
-            Image(systemName: "gear").opacity(0).padding(.leading)
+            
+            Button {
+                router.path.append(5)
+            } label: {
+                Image(systemName: "list.clipboard")
+            }
+            .padding(.leading)
+            .foregroundColor(.gray)
+
+            
             Spacer()
             Image("color sluff scorecard")
                 .resizable()
@@ -31,12 +40,14 @@ struct TitleView: View {
 
         }
         Text("(Round: \(game.round)/\(game.numberOfPlayers))")
+            .environment(Game())
+            .environmentObject(Router())
     }
 }
 
-
-#Preview {
-    TitleView()
-        .environment(Game())
-}
- 
+//
+//#Preview {
+//    TitleView()
+//        .environment(Game())
+//}
+// 

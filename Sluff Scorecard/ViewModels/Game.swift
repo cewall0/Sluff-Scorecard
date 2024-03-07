@@ -11,6 +11,7 @@ import Observation
 @Observable
 final class Game {
     var playersList: [Player] = [Player(name:"Player1", isDealer: true), Player(name:"Player2", isDealer: false), Player(name:"Player3", isDealer: false), Player(name:"Player4", isDealer: false), Player(name:"Player5", isDealer: false), Player(name:"Player6", isDealer: false)]
+    var runningScores: [RunningScores] = [RunningScores(round: 1, t1ChangeInScore: 0, t1Score: 0, t2ChangeInScore: 0, t2Score: 0)]
     var numberOfPlayers: Int = 6
     
     var team1Name: String = "Team 1"
@@ -34,7 +35,7 @@ final class Game {
     var dontUpdateScores: Bool = true
     var winner: String = "Tie"
     
-    
+
 
     init() {
         self.playersList = playersList
@@ -57,12 +58,14 @@ final class Game {
         self.gameOver = gameOver
         self.notAllBid = notAllBid
         self.winner = winner
+        self.runningScores = runningScores
     }
     
     
     /// setNumberOfPlayers function with an integer parameter for the number of players in the game. A playersList array of Player structs is formed that contains the appropriate number of players for the game.
     func setNumberOfPlayers() {
         playersList.removeAll()
+        runningScores.removeAll()
                 
         for index in 1...numberOfPlayers {
             if index == 1{
@@ -71,6 +74,13 @@ final class Game {
                 playersList.append(Player(name: "Player \(index)", isDealer: false))
             }
         }
+        
+        for index in 1...numberOfPlayers {
+
+            runningScores.append(RunningScores(round: index, t1ChangeInScore: 0, t1Score: 0, t2ChangeInScore: 0, t2Score: 0))
+
+        }
+        
     } // end func setNumberOfPlayers
     
     
@@ -118,6 +128,9 @@ final class Game {
         let team1SluffsWon = Int(team1SluffsWonStr)
         let team2SluffsWon = Int(team2SluffsWonStr)
         
+        var t1ChangeInScore = 0
+        var t2ChangeInScore = 0
+        
         // if team1 won the their bid for tricks, they get some points. If not, they get 0.
 
         // a successful bid gets 10 points for each trick bid + 1 for every bonus trick
@@ -142,7 +155,9 @@ final class Game {
             team1SluffPoints = 0
         }
         
-        team1TotalScore = team1TotalScore + team1TrickPoints + team1SluffPoints
+        t1ChangeInScore = team1TrickPoints + team1SluffPoints
+        
+        team1TotalScore = team1TotalScore + t1ChangeInScore
 
 // if team2 won the their bid for tricks, they get some points. If not, they get 0.
 
@@ -164,7 +179,16 @@ final class Game {
             team2SluffPoints = 0
         }
 
-        team2TotalScore = team2TotalScore + team2TrickPoints + team2SluffPoints
+        t2ChangeInScore = team2TrickPoints + team2SluffPoints
+
+        team2TotalScore = team2TotalScore + t2ChangeInScore
+        
+        // Update the RunningScore struct in the runningScores array for the history view
+        runningScores[round - 1].t1ChangeInScore = t1ChangeInScore
+        runningScores[round - 1].t1Score = team1TotalScore
+        runningScores[round - 1].t2ChangeInScore = t2ChangeInScore
+        runningScores[round - 1].t2Score = team2TotalScore
+        
     }
     
     

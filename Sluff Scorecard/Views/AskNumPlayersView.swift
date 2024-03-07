@@ -56,6 +56,8 @@ struct AskNumPlayersView: View {
                     SettingsView().environmentObject(router)
                 case 4:
                     WinnerView().environmentObject(router)
+                case 5:
+                    HistoryView().environmentObject(router)
                 default:
                     EmptyView()
                     
