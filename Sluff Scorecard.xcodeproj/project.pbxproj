@@ -26,6 +26,7 @@
 		0BD384DC2B8075430003C98E /* AskNumPlayersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD384DB2B8075430003C98E /* AskNumPlayersView.swift */; };
 		C84C58512B9A19EC00459472 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84C58502B9A19EC00459472 /* HistoryView.swift */; };
 		C84C58532B9A22F800459472 /* RunningScores.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84C58522B9A22F800459472 /* RunningScores.swift */; };
+		C85DEA9F2B9A6AB4004C79C0 /* SluffChoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85DEA9E2B9A6AB4004C79C0 /* SluffChoice.swift */; };
 		C8A2DB5E2B7FF92600569050 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A2DB5D2B7FF92600569050 /* SplashScreenView.swift */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +51,7 @@
 		0BD384DB2B8075430003C98E /* AskNumPlayersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskNumPlayersView.swift; sourceTree = "<group>"; };
 		C84C58502B9A19EC00459472 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		C84C58522B9A22F800459472 /* RunningScores.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningScores.swift; sourceTree = "<group>"; };
+		C85DEA9E2B9A6AB4004C79C0 /* SluffChoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SluffChoice.swift; sourceTree = "<group>"; };
 		C8A2DB5D2B7FF92600569050 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -122,6 +124,7 @@
 			children = (
 				0B4821F72B43B8B1001FDA98 /* Player.swift */,
 				C84C58522B9A22F800459472 /* RunningScores.swift */,
+				C85DEA9E2B9A6AB4004C79C0 /* SluffChoice.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -238,6 +241,7 @@
 				C84C58532B9A22F800459472 /* RunningScores.swift in Sources */,
 				0BB1F2072B70961D006201F8 /* ScoreHandView.swift in Sources */,
 				0BB1F1F92B6984DE006201F8 /* SettingsView.swift in Sources */,
+				C85DEA9F2B9A6AB4004C79C0 /* SluffChoice.swift in Sources */,
 				0BD384DC2B8075430003C98E /* AskNumPlayersView.swift in Sources */,
 				0BB1F2052B6EBB1F006201F8 /* TeamNameView.swift in Sources */,
 				0B4821E62B43B712001FDA98 /* Sluff_ScorecardApp.swift in Sources */,

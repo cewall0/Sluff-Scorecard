@@ -13,6 +13,7 @@ struct TitleView: View {
     @EnvironmentObject var router: Router
     
     var body: some View {
+        
         HStack{
             
             Button {
@@ -22,7 +23,6 @@ struct TitleView: View {
             }
             .padding(.leading)
             .foregroundColor(.gray)
-
             
             Spacer()
             Image("color sluff scorecard")

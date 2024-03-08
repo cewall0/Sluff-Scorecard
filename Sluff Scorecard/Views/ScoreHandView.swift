@@ -18,6 +18,7 @@ struct ScoreHandView: View {
     let sluffChoices2 = ["0", "1", "2"]
     let sluffChoices3 = ["0", "1", "2", "3"]
     let sluffChoices4 = ["0", "1", "2", "3", "4"]
+    let sluffChoices5 = ["0", "1", "2", "3", "4", "5"]
 
 
     var body: some View {
@@ -55,6 +56,8 @@ struct ScoreHandView: View {
                 } // end HStack
             } // end lazygrid
             
+            
+            
             LazyVGrid(columns: twoColumnGrid, alignment: .center, spacing: 10) {
                 HStack{
                     Text("Sluffs Won:")
@@ -77,9 +80,14 @@ struct ScoreHandView: View {
                             ForEach(sluffChoices3, id:\.self){
                                 Text($0)
                             }
-                        } else {
+                        } else if game.team1TotalSluffs == 4 {
                             Text("--").tag("--")
                             ForEach(sluffChoices4, id:\.self){
+                                Text($0)
+                            }
+                        } else {
+                            Text("--").tag("--")
+                            ForEach(sluffChoices5, id:\.self){
                                 Text($0)
                             }
                         }
@@ -117,6 +125,16 @@ struct ScoreHandView: View {
                             Text("2").tag("2")
                             Text("3").tag("3")
                         }
+                    } else if game.team2TotalSluffs == 4 {
+                        Text("Sluffs Won:")
+                        Picker("Sluffs Won:", selection: $game.team2SluffsWonStr) {
+                            Text("--").tag("--")
+                            Text("0").tag("0")
+                            Text("1").tag("1")
+                            Text("2").tag("2")
+                            Text("3").tag("3")
+                            Text("4").tag("4")
+                        }
                     } else {
                         Text("Sluffs Won:")
                         Picker("Sluffs Won:", selection: $game.team2SluffsWonStr) {
@@ -126,6 +144,7 @@ struct ScoreHandView: View {
                             Text("2").tag("2")
                             Text("3").tag("3")
                             Text("4").tag("4")
+                            Text("5").tag("5")
                         }
                     }
    

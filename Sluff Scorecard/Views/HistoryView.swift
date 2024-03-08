@@ -16,6 +16,8 @@ struct HistoryView: View {
     @EnvironmentObject var router: Router
     
     let threeColumnGrid = [GridItem(.fixed(80)), GridItem(.fixed(150)), GridItem(.fixed(150))]
+//    let threeColumnGrid = [GridItem(.fixed(80)), GridItem(.flexible()), GridItem(.flexible())]
+
 
     
     var body: some View {
@@ -34,8 +36,8 @@ struct HistoryView: View {
                 LazyVGrid(columns: threeColumnGrid, alignment: .center, spacing: 3) {
 
                 Text("Round")
-//                    .padding(10)
-                    .font(.headline)
+                        .padding(.leading, 3)
+                    .font(.title3)
                     .foregroundColor(.black)
                 
 
@@ -70,15 +72,13 @@ struct HistoryView: View {
 
                     List {
                         ForEach(game.runningScores.indices, id: \.self) { index in
+                            
                             LazyVGrid(columns: threeColumnGrid, alignment: .center, spacing: 3) {
 
-                                
                                 Text(String(game.runningScores[index].round))
                                     .font(.title3)
                                     .foregroundColor((index + 1) < game.round ? .black : .clear)
-                                    
  
-                                
                                 HStack{
                                     Text("(\(String(game.runningScores[index].t1ChangeInScore))) ")
                                         .font(.title3)
@@ -90,8 +90,6 @@ struct HistoryView: View {
                                         .foregroundColor((index + 1)  < game.round ? .black : .clear)
                                 }
 
-                                
-  
                                 HStack{
                                     Text("(\(String(game.runningScores[index].t2ChangeInScore))) ")
                                         .font(.title3)
@@ -103,10 +101,7 @@ struct HistoryView: View {
                                         .foregroundColor((index + 1)  < game.round ? .black : .clear)
                                 }
                                
-
-                                
                             } // end HStack
-                            
                             
                         }
                     }// end List
@@ -114,7 +109,6 @@ struct HistoryView: View {
                     
                 }
             }
-        
     }
 }
 

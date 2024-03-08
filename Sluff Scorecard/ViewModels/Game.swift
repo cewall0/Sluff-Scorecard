@@ -35,6 +35,10 @@ final class Game {
     var dontUpdateScores: Bool = true
     var winner: String = "Tie"
     
+    
+    var sluffTeam1ChoiceList: [SluffChoice] = [SluffChoice(option: "0")]
+    var sluffTeam2ChoiceList: [SluffChoice] = [SluffChoice(option: "0")]
+
 
 
     init() {
@@ -59,6 +63,8 @@ final class Game {
         self.notAllBid = notAllBid
         self.winner = winner
         self.runningScores = runningScores
+        self.sluffTeam1ChoiceList = sluffTeam1ChoiceList
+        self.sluffTeam2ChoiceList = sluffTeam2ChoiceList
     }
     
     
@@ -112,6 +118,23 @@ final class Game {
                 team2TotalBid += bid
             }
         }
+    }
+    
+    func setSluffOptions() {
+        sluffTeam1ChoiceList.removeAll()
+        sluffTeam1ChoiceList.append(SluffChoice(option: "--"))
+        sluffTeam2ChoiceList.removeAll()
+        sluffTeam2ChoiceList.append(SluffChoice(option: "--"))
+
+        
+        for index in 0...team1TotalSluffs {
+                sluffTeam1ChoiceList.append(SluffChoice(option: String(index)))
+                }
+        
+        for index in 0...team2TotalSluffs {
+                sluffTeam2ChoiceList.append(SluffChoice(option: String(index)))
+                }
+        
     }
     
     
