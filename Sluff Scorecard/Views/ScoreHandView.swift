@@ -35,6 +35,7 @@ struct ScoreHandView: View {
             TeamScoresView()
             
             LazyVGrid(columns: twoColumnGrid, alignment: .center, spacing: 10) {
+                
                 HStack{
                     Text("Tricks Won:")
                     Picker("Tricks Won:", selection: $game.team1TricksWonStr) {
@@ -59,96 +60,31 @@ struct ScoreHandView: View {
             
             
             LazyVGrid(columns: twoColumnGrid, alignment: .center, spacing: 10) {
-                HStack{
-                    Text("Sluffs Won:")
-                    Picker("Sluffs Won:", selection: $game.team1SluffsWonStr) {
-                        if game.team1TotalSluffs == 0 {
-                            Text("--").tag("--")
-                            Text("0").tag("0")
-                        } else if game.team1TotalSluffs == 1 {
-                            Text("--").tag("--")
-                            ForEach(sluffChoices1, id:\.self){
-                                Text($0)
-                            }
-                        } else if game.team1TotalSluffs == 2 {
-                            Text("--").tag("--")
-                            ForEach(sluffChoices2, id:\.self){
-                                Text($0)
-                            }
-                        } else if game.team1TotalSluffs == 3 {
-                            Text("--").tag("--")
-                            ForEach(sluffChoices3, id:\.self){
-                                Text($0)
-                            }
-                        } else if game.team1TotalSluffs == 4 {
-                            Text("--").tag("--")
-                            ForEach(sluffChoices4, id:\.self){
-                                Text($0)
-                            }
-                        } else {
-                            Text("--").tag("--")
-                            ForEach(sluffChoices5, id:\.self){
-                                Text($0)
-                            }
-                        }
-                    }
-                } // end HStack
                 
                 HStack{
-                    if game.team2TotalSluffs == 0 {
-                        Text("Sluffs Won:")
-                        Picker("Sluffs Won:", selection: $game.team2SluffsWonStr) {
-                            Text("--").tag("--")
-                            Text("0").tag("0")
-                        }
-                    } else if game.team2TotalSluffs == 1 {
-                        Text("Sluffs Won:")
-                        Picker("Sluffs Won:", selection: $game.team2SluffsWonStr) {
-                            Text("--").tag("--")
-                            Text("0").tag("0")
-                            Text("1").tag("1")
-                        }
-                    } else if game.team2TotalSluffs == 2 {
-                        Text("Sluffs Won:")
-                        Picker("Sluffs Won:", selection: $game.team2SluffsWonStr) {
-                            Text("--").tag("--")
-                            Text("0").tag("0")
-                            Text("1").tag("1")
-                            Text("2").tag("2")
-                        }
-                    } else if game.team2TotalSluffs == 3 {
-                        Text("Sluffs Won:")
-                        Picker("Sluffs Won:", selection: $game.team2SluffsWonStr) {
-                            Text("--").tag("--")
-                            Text("0").tag("0")
-                            Text("1").tag("1")
-                            Text("2").tag("2")
-                            Text("3").tag("3")
-                        }
-                    } else if game.team2TotalSluffs == 4 {
-                        Text("Sluffs Won:")
-                        Picker("Sluffs Won:", selection: $game.team2SluffsWonStr) {
-                            Text("--").tag("--")
-                            Text("0").tag("0")
-                            Text("1").tag("1")
-                            Text("2").tag("2")
-                            Text("3").tag("3")
-                            Text("4").tag("4")
-                        }
-                    } else {
-                        Text("Sluffs Won:")
-                        Picker("Sluffs Won:", selection: $game.team2SluffsWonStr) {
-                            Text("--").tag("--")
-                            Text("0").tag("0")
-                            Text("1").tag("1")
-                            Text("2").tag("2")
-                            Text("3").tag("3")
-                            Text("4").tag("4")
-                            Text("5").tag("5")
-                        }
+                    Text("Sluffs Won: ")
+
+                    Picker("Sluffs Won:", selection: $game.team1SluffsWonStr) {
+                       
+                        ForEach(game.sluffTeam1ChoiceList, id:\.self){
+                            Text($0)
+                            }
                     }
-   
-                }// end HStack
+                .pickerStyle(.menu)
+                } // end HStack for Team 1 sluffs
+                
+                HStack{
+                    Text("Sluffs Won: ")
+
+                    Picker("Sluffs Won:", selection: $game.team2SluffsWonStr) {
+                       
+                        ForEach(game.sluffTeam2ChoiceList, id:\.self){
+                            Text($0)
+                            }
+                    }
+                .pickerStyle(.menu)
+                } // end HStack for Team 2 sluffs
+
             } // end lazygrid
             
             Spacer()

@@ -67,6 +67,7 @@ struct ScorecardView: View {
                     }
                     
                     Button(action: {
+                        game.setSluffOptions()
                         game.resetTricksSluffsWon()
                         router.path.append(2) // case 2 sends to ScoreHandView() See NavigationDestination below
                     }) {

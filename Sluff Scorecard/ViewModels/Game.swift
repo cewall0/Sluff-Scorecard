@@ -36,8 +36,8 @@ final class Game {
     var winner: String = "Tie"
     
     
-    var sluffTeam1ChoiceList: [SluffChoice] = [SluffChoice(option: "0")]
-    var sluffTeam2ChoiceList: [SluffChoice] = [SluffChoice(option: "0")]
+    var sluffTeam1ChoiceList: [String] = ["--"]
+    var sluffTeam2ChoiceList: [String] = ["--"]
 
 
 
@@ -122,17 +122,17 @@ final class Game {
     
     func setSluffOptions() {
         sluffTeam1ChoiceList.removeAll()
-        sluffTeam1ChoiceList.append(SluffChoice(option: "--"))
+        sluffTeam1ChoiceList.append("--")
         sluffTeam2ChoiceList.removeAll()
-        sluffTeam2ChoiceList.append(SluffChoice(option: "--"))
+        sluffTeam2ChoiceList.append("--")
 
         
         for index in 0...team1TotalSluffs {
-                sluffTeam1ChoiceList.append(SluffChoice(option: String(index)))
+                sluffTeam1ChoiceList.append(String(index))
                 }
         
         for index in 0...team2TotalSluffs {
-                sluffTeam2ChoiceList.append(SluffChoice(option: String(index)))
+                sluffTeam2ChoiceList.append(String(index))
                 }
         
     }

@@ -30,7 +30,7 @@ struct AskNumPlayersView: View {
                     Text("")
                     Text("Welcome!").font(geometry.size.width > 700 ? .system(size: geometry.size.height * 0.04) : .system(size: geometry.size.height * 0.03))
                     Text("")
-                    Text("How many players will be playing?").font(geometry.size.width > 700 ? .system(size: geometry.size.height * 0.025) : .system(size: geometry.size.height * 0.015))
+                    Text("How many players will be playing?").font(geometry.size.width > 700 ? .system(size: geometry.size.height * 0.03) : .system(size: geometry.size.height * 0.02))
                     Picker("", selection: $game.numberOfPlayers) {
                         Text("6").tag(6)
                             .font(geometry.size.width > 700 ? .system(size: geometry.size.height * 0.02) : .system(size: geometry.size.height * 0.015))
@@ -39,9 +39,9 @@ struct AskNumPlayersView: View {
                         Text("10").tag(10)
                             .font(geometry.size.width > 700 ? .system(size: geometry.size.height * 0.02) : .system(size: geometry.size.height * 0.015))
                     }
-                    .font(geometry.size.width > 700 ? .system(size: geometry.size.height * 0.04) : .system(size: geometry.size.height * 0.025))
-                    .pickerStyle(.wheel)
-                    .padding(.top, -50.0)
+//                    .font(geometry.size.width > 700 ? .system(size: geometry.size.height * 0.04) : .system(size: geometry.size.height * 0.025))
+                    .pickerStyle(.segmented)
+//                    .padding(.top, -50.0)
                     
                     
                     
