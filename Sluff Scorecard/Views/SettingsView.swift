@@ -13,78 +13,73 @@ struct SettingsView: View {
     @Environment(Game.self) private var game
     @EnvironmentObject var router: Router
     
+    @Environment(\.verticalSizeClass) var heightSizeClass: UserInterfaceSizeClass?
+    @Environment(\.horizontalSizeClass) var widthSizeClass: UserInterfaceSizeClass?
+    
     
     var body: some View {
         @Bindable var game = game
         VStack{
             Text(" ")
 
-            Image("color sluff scorecard")
+            Image("SluffScorecardTitleSVG")
                 .resizable()
-                .frame(width: 200, height: 80)
+                .frame(width: 250, height: 140)
 
-            Text(" ")
 
-            
             ScrollView{
                 
                 VStack(alignment: .leading){
                     
-                    HStack{
+                    HStack(alignment: .top){
                         Text("• ").foregroundColor(.black)
-                        Text("You can edit the team and player names by tapping on them.").foregroundColor(.black)
+                        Text("You can edit the team and player names by tapping on them.")
+                            .foregroundColor(.black)
+                            .multilineTextAlignment(.leading)
                         Spacer()
                     } // end HStack
                     
-//                    Text(" ")
                     Divider()
                     
-                    HStack{
+                    HStack(alignment: .top){
                         Text("• ").foregroundColor(.black)
                         Text("D").foregroundColor(.yellow)
                         Text("indicates the current dealer.").foregroundColor(.black)
+                            .multilineTextAlignment(.leading)
                         Spacer()
                     } // end HStack
                     
-//                    Text(" ")
                     Divider()
                     
-                    HStack{
+                    HStack(alignment: .top){
                         Text("• ")
                         Link("Read the rules of Sluff at gamerules.com", destination: URL(string: "https://gamerules.com/rules/rook-sluff-card-game/")!)
                         Spacer()
                     }
+                    .foregroundColor(.black)
+                    .multilineTextAlignment(.leading)
                     
                     
-//                    Text(" ")
                     Divider()
                     
-                    HStack{
+                    HStack(alignment: .top){
                         Text("• ").foregroundColor(.black)
                         Button {
                             game.resetGame()
                             router.reset()
                         } label: {
                             Text("Change the number of players")
+                                .multilineTextAlignment(.leading)
+                                .foregroundColor(.black)
                         }
                     }
                     
                     
                     Spacer()
                     
-//                    HStack{
-//                        Spacer()
-//                        Button(action: {
-//                            router.reset()
-//                            router.path.append(1)
-//                        }) {
-//                            Text("Return")
-//                        }.buttonStyle(.borderedProminent)
-//                            .tint(.accentColor)
-//                            .padding()
-//                        Spacer()
-//                    }
+
                 } // end VStack
+                .font(widthSizeClass == .regular ? .title : .title2)
                 .padding(.horizontal)
                 
             }

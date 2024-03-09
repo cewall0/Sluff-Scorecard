@@ -11,6 +11,9 @@ struct ScoreHandView: View {
     
     @Environment(Game.self) private var game
     @EnvironmentObject var router: Router
+    
+    @Environment(\.verticalSizeClass) var heightSizeClass: UserInterfaceSizeClass?
+    @Environment(\.horizontalSizeClass) var widthSizeClass: UserInterfaceSizeClass?
 
     let twoColumnGrid = [GridItem(.flexible()), GridItem(.flexible())]
     let sluffChoices0 = ["0"]
@@ -25,69 +28,117 @@ struct ScoreHandView: View {
         @Bindable var game = game
 
         VStack{
-            Image("color sluff scorecard")
+            Image("SluffScorecardTitleSVG")
                 .resizable()
-                .frame(width: 200, height: 80)
-
-
-            TeamNameView()
+                .frame(width: 250, height: 140)
             
-            TeamScoresView()
-            
-            LazyVGrid(columns: twoColumnGrid, alignment: .center, spacing: 10) {
+            Grid(alignment: .center, horizontalSpacing: 10, verticalSpacing: 10) {
                 
-                HStack{
-                    Text("Tricks Won:")
-                    Picker("Tricks Won:", selection: $game.team1TricksWonStr) {
-                        Text("--").tag("--")
-                        ForEach(0...14, id:\.self){ tricksWon in
-                            Text("\(tricksWon)").tag("\(tricksWon)")
+                GridRow{
+                    Text(game.team1Name)
+                        .font(widthSizeClass == .regular ? .largeTitle : .title)
+                        .padding(10)
+                        .frame(maxWidth: .infinity, alignment: .center)
+                        .background(.blue.opacity(0.3))
+                        .foregroundStyle(.black)
+                        .cornerRadius(8)
+
+
+                    Text(game.team2Name)
+                        .font(widthSizeClass == .regular ? .largeTitle : .title)
+                        .padding(10)
+                        .frame(maxWidth: .infinity, alignment: .center)
+                        .background(.gray.opacity(0.3))
+                        .cornerRadius(8)
+
+                }
+                
+                GridRow{
+                    Text(String(game.team1TotalScore))
+                        .font(widthSizeClass == .regular ? .largeTitle : .title)
+                        .frame(maxWidth: .infinity, alignment: .center)
+
+                    Text(String(game.team2TotalScore))
+                        .font(widthSizeClass == .regular ? .largeTitle : .title)
+                        .frame(maxWidth: .infinity, alignment: .center)
+                }
+                
+                GridRow{
+                    Text("Team Bid: \(game.team1TotalBid)")
+                        .font(widthSizeClass == .regular ? .title : .title2)
+                        .frame(maxWidth: .infinity, alignment: .center)
+
+                    Text("Team Bid: \(game.team2TotalBid)")
+                        .font(widthSizeClass == .regular ? .title : .title2)
+                        .frame(maxWidth: .infinity, alignment: .center)
+                }
+                
+                GridRow{
+                    Text("Team Sluffs: \(game.team1TotalSluffs)")
+                        .font(widthSizeClass == .regular ? .title : .title2)
+                        .frame(maxWidth: .infinity, alignment: .center)
+
+                    Text("Team Sluffs: \(game.team2TotalSluffs)")
+                        .font(widthSizeClass == .regular ? .title : .title2)
+                        .frame(maxWidth: .infinity, alignment: .center)
+                }
+                
+                Divider()
+                
+                GridRow {
+                    
+                    HStack{
+                        Text("Tricks Won:")
+                        Picker("Tricks Won:", selection: $game.team1TricksWonStr) {
+                            Text("--").tag("--")
+                            ForEach(0...14, id:\.self){ tricksWon in
+                                Text("\(tricksWon)").tag("\(tricksWon)")
+                            }
                         }
-                    }
-                } // end HStack
+                    } // end HStack
+                    .scaleEffect(widthSizeClass == .regular ? 1.4 : 1.1)
+                    
+                    HStack{
+                        Text("Tricks Won:")
+                        if game.team1TricksWonStr != "--" {
+                            Text(String(14-Int(game.team1TricksWonStr)!)).foregroundColor(.accentColor)
+                        } else {
+                            Text("--").foregroundColor(.accentColor)
+                        }
+                    } // end HStack
+                    .scaleEffect(widthSizeClass == .regular ? 1.4 : 1.1)
+                }
                 
-                HStack{
-                    Text("Tricks Won:")
-                    if game.team1TricksWonStr != "--" {
-                        Text(String(14-Int(game.team1TricksWonStr)!)).foregroundColor(.accentColor)
-                    } else {
-                        Text("--").foregroundColor(.accentColor)
-                    }
+                GridRow{
+                    HStack{
+                        Text("Sluffs Won: ")
 
-                } // end HStack
-            } // end lazygrid
-            
-            
-            
-            LazyVGrid(columns: twoColumnGrid, alignment: .center, spacing: 10) {
-                
-                HStack{
-                    Text("Sluffs Won: ")
+                        Picker("Sluffs Won:", selection: $game.team1SluffsWonStr) {
+                           
+                            ForEach(game.sluffTeam1ChoiceList, id:\.self){
+                                Text($0)
+                                }
+                        }
+                    .pickerStyle(.menu)
+                    } // end HStack for Team 1 sluffs
+                    .scaleEffect(widthSizeClass == .regular ? 1.4 : 1.1)
+                    
+                    HStack{
+                        Text("Sluffs Won: ")
 
-                    Picker("Sluffs Won:", selection: $game.team1SluffsWonStr) {
-                       
-                        ForEach(game.sluffTeam1ChoiceList, id:\.self){
-                            Text($0)
-                            }
-                    }
-                .pickerStyle(.menu)
-                } // end HStack for Team 1 sluffs
-                
-                HStack{
-                    Text("Sluffs Won: ")
+                        Picker("Sluffs Won:", selection: $game.team2SluffsWonStr) {
+                           
+                            ForEach(game.sluffTeam2ChoiceList, id:\.self){
+                                Text($0)
+                                }
+                        }
+                    .pickerStyle(.menu)
+                    } // end HStack for Team 2 sluffs
+                    .padding(.leading, 20)
+                    .scaleEffect(widthSizeClass == .regular ? 1.4 : 1.1)
+                }
+            } // end Grid
 
-                    Picker("Sluffs Won:", selection: $game.team2SluffsWonStr) {
-                       
-                        ForEach(game.sluffTeam2ChoiceList, id:\.self){
-                            Text($0)
-                            }
-                    }
-                .pickerStyle(.menu)
-                } // end HStack for Team 2 sluffs
-
-            } // end lazygrid
-            
-            Spacer()
             
             Button(action: {
                 
@@ -107,10 +158,13 @@ struct ScoreHandView: View {
             }, label: {
                 Text("Update Scores")
             })
+            .padding()
             .buttonStyle(.borderedProminent)
             .tint(.accentColor)
             .disabled(game.team1TricksWonStr == "--" || game.team1SluffsWonStr == "--"  || game.team2SluffsWonStr == "--")
+
             
+            Spacer()
            
         } // end Vstack
             

@@ -305,6 +305,10 @@ final class Game {
         notAllBid = true
         dontUpdateScores = true
         winner = ""
+        runningScores.removeAll()
+        runningScores = [RunningScores(round: 1, t1ChangeInScore: 0, t1Score: 0, t2ChangeInScore: 0, t2Score: 0)]
+
+
     }
    
     

@@ -22,19 +22,20 @@ struct WinnerView: View {
             
             TeamScoresView()
             
-            Spacer()
-            
-            Text("Game Over!").font(.title)
-            Text("")
-            HStack{
-                if game.winner == "Tie" {
-                    Text("We have a tie!")
-                } else {
-                    Text("\(game.winner) wins!!")
+            VStack{
+                Text("Game Over").font(.largeTitle)
+                Text("")
+                HStack{
+                    if game.winner == "Tie" {
+                        Text("We have a tie!")
+                    } else {
+                        Text("\(game.winner) wins!!")
+                    }
                 }
-            }.font(.title)
+                .font(.title)
+            }
+            .padding()
             
-            Spacer()
             
             Button {
                 game.resetGame()
@@ -44,7 +45,18 @@ struct WinnerView: View {
                 Text("New Game")
             }.buttonStyle(.borderedProminent)
                 .tint(.accentColor)
+                .font(.title)
+                .padding()
+            
+            Spacer()
+            
+            Spacer()
+            
+            Spacer()
+            
         }.navigationBarBackButtonHidden(true)
+
+        
     }
 }
 

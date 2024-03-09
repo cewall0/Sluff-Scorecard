@@ -13,7 +13,6 @@ struct NumPlayersPickerView: View {
     
     @Bindable var game: Game
     
-    
     var body: some View {
         VStack{
             

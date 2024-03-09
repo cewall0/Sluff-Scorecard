@@ -12,6 +12,9 @@ struct TitleView: View {
     @Environment(Game.self) private var game
     @EnvironmentObject var router: Router
     
+    @Environment(\.verticalSizeClass) var heightSizeClass: UserInterfaceSizeClass?
+    @Environment(\.horizontalSizeClass) var widthSizeClass: UserInterfaceSizeClass?
+    
     var body: some View {
         
         HStack{
@@ -20,34 +23,42 @@ struct TitleView: View {
                 router.path.append(5)
             } label: {
                 Image(systemName: "list.clipboard")
+                    .font(widthSizeClass == .regular ? .title2 : .title3)
             }
             .padding(.leading)
             .foregroundColor(.gray)
             
             Spacer()
-            Image("color sluff scorecard")
+            
+            Image("SluffScorecardTitleSVG")
                 .resizable()
-                .frame(width: 200, height: 80)
+                .frame(width: 250, height: 140)
                 
             Spacer()
+            
             Button {
                 router.path.append(3)
             } label: {
                 Image(systemName: "gear")
+                    .font(widthSizeClass == .regular ? .title2 : .title3)
             }
             .padding(.trailing)
             .foregroundColor(.gray)
 
         }
+        .padding(.bottom, -30)
+        .padding(.top, -20)
+        
         Text("(Round: \(game.round)/\(game.numberOfPlayers))")
-            .environment(Game())
-            .environmentObject(Router())
+//            .environment(Game())
+//            .environmentObject(Router())
+            .padding(.bottom, 10)
     }
 }
 
-//
-//#Preview {
-//    TitleView()
-//        .environment(Game())
-//}
-// 
+
+#Preview {
+    TitleView()
+        .environment(Game())
+}
+ 

@@ -15,102 +15,97 @@ struct HistoryView: View {
     @Environment(Game.self) private var game
     @EnvironmentObject var router: Router
     
-    let threeColumnGrid = [GridItem(.fixed(80)), GridItem(.fixed(150)), GridItem(.fixed(150))]
-//    let threeColumnGrid = [GridItem(.fixed(80)), GridItem(.flexible()), GridItem(.flexible())]
-
-
+    @Environment(\.verticalSizeClass) var heightSizeClass: UserInterfaceSizeClass?
+    @Environment(\.horizontalSizeClass) var widthSizeClass: UserInterfaceSizeClass?
     
     var body: some View {
 
+        VStack(alignment: .center){
             
-            VStack(alignment: .center){
-
-            Image("color sluff scorecard")
+            Image("SluffScorecardTitleSVG")
                 .resizable()
-                .frame(width: 200, height: 80)
+                .frame(width: 250, height: 140)
             
-                Text("")
-                Text("")
-
-
-                LazyVGrid(columns: threeColumnGrid, alignment: .center, spacing: 3) {
-
-                Text("Round")
-                        .padding(.leading, 3)
-                    .font(.title3)
-                    .foregroundColor(.black)
-                
-
-                
-                Text(game.team1Name)
-                    .padding(.horizontal, 20)
-                    .padding(.vertical, 2)
-                    .font(.title3)
-                    .background(.blue.opacity(0.3))
-                    .foregroundStyle(.black)
-                    .cornerRadius(8)
-//                    .padding()
-
-
-                
-                Text(game.team2Name)
-                    .padding(.horizontal, 20)
-                    .padding(.vertical, 2)
-                    .font(.title3)
-                    .background(.gray.opacity(0.3))
-                    .foregroundStyle(.black)
-                    .cornerRadius(8)
-//                    .padding()
-
-                
-
-                           
-            }
-
- 
+            Text("")
+            Text("")
+            
             VStack {
+                
+                Grid(alignment: .center, horizontalSpacing: 0, verticalSpacing: 2) {
+                    
+                    GridRow {
+                        Text("Round")
+                            .padding(.leading, 3)
+                            .foregroundColor(.black)
+                        
+                        Text(game.team1Name)
+                            .padding(.horizontal, 20)
+                            .padding(.vertical, 2)
+                            .background(.blue.opacity(0.3))
+                            .foregroundStyle(.black)
+                            .cornerRadius(8)
+                        
+                        Text(game.team2Name)
+                            .padding(.horizontal, 20)
+                            .padding(.vertical, 2)
+                            .background(.gray.opacity(0.3))
+                            .foregroundStyle(.black)
+                            .cornerRadius(8)
+                        
+                    }
+                    .font(widthSizeClass == .regular ? .title : .title2)
+                    .padding(.bottom, 20)
 
-                    List {
-                        ForEach(game.runningScores.indices, id: \.self) { index in
+                    Divider()
+                    
+                    ForEach(Array(zip(game.runningScores.indices, game.runningScores)) , id: \.1) { index, score in
+                        
+                        GridRow {
                             
-                            LazyVGrid(columns: threeColumnGrid, alignment: .center, spacing: 3) {
-
-                                Text(String(game.runningScores[index].round))
-                                    .font(.title3)
-                                    .foregroundColor((index + 1) < game.round ? .black : .clear)
- 
-                                HStack{
-                                    Text("(\(String(game.runningScores[index].t1ChangeInScore))) ")
-                                        .font(.title3)
-                                        .foregroundColor((index + 1)  < game.round ? .black : .clear)
-                                    
-                                    Text("\(String(game.runningScores[index].t1Score)) ")
-                                        .font(.title3)
-                                        .fontWeight(.bold)
-                                        .foregroundColor((index + 1)  < game.round ? .black : .clear)
-                                }
-
-                                HStack{
-                                    Text("(\(String(game.runningScores[index].t2ChangeInScore))) ")
-                                        .font(.title3)
-                                        .foregroundColor((index + 1)  < game.round ? .black : .clear)
-                                    
-                                    Text("\(String(game.runningScores[index].t2Score)) ")
-                                        .font(.title3)
-                                        .fontWeight(.bold)
-                                        .foregroundColor((index + 1)  < game.round ? .black : .clear)
-                                }
-                               
-                            } // end HStack
+                            Text(String(game.runningScores[index].round))
+                                .foregroundColor(.black)
                             
-                        }
-                    }// end List
-                    .listStyle(.plain)
+                            HStack{
+                                Text("(\(String(game.runningScores[index].t1ChangeInScore))) ")
+                                
+                                Text("\(String(game.runningScores[index].t1Score)) ")
+                            }
+                            .padding(.horizontal, 20)
+                            .padding(.vertical, 2)
+                            .foregroundColor((index + 1) < game.round ? .black : .clear)
+                            .background((index + 1) < game.round ? .blue.opacity(0.3) : .clear)
+                            .cornerRadius(8)
+                            
+                            HStack{
+                                Text("(\(String(game.runningScores[index].t2ChangeInScore))) ")
+                                    .foregroundColor((index + 1)  < game.round ? .black : .clear)
+                                
+                                Text("\(String(game.runningScores[index].t2Score)) ")
+                                    .fontWeight(.bold)
+                            }
+                            .padding(.horizontal, 20)
+                            .padding(.vertical, 2)
+                            .foregroundColor((index + 1) < game.round ? .black : .clear)
+                            .background((index + 1) < game.round ? .gray.opacity(0.3) : .clear)
+                            .cornerRadius(8)
+
+                    }// end GridRow
+                    .font(widthSizeClass == .regular ? .title : .title2)
+
+                        Divider()
+                        
+                    } // end ForEach
                     
                 }
+                .padding(.horizontal, 5)
+                
+                Spacer()
+                
+                }
             }
+        }
     }
-}
+
 
 #Preview {
     HistoryView()
