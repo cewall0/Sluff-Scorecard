@@ -5,13 +5,22 @@
 //  Created by Chad Wallace on 1/30/24.
 //
 
+import Foundation
 import SwiftUI
 import Observation
+
 
 struct SettingsView: View {
     
     @Environment(Game.self) private var game
     @EnvironmentObject var router: Router
+    
+    @Binding var path: NavigationPath
+    
+    func reset() {
+        self.path = NavigationPath()
+    }
+
     
     @Environment(\.verticalSizeClass) var heightSizeClass: UserInterfaceSizeClass?
     @Environment(\.horizontalSizeClass) var widthSizeClass: UserInterfaceSizeClass?
@@ -66,7 +75,7 @@ struct SettingsView: View {
                         Text("• ").foregroundColor(.black)
                         Button {
                             game.resetGame()
-                            router.reset()
+                            reset()
                         } label: {
                             Text("Change the number of players")
                                 .multilineTextAlignment(.leading)
@@ -88,7 +97,7 @@ struct SettingsView: View {
 } // end struct
 
 #Preview {
-    SettingsView()
+    SettingsView(path: Binding.constant(NavigationPath()))
         .environment(Game())
-        .environmentObject(Router())
+
 }

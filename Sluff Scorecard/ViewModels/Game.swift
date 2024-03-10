@@ -242,18 +242,22 @@ final class Game {
     /// this function moves the dealer indicator to the next player. We call this at the conclusion of each hand.
     func nextDealer() -> () {
         for index in playersList.indices {
+            
+            // if I am looking at the dealer
             if playersList[index].isDealer == true {
-                playersList[index].isDealer = false
-                if index+1 < playersList.count {
-                    playersList[index+1].isDealer = true
+                playersList[index].isDealer = false // make this not the dealer
+                if index+1 < playersList.count { // If then next player can still deal because they are not the last dealer...
+                    playersList[index+1].isDealer = true // make them the dealer
                 } else {
-                    playersList[0].isDealer = true
+                    playersList[0].isDealer = true // make the first player the dealer getting ready for the next game
                 }
                 
                 break
             }
         }
-        round = round + 1
+        
+        
+
     }
     
     func checkAllBid() -> () {
@@ -274,6 +278,8 @@ final class Game {
     func isGameOver() -> () {
         if round > numberOfPlayers {
            gameOver = true
+        } else {
+            round = round + 1
         }
     }
     

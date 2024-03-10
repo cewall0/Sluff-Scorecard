@@ -5,18 +5,31 @@
 //  Created by Chad Wallace on 2/15/24.
 //
 
+import Foundation
 import SwiftUI
+import Observation
+
 
 struct WinnerView: View {
     
     @Environment(Game.self) private var game
-    @EnvironmentObject var router: Router
+    
+    @Binding var path: NavigationPath
+    
+    func reset() {
+        self.path = NavigationPath()
+    }
+
+    @Environment(\.verticalSizeClass) var heightSizeClass: UserInterfaceSizeClass?
+    @Environment(\.horizontalSizeClass) var widthSizeClass: UserInterfaceSizeClass?
+
+
 
     var body: some View {
         @Bindable var game = game
         
         VStack{
-            TitleView()
+            TitleView(path: $path)
 
             TeamNameView()
             
@@ -39,8 +52,8 @@ struct WinnerView: View {
             
             Button {
                 game.resetGame()
-                router.reset()
-                router.path.append(1)
+                reset()
+                path.append(1)
             } label: {
                 Text("New Game")
             }.buttonStyle(.borderedProminent)
@@ -61,6 +74,6 @@ struct WinnerView: View {
 }
 
 #Preview {
-    WinnerView()
+    WinnerView(path: Binding.constant(NavigationPath()))
         .environment(Game())
 }

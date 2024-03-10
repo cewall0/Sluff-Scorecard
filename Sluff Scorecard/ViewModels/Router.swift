@@ -10,11 +10,11 @@ import SwiftUI
 import Observation
 
 class Router: ObservableObject {
-    @Published var path = NavigationPath()
+//    @Published var path = NavigationPath()
       
-      func reset() {
-          self.path = NavigationPath()
-      }
+//      func reset() {
+//          self.path = NavigationPath()
+//      }
 }
 
 

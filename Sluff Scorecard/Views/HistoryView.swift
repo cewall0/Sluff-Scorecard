@@ -13,8 +13,9 @@ import Observation
 struct HistoryView: View {
     
     @Environment(Game.self) private var game
-    @EnvironmentObject var router: Router
     
+    @Binding var path: NavigationPath
+
     @Environment(\.verticalSizeClass) var heightSizeClass: UserInterfaceSizeClass?
     @Environment(\.horizontalSizeClass) var widthSizeClass: UserInterfaceSizeClass?
     
@@ -90,7 +91,7 @@ struct HistoryView: View {
                             .cornerRadius(8)
 
                     }// end GridRow
-                    .font(widthSizeClass == .regular ? .title : .title2)
+                    .font(widthSizeClass == .regular ? .title2 : .title3)
 
                         Divider()
                         
@@ -108,7 +109,6 @@ struct HistoryView: View {
 
 
 #Preview {
-    HistoryView()
+    HistoryView(path: Binding.constant(NavigationPath()))
         .environment(Game())
-        .environmentObject(Router())
 }

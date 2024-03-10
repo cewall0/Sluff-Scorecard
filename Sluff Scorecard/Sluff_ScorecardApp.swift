@@ -12,14 +12,11 @@ import SwiftUI
 struct Sluff_ScorecardApp: App {
     
     @State private var game = Game()
-    @StateObject var router = Router()
-    
 
     var body: some Scene {
         WindowGroup {
                 SplashScreenView()
                 .environment(game)
-                .environmentObject(router)
         }
     }
 }

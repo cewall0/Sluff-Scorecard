@@ -12,127 +12,110 @@ import Observation
 struct ScorecardView: View {
     
     @Environment(Game.self) private var game
-    @EnvironmentObject var router: Router
+    
+    @Binding var path: NavigationPath
+    
+    func reset() {
+        self.path = NavigationPath()
+    }
     
     @Environment(\.verticalSizeClass) var heightSizeClass: UserInterfaceSizeClass?
     @Environment(\.horizontalSizeClass) var widthSizeClass: UserInterfaceSizeClass?
     
-//     **** State variable to control if askNumPlayersViewIsOn is shown ****
-    @State var askNumPlayersViewIsOn = true
-        
+    
     var body: some View {
         
         @Bindable var game = game
+        
+        VStack{
             
-            VStack{
-                
-                TitleView()
-                
-                TeamNameView()
-                
-                TeamScoresView()
-
-                
-                VStack {
-                    
-                        Grid(alignment: .center, horizontalSpacing: 0, verticalSpacing: 2) {
+            ScrollView {
+            
+            TitleView(path: $path)
+            
+            TeamNameView()
+                    .disableAutocorrection(true)
+            
+            TeamScoresView()
+            
+            
+                LazyVStack(spacing: 2) {
+                    ForEach(game.playersList.indices, id: \.self) { index in
+                        HStack {
+                            Text("D")
+                                .fontWeight(.bold)
+                                .padding(.leading, 15.0)
+                                .padding(.trailing, 5)
+                                .foregroundColor(game.playersList[index].isDealer ? .yellow.opacity(1.0): .yellow.opacity(0.0))
                             
-                            Divider()
-
-                            ForEach(Array(zip(game.playersList.indices, game.playersList)) , id: \.1) { index, player in
-                                ZStack{
-                                    HStack{
-                                        GridRow {
-                                            
-                                                Text("   D   ")
-                                                    .padding(.vertical, 5)
-                                                    .foregroundColor(game.playersList[index].isDealer ? .yellow.opacity(1.0): .yellow.opacity(0.0))
-                                                    .frame(maxWidth: .infinity, alignment: .leading)
-                                                    .background(index % 2 == 0 ? .blue.opacity(0.3) : .gray.opacity(0.3))
-                                                    .cornerRadius(8)
-                                                
-                                            
-                                        }
-                                        .font(widthSizeClass == .regular ? .title : .title2)
-                                    } // end HStack
-                                    
-                                    HStack{
-                                        GridRow {
-                                            
-                                                Text("   D   ")
-                                                    .padding(.vertical, 5)
-                                                    .foregroundColor(.clear)
-                                                
-                                                
-                                                //                                           PlayerNameView(game: game, playerIndex: player)
-                                                
-                                                TextField("Enter name", text: $game.playersList[index].name)
-                                                    .textFieldStyle(PlainTextFieldStyle())
-                                                    .padding(.vertical, 4)
-                                                    .fontWeight(.bold)
-                                                    .accentColor(.pink)
-                                                    .foregroundColor(.black)
-                                                
-                                            HStack{
-                                                Text("Bid:")
-                                                
-                                                
-                                                BidPickerView(playerIndex: index, onBidChanged: {
-                                                    game.setTeamBids(from: game.playersList)
-                                                    game.checkAllBid()
-                                                }
-                                                )
-                                                .frame(width: 110)
-                                                .padding(.trailing, -30)
-                                                
-                                            }
-                                            .frame(width: 150)
-                                            .gridColumnAlignment(.trailing)
-                                            
-                                        }
-                                        .font(widthSizeClass == .regular ? .title : .title2)
-                                    }
-                                      
-
-                                }// end zstack
-                                
-                                Divider()
-                                
-                                   } // end ForEach
+                            PlayerNameView(playerIndex: index)
+                                .disableAutocorrection(true)
+                                .frame(maxWidth: .infinity, alignment: .leading) // Ensure player name is left-justified
                             
-                               }.padding(.horizontal, 5)
-                    
-
-                    Button(action: {
-                        game.setSluffOptions()
-                        game.resetTricksSluffsWon()
-                        router.path.append(2) // case 2 sends to ScoreHandView() See NavigationDestination below
-                    }) {
-                        Text("Score this hand")
-                            .font(widthSizeClass == .regular ? .title : .title2)
-
+                            Text("Bid:")
+                                .fontWeight(.bold)
+                                .foregroundColor(.black)
+                                .frame(width: 70) // Fixed width for the "Bid:" label
+                                .padding(.leading, 40)
+                            
+                            BidPickerView(playerIndex: index, onBidChanged: {
+                                game.setTeamBids(from: game.playersList)
+                                game.checkAllBid()
+                            })
+//                            .scaleEffect(1.1)
+                            .frame(maxWidth: 110, alignment: .trailing) // Allow the bid picker to expand
+                            .padding(.trailing, 15.0) // Add padding to separate bid picker from label
+                        }
+                        .font(widthSizeClass == .regular ? .title3 : .headline)
+                        .padding(.vertical, 5)
+                        .tint(.black)
+                        .background(index % 2 == 0 ? Color.blue.opacity(0.3) : Color.gray.opacity(0.3))
+                        .cornerRadius(8)
+                        .padding(.horizontal, 5)
                     }
-                    .buttonStyle(.borderedProminent)
-                    .tint(.accentColor)
-                    .disabled(game.notAllBid)
-                    
-                    Spacer()
-                    
                 }
 
-            }.navigationBarBackButtonHidden(true) // end VStack
+            Button(action: {
+                game.setSluffOptions()
+                game.resetTricksSluffsWon()
+                path.append(2) // case 2 sends to ScoreHandView() See NavigationDestination below
+            }) {
+                Text("Score this hand")
+            }
+            .buttonStyle(.borderedProminent)
+            .tint(.accentColor)
+            .disabled(game.notAllBid)
+            
+            Spacer()
+            
+            Text("")
+            Text("")
+            Text("")
+            Text("")
+            Text("")
+            Text("")
+            Text("")
+            Text("")
+            Text("")
+            Text("")
+            Text("")
+            Text("")
+            Text("")
+            Text("")
 
+            }
+        }.navigationBarBackButtonHidden(true)
     } // end Body view
 } // end struct
 
 
 #Preview {
-    NavigationStack{
-        ScorecardView()
-            .environment(Game())
-            .environmentObject(Router())
-    }
+    
+    ScorecardView(path: Binding.constant(NavigationPath()))
+        .environment(Game())
+    
 }
+
 
 
 

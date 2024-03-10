@@ -5,13 +5,21 @@
 //  Created by Chad Wallace on 2/4/24.
 //
 
+import Foundation
 import SwiftUI
+import Observation
+
 
 struct ScoreHandView: View {
     
     @Environment(Game.self) private var game
-    @EnvironmentObject var router: Router
     
+    @Binding var path: NavigationPath
+    
+    func reset() {
+        self.path = NavigationPath()
+    }
+
     @Environment(\.verticalSizeClass) var heightSizeClass: UserInterfaceSizeClass?
     @Environment(\.horizontalSizeClass) var widthSizeClass: UserInterfaceSizeClass?
 
@@ -55,11 +63,13 @@ struct ScoreHandView: View {
                 
                 GridRow{
                     Text(String(game.team1TotalScore))
-                        .font(widthSizeClass == .regular ? .largeTitle : .title)
+//                        .font(widthSizeClass == .regular ? .largeTitle : .title)
+                        .font(.largeTitle)
                         .frame(maxWidth: .infinity, alignment: .center)
 
                     Text(String(game.team2TotalScore))
-                        .font(widthSizeClass == .regular ? .largeTitle : .title)
+//                        .font(widthSizeClass == .regular ? .largeTitle : .title)
+                        .font(.largeTitle)
                         .frame(maxWidth: .infinity, alignment: .center)
                 }
                 
@@ -149,11 +159,11 @@ struct ScoreHandView: View {
                 
                 if game.gameOver == true {
                     game.declareWinner()
-                    router.reset()
-                    router.path.append(4)
+                    reset()
+                    path.append(4)
                 } else {
-                    router.reset()
-                    router.path.append(1)
+                    reset()
+                    path.append(1)
                 }
             }, label: {
                 Text("Update Scores")
@@ -173,7 +183,7 @@ struct ScoreHandView: View {
 
 
 #Preview {
-    ScoreHandView()
+    ScoreHandView(path: Binding.constant(NavigationPath()))
         .environment(Game())
 }
 

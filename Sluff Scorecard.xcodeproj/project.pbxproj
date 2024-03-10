@@ -26,6 +26,7 @@
 		C84C58532B9A22F800459472 /* RunningScores.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84C58522B9A22F800459472 /* RunningScores.swift */; };
 		C85DEA9F2B9A6AB4004C79C0 /* SluffChoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85DEA9E2B9A6AB4004C79C0 /* SluffChoice.swift */; };
 		C8A2DB5E2B7FF92600569050 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A2DB5D2B7FF92600569050 /* SplashScreenView.swift */; };
+		C8D346292B9CBE650058F3EC /* PlayerNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D346282B9CBE650058F3EC /* PlayerNameView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		C84C58522B9A22F800459472 /* RunningScores.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningScores.swift; sourceTree = "<group>"; };
 		C85DEA9E2B9A6AB4004C79C0 /* SluffChoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SluffChoice.swift; sourceTree = "<group>"; };
 		C8A2DB5D2B7FF92600569050 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
+		C8D346282B9CBE650058F3EC /* PlayerNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerNameView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +149,7 @@
 				0BB1F20C2B71D614006201F8 /* TeamScoresView.swift */,
 				0BB1F20A2B71D48C006201F8 /* TitleView.swift */,
 				0BB1F2042B6EBB1F006201F8 /* TeamNameView.swift */,
+				C8D346282B9CBE650058F3EC /* PlayerNameView.swift */,
 				0BB1F2002B6C0059006201F8 /* BidPickerView.swift */,
 			);
 			path = ViewPieces;
@@ -238,6 +241,7 @@
 				0BB1F2052B6EBB1F006201F8 /* TeamNameView.swift in Sources */,
 				0B4821E62B43B712001FDA98 /* Sluff_ScorecardApp.swift in Sources */,
 				C84C58512B9A19EC00459472 /* HistoryView.swift in Sources */,
+				C8D346292B9CBE650058F3EC /* PlayerNameView.swift in Sources */,
 				0BB1F20D2B71D614006201F8 /* TeamScoresView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

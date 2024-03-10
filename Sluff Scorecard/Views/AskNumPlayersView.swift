@@ -5,15 +5,24 @@
 //  Created by Chad Wallace on 2/17/24.
 //
 
+import Foundation
 import SwiftUI
+import Observation
+
 
 struct AskNumPlayersView: View {
     
     @Environment(Game.self) private var game
-    @EnvironmentObject var router: Router
     
     @Environment(\.verticalSizeClass) var heightSizeClass: UserInterfaceSizeClass?
     @Environment(\.horizontalSizeClass) var widthSizeClass: UserInterfaceSizeClass?
+    
+    @State var path = NavigationPath()
+    
+    func reset() {
+        self.path = NavigationPath()
+    }
+    
     
     init() {
         
@@ -28,7 +37,7 @@ struct AskNumPlayersView: View {
         
         @Bindable var game = game
         
-        NavigationStack(path: $router.path) {
+        NavigationStack(path: $path) {
             
             VStack{
                 Text("")
@@ -56,8 +65,8 @@ struct AskNumPlayersView: View {
                 
                 Button(action: {
                     game.setNumberOfPlayers()
-                    router.reset()
-                    router.path.append(1)
+                    reset()
+                    path.append(1)
                 }, label: {
                     Text("Let's play")
                 })
@@ -65,34 +74,33 @@ struct AskNumPlayersView: View {
                 .font(widthSizeClass == .regular ? .title : .title2)
                 .buttonStyle(.borderedProminent)
                 .tint(.accentColor)
+                
+                Spacer()
+                
             }
             .navigationDestination(for: Int.self) { destination in
                 switch destination {
                 case 1:
-                    ScorecardView().environmentObject(router)
+                    ScorecardView(path: $path)
                 case 2:
-                    ScoreHandView().environmentObject(router)
+                    ScoreHandView(path: $path)
                 case 3:
-                    SettingsView().environmentObject(router)
+                    SettingsView(path: $path)
                 case 4:
-                    WinnerView().environmentObject(router)
+                    WinnerView(path: $path)
                 case 5:
-                    HistoryView().environmentObject(router)
+                    HistoryView(path: $path)
                 default:
                     EmptyView()
-                    
-                    Spacer()
                 }
             }
-            Spacer()
         }
     }
 }
 
 #Preview {
-    AskNumPlayersView()
-        .environment(Game())
-        .environmentObject(Router())
-        .previewDevice("iPhone 15 Pro")
-    
+    NavigationStack{
+        AskNumPlayersView()
+            .environment(Game())
+    }
 }
