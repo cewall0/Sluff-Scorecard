@@ -26,6 +26,8 @@ struct HistoryView: View {
             Image("SluffScorecardTitleSVG")
                 .resizable()
                 .frame(width: 250, height: 140)
+                .padding(.bottom, -20)
+                .padding(.top, -10)
             
             Text("")
             Text("")

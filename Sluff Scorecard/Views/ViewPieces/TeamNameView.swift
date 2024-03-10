@@ -38,7 +38,7 @@ struct TeamNameView: View {
                     .padding(.trailing, 6.0)
                     .padding(.leading, -4.0)
 
-            }.font(.title) // end LazyVGrid
+            }.font(.title2) // end LazyVGrid
         }
     }
 }

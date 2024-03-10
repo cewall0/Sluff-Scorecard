@@ -35,6 +35,7 @@ struct TeamScoresView: View {
                         Text("Team Bid: \(game.team2TotalBid)").foregroundColor(game.team2TotalBid <= 14 ? .black : .red)
                     }
                 }.font(widthSizeClass == .regular ? .title2 : .title3)
+                    .padding(.vertical, -3)
             
             LazyVGrid(columns: twoColumnGrid, alignment: .center, spacing: 10) {
                 HStack{
@@ -43,7 +44,7 @@ struct TeamScoresView: View {
                 HStack{
                     Text("Team Sluffs: \(game.team2TotalSluffs)")
                 }
-            }.font(widthSizeClass == .regular ? .title2 : .title3)
+            }.font(widthSizeClass == .regular ? .title2 : .title3).padding(.vertical, -3)
             } else if game.gameOver == true && game.winner == game.team1Name {
                 LazyVGrid(columns: twoColumnGrid, alignment: .center, spacing: 10) {
                     HStack{
@@ -54,6 +55,7 @@ struct TeamScoresView: View {
                         Text(" ")
                     }
                 }.font(widthSizeClass == .regular ? .largeTitle : .title)
+                
             } else if game.gameOver == true && game.winner == game.team2Name {
                 LazyVGrid(columns: twoColumnGrid, alignment: .center, spacing: 10) {
                     HStack{

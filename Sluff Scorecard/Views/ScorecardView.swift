@@ -67,7 +67,7 @@ struct ScorecardView: View {
                             .padding(.trailing, 15.0) // Add padding to separate bid picker from label
                         }
                         .font(widthSizeClass == .regular ? .title3 : .headline)
-                        .padding(.vertical, 5)
+                        .padding(.vertical, 3)
                         .tint(.black)
                         .background(index % 2 == 0 ? Color.blue.opacity(0.3) : Color.gray.opacity(0.3))
                         .cornerRadius(8)

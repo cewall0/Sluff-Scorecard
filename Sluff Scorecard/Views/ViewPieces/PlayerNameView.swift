@@ -20,7 +20,7 @@ struct PlayerNameView: View {
         HStack{
             TextField(game.playersList[playerIndex].name, text: $game.playersList[playerIndex].name)
                 .multilineTextAlignment(.leading)
-                .padding(.vertical, 4)
+                .padding(.vertical, 2)
                 .fontWeight(.bold)
                 .accentColor(.pink)
                 .foregroundColor(.black)

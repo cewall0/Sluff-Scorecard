@@ -41,13 +41,14 @@ struct AskNumPlayersView: View {
             
             VStack{
                 Text("")
-                Text("")
                 Image("SluffScorecardTitleSVG")
                     .resizable()
                     .frame(width: 250, height: 140)
                 Text("")
-                Text("")
-                Text("Welcome!").font(widthSizeClass == .regular ? .largeTitle : .title)
+//                Image("Welcome")
+//                    .resizable()
+//                    .frame(width: 125, height: 70)
+              
                 Text("")
                 Text("How many players will be playing?").font(widthSizeClass == .regular ? .title : .title2)
                 
@@ -74,6 +75,12 @@ struct AskNumPlayersView: View {
                 .font(widthSizeClass == .regular ? .title : .title2)
                 .buttonStyle(.borderedProminent)
                 .tint(.accentColor)
+                
+                Text("")
+                Text("")
+                HStack{
+                    Text("Personalize your game by changing the team/player names on the following screen.").font(widthSizeClass == .regular ? .title2 : .title3)
+                }.multilineTextAlignment(.center)
                 
                 Spacer()
                 
