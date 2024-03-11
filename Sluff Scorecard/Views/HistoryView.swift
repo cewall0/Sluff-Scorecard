@@ -26,15 +26,32 @@ struct HistoryView: View {
             Image("SluffScorecardTitleSVG")
                 .resizable()
                 .frame(width: 250, height: 140)
-                .padding(.bottom, -20)
                 .padding(.top, -10)
+                .padding(.bottom, -30)
+                
             
-            Text("")
-            Text("")
-            
+            Text("(Round by Round History)")
+                .padding(.bottom, 5)
+
             VStack {
                 
                 Grid(alignment: .center, horizontalSpacing: 0, verticalSpacing: 2) {
+                    
+                    GridRow {
+                        Text("Score")
+                            .padding(.leading, 3)
+                            .foregroundColor(.black)
+                        
+                        Text (String(game.team1TotalScore))
+                            .font(.largeTitle)
+                        
+                        Text (String(game.team2TotalScore))
+                            .font(.largeTitle)
+                        
+                    }
+                    .font(widthSizeClass == .regular ? .title : .title2)
+                    .padding(.bottom, 5)
+
                     
                     GridRow {
                         Text("Round")
@@ -57,7 +74,8 @@ struct HistoryView: View {
                         
                     }
                     .font(widthSizeClass == .regular ? .title : .title2)
-                    .padding(.bottom, 20)
+                    .padding(.bottom, 10)
+                    .padding(.top, 10)
 
                     Divider()
                     

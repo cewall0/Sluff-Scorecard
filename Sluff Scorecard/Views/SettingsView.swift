@@ -62,13 +62,21 @@ struct SettingsView: View {
                     
                     HStack(alignment: .top){
                         Text("• ")
-                        Link("Read the rules of Sluff at gamerules.com", destination: URL(string: "https://gamerules.com/rules/rook-sluff-card-game/")!)
+                        Link("Click here to read the rules of Sluff.", destination: URL(string: "https://sites.google.com/view/sluff-scorecard/rules")!)
                         Spacer()
                     }
                     .foregroundColor(.black)
                     .multilineTextAlignment(.leading)
                     
+                    Divider()
                     
+                    HStack(alignment: .top){
+                        Text("• ")
+                        Link("Click here to learn how to use this app.", destination: URL(string: "https://sites.google.https://sites.google.com/view/sluff-scorecard/")!)
+                        Spacer()
+                    }
+                    .foregroundColor(.black)
+                    .multilineTextAlignment(.leading)
                     Divider()
                     
                     HStack(alignment: .top){
@@ -77,7 +85,7 @@ struct SettingsView: View {
                             game.resetGame()
                             reset()
                         } label: {
-                            Text("Change the number of players")
+                            Text("Click here to change the number of players.")
                                 .multilineTextAlignment(.leading)
                                 .foregroundColor(.black)
                         }
@@ -88,7 +96,7 @@ struct SettingsView: View {
                     
 
                 } // end VStack
-                .font(widthSizeClass == .regular ? .title : .title2)
+                .font(widthSizeClass == .regular ? .title2 : .title3)
                 .padding(.horizontal)
                 
             }
