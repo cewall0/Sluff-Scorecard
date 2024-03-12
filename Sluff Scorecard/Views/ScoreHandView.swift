@@ -39,6 +39,10 @@ struct ScoreHandView: View {
             Image("SluffScorecardTitleSVG")
                 .resizable()
                 .frame(width: 250, height: 140)
+                .padding(.bottom, -25)
+            
+            RoundView()
+                .padding(.bottom, 10)
             
             Grid(alignment: .center, horizontalSpacing: 10, verticalSpacing: 10) {
                 
@@ -123,28 +127,47 @@ struct ScoreHandView: View {
                     HStack{
                         Text("Sluffs Won: ")
 
-                        Picker("Sluffs Won:", selection: $game.team1SluffsWonStr) {
-                           
-                            ForEach(game.sluffTeam1ChoiceList, id:\.self){
-                                Text($0)
+                        if game.team1TotalSluffs != 0{
+                            Picker("Sluffs Won:", selection: $game.team1SluffsWonStr) {
+                                
+                                ForEach(game.sluffTeam1ChoiceList, id:\.self){
+                                    Text($0)
                                 }
+                            }
+                            .pickerStyle(.menu)
+                        } else {
+                            Text("0")
+                                .foregroundStyle(.blue)
                         }
-                    .pickerStyle(.menu)
-                    } // end HStack for Team 1 sluffs
+                    }// end HStack for Team 1 sluffs
+                    .onAppear {
+                                if game.team1TotalSluffs == 0 {
+                                    game.team1SluffsWonStr = "0"
+                                }
+                            }
                     .scaleEffect(widthSizeClass == .regular ? 1.4 : 1.1)
                     
                     HStack{
                         Text("Sluffs Won: ")
 
-                        Picker("Sluffs Won:", selection: $game.team2SluffsWonStr) {
-                           
-                            ForEach(game.sluffTeam2ChoiceList, id:\.self){
-                                Text($0)
+                        if game.team2TotalSluffs != 0 {
+                            Picker("Sluffs Won:", selection: $game.team2SluffsWonStr) {
+                                
+                                ForEach(game.sluffTeam2ChoiceList, id:\.self){
+                                    Text($0)
                                 }
+                            }
+                            .pickerStyle(.menu)
+                        } else {
+                            Text("0")
+                                .foregroundStyle(.blue)
                         }
-                    .pickerStyle(.menu)
-                    } // end HStack for Team 2 sluffs
-                    .padding(.leading, 20)
+                    }// end HStack for Team 2 sluffs
+                    .onAppear {
+                                if game.team2TotalSluffs == 0 {
+                                    game.team2SluffsWonStr = "0"
+                                }
+                            }
                     .scaleEffect(widthSizeClass == .regular ? 1.4 : 1.1)
                 }
             } // end Grid

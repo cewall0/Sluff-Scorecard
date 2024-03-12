@@ -55,9 +55,6 @@ struct TitleView: View {
         .padding(.top, -15)
         .padding(.bottom, -20)
 
-        
-        Text("(Round: \(game.round)/\(game.numberOfPlayers))")
-            .padding(.bottom, 10)
     }
 }
 

@@ -22,6 +22,7 @@
 		0BB1F22A2B72B14C006201F8 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB1F2292B72B14C006201F8 /* Router.swift */; };
 		0BD384D82B7EDF750003C98E /* WinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD384D72B7EDF750003C98E /* WinnerView.swift */; };
 		0BD384DC2B8075430003C98E /* AskNumPlayersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD384DB2B8075430003C98E /* AskNumPlayersView.swift */; };
+		C801CE7D2BA0ABF7007488A0 /* RoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C801CE7C2BA0ABF7007488A0 /* RoundView.swift */; };
 		C84C58512B9A19EC00459472 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84C58502B9A19EC00459472 /* HistoryView.swift */; };
 		C84C58532B9A22F800459472 /* RunningScores.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84C58522B9A22F800459472 /* RunningScores.swift */; };
 		C85DEA9F2B9A6AB4004C79C0 /* SluffChoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85DEA9E2B9A6AB4004C79C0 /* SluffChoice.swift */; };
@@ -46,6 +47,7 @@
 		0BB1F2292B72B14C006201F8 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		0BD384D72B7EDF750003C98E /* WinnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinnerView.swift; sourceTree = "<group>"; };
 		0BD384DB2B8075430003C98E /* AskNumPlayersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskNumPlayersView.swift; sourceTree = "<group>"; usesTabs = 0; };
+		C801CE7C2BA0ABF7007488A0 /* RoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundView.swift; sourceTree = "<group>"; };
 		C84C58502B9A19EC00459472 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		C84C58522B9A22F800459472 /* RunningScores.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningScores.swift; sourceTree = "<group>"; };
 		C85DEA9E2B9A6AB4004C79C0 /* SluffChoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SluffChoice.swift; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 			children = (
 				0BB1F20C2B71D614006201F8 /* TeamScoresView.swift */,
 				0BB1F20A2B71D48C006201F8 /* TitleView.swift */,
+				C801CE7C2BA0ABF7007488A0 /* RoundView.swift */,
 				0BB1F2042B6EBB1F006201F8 /* TeamNameView.swift */,
 				C8D346282B9CBE650058F3EC /* PlayerNameView.swift */,
 				0BB1F2002B6C0059006201F8 /* BidPickerView.swift */,
@@ -243,6 +246,7 @@
 				0BB1F2052B6EBB1F006201F8 /* TeamNameView.swift in Sources */,
 				0B4821E62B43B712001FDA98 /* Sluff_ScorecardApp.swift in Sources */,
 				C84C58512B9A19EC00459472 /* HistoryView.swift in Sources */,
+				C801CE7D2BA0ABF7007488A0 /* RoundView.swift in Sources */,
 				C8D346292B9CBE650058F3EC /* PlayerNameView.swift in Sources */,
 				0BB1F20D2B71D614006201F8 /* TeamScoresView.swift in Sources */,
 			);
@@ -378,7 +382,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"Sluff Scorecard/Preview Content\"";
 				DEVELOPMENT_TEAM = YZ8ZVD6D26;
 				ENABLE_PREVIEWS = YES;
@@ -414,7 +418,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"Sluff Scorecard/Preview Content\"";
 				DEVELOPMENT_TEAM = YZ8ZVD6D26;
 				ENABLE_PREVIEWS = YES;

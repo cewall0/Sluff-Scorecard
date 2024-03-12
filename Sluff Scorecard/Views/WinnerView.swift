@@ -29,7 +29,10 @@ struct WinnerView: View {
         @Bindable var game = game
         
         VStack{
-            TitleView(path: $path)
+            Image("SluffScorecardTitleSVG")
+                .resizable()
+                .frame(width: 250, height: 140)
+
 
             TeamNameView()
             
@@ -42,7 +45,7 @@ struct WinnerView: View {
                     if game.winner == "Tie" {
                         Text("We have a tie!")
                     } else {
-                        Text("\(game.winner) wins!!")
+                        Text("Way to go \(game.winner)!!")
                     }
                 }
                 .font(.title)

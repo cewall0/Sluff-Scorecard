@@ -81,13 +81,17 @@ final class Game {
             }
         }
         
+       setRunningScores()
+        
+    } // end func setNumberOfPlayers
+    
+    func setRunningScores() {
         for index in 1...numberOfPlayers {
 
             runningScores.append(RunningScores(round: index, t1ChangeInScore: 0, t1Score: 0, t2ChangeInScore: 0, t2Score: 0))
 
         }
-        
-    } // end func setNumberOfPlayers
+    }
     
     
     /// setTeamBids function with a parameter of the playersList array of Player structs. This function keeps track of the current bid for each team (how many tricks they bid they can win) during one round.
@@ -207,6 +211,7 @@ final class Game {
         team2TotalScore = team2TotalScore + t2ChangeInScore
         
         // Update the RunningScore struct in the runningScores array for the history view
+        
         runningScores[round - 1].t1ChangeInScore = t1ChangeInScore
         runningScores[round - 1].t1Score = team1TotalScore
         runningScores[round - 1].t2ChangeInScore = t2ChangeInScore
@@ -276,8 +281,9 @@ final class Game {
     
     /// This function changes the gameOver boolean to true after each of the players in the game had dealt one hand.
     func isGameOver() -> () {
-        if round > numberOfPlayers {
+        if round >= numberOfPlayers {
            gameOver = true
+            declareWinner()
         } else {
             round = round + 1
         }
@@ -312,8 +318,7 @@ final class Game {
         dontUpdateScores = true
         winner = ""
         runningScores.removeAll()
-        runningScores = [RunningScores(round: 1, t1ChangeInScore: 0, t1Score: 0, t2ChangeInScore: 0, t2Score: 0)]
-
+        setRunningScores()
 
     }
    
