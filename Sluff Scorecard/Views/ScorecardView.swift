@@ -12,63 +12,79 @@ import Observation
 struct ScorecardView: View {
     
     @Environment(Game.self) private var game
-    @EnvironmentObject var router: Router
     
-    // **** State variable to control if askNumPlayersViewIsOn is shown ****
-    @State var askNumPlayersViewIsOn = true
+    @Binding var path: NavigationPath
     
-    let twoColumnGrid = [GridItem(.flexible()), GridItem(.flexible())]
+    func reset() {
+        self.path = NavigationPath()
+    }
+    
+    @Environment(\.verticalSizeClass) var heightSizeClass: UserInterfaceSizeClass?
+    @Environment(\.horizontalSizeClass) var widthSizeClass: UserInterfaceSizeClass?
+    
     
     var body: some View {
         
-        GeometryReader{geo in
+        @Bindable var game = game
+        
+        if game.gameOver == false {
             
             VStack{
                 
-                TitleView()
-                
-                TeamNameView()
-                
-                TeamScoresView()
-                
-                VStack {
+                ScrollView {
                     
-                        List {
-                            ForEach(game.playersList.indices, id: \.self) { index in
-                                HStack {
-                                    Text("D")
-                                        .frame(width: CGFloat(geo.size.width*0.05))
-                                        .fontWeight(.bold)
-                                        .padding(.leading, 50.0)
-                                        .foregroundColor(game.playersList[index].isDealer ? .yellow.opacity(1.0): .yellow.opacity(0.0))
-                                    
-                                    PlayerNameView(game: game, playerIndex: index)
-                                        .frame(width: CGFloat(geo.size.width*0.55))
-                                    
-                                    BidPickerView(game: game, playerIndex: index, onBidChanged: {
-                                        game.setTeamBids(from: game.playersList)
-                                        game.checkAllBid()
-                                    }
-                                    )
-                                    .frame(width: CGFloat(geo.size.width*0.3))
-                                    .padding(.trailing, 55.0)
-                                } // end HStack
-                                .frame(width: CGFloat(geo.size.width*0.95))
-                                .foregroundColor(.black.opacity(1.0))
-                                .tint(.black)
-                                .background(index % 2 == 0 ? .blue.opacity(0.3) : .gray.opacity(0.3))
-                                .cornerRadius(8)
+                    TitleView(path: $path)
+                        .padding(.bottom, -10)
+                    
+                    RoundView()
+                        .padding(.bottom, 10)
+                    
+                    TeamNameView()
+                        .disableAutocorrection(true)
+                    
+                    TeamScoresView()
+                    
+                    
+                    LazyVStack(spacing: 2) {
+                        ForEach(game.playersList.indices, id: \.self) { index in
+                            HStack {
+                                Text("D")
+                                    .fontWeight(.bold)
+                                    .padding(.leading, 15.0)
+                                    .padding(.trailing, 5)
+                                    .foregroundColor(game.playersList[index].isDealer ? .yellow.opacity(1.0): .yellow.opacity(0.0))
                                 
+                                PlayerNameView(playerIndex: index)
+                                    .disableAutocorrection(true)
+                                    .frame(maxWidth: .infinity, alignment: .leading) // Ensure player name is left-justified
                                 
+                                Text("Bid:")
+                                    .fontWeight(.bold)
+                                    .foregroundColor(.black)
+                                    .frame(width: 70) // Fixed width for the "Bid:" label
+                                    .padding(.leading, 40)
+                                
+                                BidPickerView(playerIndex: index, onBidChanged: {
+                                    game.setTeamBids(from: game.playersList)
+                                    game.checkAllBid()
+                                })
+                                //                            .scaleEffect(1.1)
+                                .frame(maxWidth: 110, alignment: .trailing) // Allow the bid picker to expand
+                                .padding(.trailing, 15.0) // Add padding to separate bid picker from label
                             }
-                        }// end List
-                        .listStyle(.plain)
-                        
+                            .font(widthSizeClass == .regular ? .title3 : .headline)
+                            .padding(.vertical, 3)
+                            .tint(.black)
+                            .background(index % 2 == 0 ? Color.blue.opacity(0.3) : Color.gray.opacity(0.3))
+                            .cornerRadius(8)
+                            .padding(.horizontal, 5)
+                        }
                     }
                     
                     Button(action: {
+                        game.setSluffOptions()
                         game.resetTricksSluffsWon()
-                        router.path.append(2) // case 2 sends to ScoreHandView() See NavigationDestination below
+                        path.append(2) // case 2 sends to ScoreHandView() See NavigationDestination below
                     }) {
                         Text("Score this hand")
                     }
@@ -78,23 +94,38 @@ struct ScorecardView: View {
                     
                     Spacer()
                     
+                    Text("")
+                    Text("")
+                    Text("")
+                    Text("")
+                    Text("")
+                    Text("")
+                    Text("")
+                    Text("")
+                    Text("")
+                    Text("")
+                    Text("")
+                    Text("")
+                    Text("")
+                    Text("")
+                    
                 }
-
-            }
-            .navigationBarBackButtonHidden(true) // end VStack
-            
-
+            }.navigationBarBackButtonHidden(true)
+        }
+        else {
+            WinnerView(path: $path)
+        }
     } // end Body view
 } // end struct
 
 
 #Preview {
-    NavigationStack{
-        ScorecardView()
-            .environment(Game())
-            .environmentObject(Router())
-    }
+    
+    ScorecardView(path: Binding.constant(NavigationPath()))
+        .environment(Game())
+    
 }
+
 
 
 

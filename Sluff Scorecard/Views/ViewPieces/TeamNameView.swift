@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Foundation
 
 
 struct TeamNameView: View {
@@ -29,8 +30,6 @@ struct TeamNameView: View {
                     .padding(.leading, 6.0)
                     .padding(.trailing, -4.0)
             
-
-                    
                     TextField(game.team2Name, text: $game.team2Name)
                     .foregroundStyle(.black).opacity(1.0)
                     .multilineTextAlignment(.center)
@@ -39,10 +38,7 @@ struct TeamNameView: View {
                     .padding(.trailing, 6.0)
                     .padding(.leading, -4.0)
 
-                    
-                    
-                
-            }.font(.title) // end LazyVGrid
+            }.font(.title2) // end LazyVGrid
         }
     }
 }

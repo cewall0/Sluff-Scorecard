@@ -5,13 +5,25 @@
 //  Created by Chad Wallace on 1/30/24.
 //
 
+import Foundation
 import SwiftUI
 import Observation
+
 
 struct SettingsView: View {
     
     @Environment(Game.self) private var game
     @EnvironmentObject var router: Router
+    
+    @Binding var path: NavigationPath
+    
+    func reset() {
+        self.path = NavigationPath()
+    }
+
+    
+    @Environment(\.verticalSizeClass) var heightSizeClass: UserInterfaceSizeClass?
+    @Environment(\.horizontalSizeClass) var widthSizeClass: UserInterfaceSizeClass?
     
     
     var body: some View {
@@ -19,72 +31,72 @@ struct SettingsView: View {
         VStack{
             Text(" ")
 
-            Image("color sluff scorecard")
+            Image("SluffScorecardTitleSVG")
                 .resizable()
-                .frame(width: 200, height: 80)
+                .frame(width: 250, height: 140)
 
-            Text(" ")
 
-            
             ScrollView{
                 
                 VStack(alignment: .leading){
                     
-                    HStack{
+                    HStack(alignment: .top){
                         Text("• ").foregroundColor(.black)
-                        Text("You can edit the team and player names by tapping on them.").foregroundColor(.black)
+                        Text("You can edit the team and player names by tapping on them.")
+                            .foregroundColor(.black)
+                            .multilineTextAlignment(.leading)
                         Spacer()
                     } // end HStack
                     
-//                    Text(" ")
                     Divider()
                     
-                    HStack{
+                    HStack(alignment: .top){
                         Text("• ").foregroundColor(.black)
                         Text("D").foregroundColor(.yellow)
                         Text("indicates the current dealer.").foregroundColor(.black)
+                            .multilineTextAlignment(.leading)
                         Spacer()
                     } // end HStack
                     
-//                    Text(" ")
                     Divider()
                     
-                    HStack{
+                    HStack(alignment: .top){
                         Text("• ")
-                        Link("Read the rules of Sluff at gamerules.com", destination: URL(string: "https://gamerules.com/rules/rook-sluff-card-game/")!)
+                        Link("Click here to read the rules of Sluff.", destination: URL(string: "https://sites.google.com/view/sluff-scorecard/rules")!)
                         Spacer()
                     }
+                    .foregroundColor(.black)
+                    .multilineTextAlignment(.leading)
                     
-                    
-//                    Text(" ")
                     Divider()
                     
-                    HStack{
+                    HStack(alignment: .top){
+                        Text("• ")
+                        Link("Click here to learn how to use this app.", destination: URL(string: "https://sites.google.https://sites.google.com/view/sluff-scorecard/")!)
+                        Spacer()
+                    }
+                    .foregroundColor(.black)
+                    .multilineTextAlignment(.leading)
+                    Divider()
+                    
+                    HStack(alignment: .top){
                         Text("• ").foregroundColor(.black)
                         Button {
                             game.resetGame()
-                            router.reset()
+                            reset()
                         } label: {
-                            Text("Change the number of players")
+                            Text("Click here to change the number of players.")
+                                .multilineTextAlignment(.leading)
+                                .foregroundColor(.black)
                         }
                     }
                     
                     
                     Spacer()
                     
-//                    HStack{
-//                        Spacer()
-//                        Button(action: {
-//                            router.reset()
-//                            router.path.append(1)
-//                        }) {
-//                            Text("Return")
-//                        }.buttonStyle(.borderedProminent)
-//                            .tint(.accentColor)
-//                            .padding()
-//                        Spacer()
-//                    }
+
                 } // end VStack
+                .font(widthSizeClass == .regular ? .title2 : .title3)
                 .padding(.horizontal)
                 
             }
@@ -93,7 +105,7 @@ struct SettingsView: View {
 } // end struct
 
 #Preview {
-    SettingsView()
+    SettingsView(path: Binding.constant(NavigationPath()))
         .environment(Game())
-        .environmentObject(Router())
+
 }

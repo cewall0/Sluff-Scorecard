@@ -2,30 +2,34 @@
 //  PlayerNameView.swift
 //  Sluff Scorecard
 //
-//  Created by Chad Wallace on 2/3/24.
+//  Created by Chad Wallace on 3/9/24.
 //
 
 import SwiftUI
-import Foundation
 
 struct PlayerNameView: View {
     
-    @Bindable var game: Game
-    var playerIndex: Int
+    @Environment(Game.self) private var game
+
+    let playerIndex: Int
     
     var body: some View {
+        
+        @Bindable var game = game
 
-            HStack{
-                TextField("Enter name", text: $game.playersList[playerIndex].name)
-                    .textFieldStyle(PlainTextFieldStyle())
-                    .fontWeight(.bold)
-                    .accentColor(.pink)
-                    .foregroundColor(.black)
-
+        HStack{
+            TextField(game.playersList[playerIndex].name, text: $game.playersList[playerIndex].name)
+                .multilineTextAlignment(.leading)
+                .padding(.vertical, 2)
+                .fontWeight(.bold)
+                .accentColor(.pink)
+                .foregroundColor(.black)
         }
+      
     }
 }
 
-#Preview {
-    PlayerNameView(game: Game(), playerIndex: 0)
-}
+//#Preview {
+//    PlayerNameView(index: Binding.constant{)
+//        .environment(Game())
+//}

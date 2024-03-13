@@ -5,12 +5,23 @@
 //  Created by Chad Wallace on 2/4/24.
 //
 
+import Foundation
 import SwiftUI
+import Observation
+
 
 struct ScoreHandView: View {
     
     @Environment(Game.self) private var game
-    @EnvironmentObject var router: Router
+    
+    @Binding var path: NavigationPath
+    
+    func reset() {
+        self.path = NavigationPath()
+    }
+
+    @Environment(\.verticalSizeClass) var heightSizeClass: UserInterfaceSizeClass?
+    @Environment(\.horizontalSizeClass) var widthSizeClass: UserInterfaceSizeClass?
 
     let twoColumnGrid = [GridItem(.flexible()), GridItem(.flexible())]
     let sluffChoices0 = ["0"]
@@ -25,133 +36,142 @@ struct ScoreHandView: View {
         @Bindable var game = game
 
         VStack{
-            Image("color sluff scorecard")
+            Image("SluffScorecardTitleSVG")
                 .resizable()
-                .frame(width: 200, height: 80)
-
-
-            TeamNameView()
+                .frame(width: 250, height: 140)
+                .padding(.bottom, -25)
             
-            TeamScoresView()
+            RoundView()
+                .padding(.bottom, 10)
             
-            LazyVGrid(columns: twoColumnGrid, alignment: .center, spacing: 10) {
-                HStack{
-                    Text("Tricks Won:")
-                    Picker("Tricks Won:", selection: $game.team1TricksWonStr) {
-                        Text("--").tag("--")
-                        ForEach(0...14, id:\.self){ tricksWon in
-                            Text("\(tricksWon)").tag("\(tricksWon)")
-                        }
-                    }
-                } // end HStack
+            Grid(alignment: .center, horizontalSpacing: 10, verticalSpacing: 10) {
                 
-                HStack{
-                    Text("Tricks Won:")
-                    if game.team1TricksWonStr != "--" {
-                        Text(String(14-Int(game.team1TricksWonStr)!)).foregroundColor(.accentColor)
-                    } else {
-                        Text("--").foregroundColor(.accentColor)
-                    }
+                GridRow{
+                    Text(game.team1Name)
+                        .font(widthSizeClass == .regular ? .largeTitle : .title)
+                        .padding(10)
+                        .frame(maxWidth: .infinity, alignment: .center)
+                        .background(.blue.opacity(0.3))
+                        .foregroundStyle(.black)
+                        .cornerRadius(8)
 
-                } // end HStack
-            } // end lazygrid
-            
-            
-            
-            LazyVGrid(columns: twoColumnGrid, alignment: .center, spacing: 10) {
-                HStack{
-                    Text("Sluffs Won:")
-                    Picker("Sluffs Won:", selection: $game.team1SluffsWonStr) {
-                        if game.team1TotalSluffs == 0 {
+
+                    Text(game.team2Name)
+                        .font(widthSizeClass == .regular ? .largeTitle : .title)
+                        .padding(10)
+                        .frame(maxWidth: .infinity, alignment: .center)
+                        .background(.gray.opacity(0.3))
+                        .cornerRadius(8)
+
+                }
+                
+                GridRow{
+                    Text(String(game.team1TotalScore))
+//                        .font(widthSizeClass == .regular ? .largeTitle : .title)
+                        .font(.largeTitle)
+                        .frame(maxWidth: .infinity, alignment: .center)
+
+                    Text(String(game.team2TotalScore))
+//                        .font(widthSizeClass == .regular ? .largeTitle : .title)
+                        .font(.largeTitle)
+                        .frame(maxWidth: .infinity, alignment: .center)
+                }
+                
+                GridRow{
+                    Text("Team Bid: \(game.team1TotalBid)")
+                        .font(widthSizeClass == .regular ? .title : .title2)
+                        .frame(maxWidth: .infinity, alignment: .center)
+
+                    Text("Team Bid: \(game.team2TotalBid)")
+                        .font(widthSizeClass == .regular ? .title : .title2)
+                        .frame(maxWidth: .infinity, alignment: .center)
+                }
+                
+                GridRow{
+                    Text("Team Sluffs: \(game.team1TotalSluffs)")
+                        .font(widthSizeClass == .regular ? .title : .title2)
+                        .frame(maxWidth: .infinity, alignment: .center)
+
+                    Text("Team Sluffs: \(game.team2TotalSluffs)")
+                        .font(widthSizeClass == .regular ? .title : .title2)
+                        .frame(maxWidth: .infinity, alignment: .center)
+                }
+                
+                Divider()
+                
+                GridRow {
+                    
+                    HStack{
+                        Text("Tricks Won:")
+                        Picker("Tricks Won:", selection: $game.team1TricksWonStr) {
                             Text("--").tag("--")
-                            Text("0").tag("0")
-                        } else if game.team1TotalSluffs == 1 {
-                            Text("--").tag("--")
-                            ForEach(sluffChoices1, id:\.self){
-                                Text($0)
+                            ForEach(0...14, id:\.self){ tricksWon in
+                                Text("\(tricksWon)").tag("\(tricksWon)")
                             }
-                        } else if game.team1TotalSluffs == 2 {
-                            Text("--").tag("--")
-                            ForEach(sluffChoices2, id:\.self){
-                                Text($0)
-                            }
-                        } else if game.team1TotalSluffs == 3 {
-                            Text("--").tag("--")
-                            ForEach(sluffChoices3, id:\.self){
-                                Text($0)
-                            }
-                        } else if game.team1TotalSluffs == 4 {
-                            Text("--").tag("--")
-                            ForEach(sluffChoices4, id:\.self){
-                                Text($0)
-                            }
+                        }
+                    } // end HStack
+                    .scaleEffect(widthSizeClass == .regular ? 1.4 : 1.1)
+                    
+                    HStack{
+                        Text("Tricks Won:")
+                        if game.team1TricksWonStr != "--" {
+                            Text(String(14-Int(game.team1TricksWonStr)!)).foregroundColor(.accentColor)
                         } else {
-                            Text("--").tag("--")
-                            ForEach(sluffChoices5, id:\.self){
-                                Text($0)
-                            }
+                            Text("--").foregroundColor(.accentColor)
                         }
-                    }
-                } // end HStack
+                    } // end HStack
+                    .scaleEffect(widthSizeClass == .regular ? 1.4 : 1.1)
+                }
                 
-                HStack{
-                    if game.team2TotalSluffs == 0 {
-                        Text("Sluffs Won:")
-                        Picker("Sluffs Won:", selection: $game.team2SluffsWonStr) {
-                            Text("--").tag("--")
-                            Text("0").tag("0")
+                GridRow{
+                    HStack{
+                        Text("Sluffs Won: ")
+
+                        if game.team1TotalSluffs != 0{
+                            Picker("Sluffs Won:", selection: $game.team1SluffsWonStr) {
+                                
+                                ForEach(game.sluffTeam1ChoiceList, id:\.self){
+                                    Text($0)
+                                }
+                            }
+                            .pickerStyle(.menu)
+                        } else {
+                            Text("0")
+                                .foregroundStyle(.blue)
                         }
-                    } else if game.team2TotalSluffs == 1 {
-                        Text("Sluffs Won:")
-                        Picker("Sluffs Won:", selection: $game.team2SluffsWonStr) {
-                            Text("--").tag("--")
-                            Text("0").tag("0")
-                            Text("1").tag("1")
+                    }// end HStack for Team 1 sluffs
+                    .onAppear {
+                                if game.team1TotalSluffs == 0 {
+                                    game.team1SluffsWonStr = "0"
+                                }
+                            }
+                    .scaleEffect(widthSizeClass == .regular ? 1.4 : 1.1)
+                    
+                    HStack{
+                        Text("Sluffs Won: ")
+
+                        if game.team2TotalSluffs != 0 {
+                            Picker("Sluffs Won:", selection: $game.team2SluffsWonStr) {
+                                
+                                ForEach(game.sluffTeam2ChoiceList, id:\.self){
+                                    Text($0)
+                                }
+                            }
+                            .pickerStyle(.menu)
+                        } else {
+                            Text("0")
+                                .foregroundStyle(.blue)
                         }
-                    } else if game.team2TotalSluffs == 2 {
-                        Text("Sluffs Won:")
-                        Picker("Sluffs Won:", selection: $game.team2SluffsWonStr) {
-                            Text("--").tag("--")
-                            Text("0").tag("0")
-                            Text("1").tag("1")
-                            Text("2").tag("2")
-                        }
-                    } else if game.team2TotalSluffs == 3 {
-                        Text("Sluffs Won:")
-                        Picker("Sluffs Won:", selection: $game.team2SluffsWonStr) {
-                            Text("--").tag("--")
-                            Text("0").tag("0")
-                            Text("1").tag("1")
-                            Text("2").tag("2")
-                            Text("3").tag("3")
-                        }
-                    } else if game.team2TotalSluffs == 4 {
-                        Text("Sluffs Won:")
-                        Picker("Sluffs Won:", selection: $game.team2SluffsWonStr) {
-                            Text("--").tag("--")
-                            Text("0").tag("0")
-                            Text("1").tag("1")
-                            Text("2").tag("2")
-                            Text("3").tag("3")
-                            Text("4").tag("4")
-                        }
-                    } else {
-                        Text("Sluffs Won:")
-                        Picker("Sluffs Won:", selection: $game.team2SluffsWonStr) {
-                            Text("--").tag("--")
-                            Text("0").tag("0")
-                            Text("1").tag("1")
-                            Text("2").tag("2")
-                            Text("3").tag("3")
-                            Text("4").tag("4")
-                            Text("5").tag("5")
-                        }
-                    }
-   
-                }// end HStack
-            } // end lazygrid
-            
-            Spacer()
+                    }// end HStack for Team 2 sluffs
+                    .onAppear {
+                                if game.team2TotalSluffs == 0 {
+                                    game.team2SluffsWonStr = "0"
+                                }
+                            }
+                    .scaleEffect(widthSizeClass == .regular ? 1.4 : 1.1)
+                }
+            } // end Grid
+
             
             Button(action: {
                 
@@ -162,19 +182,22 @@ struct ScoreHandView: View {
                 
                 if game.gameOver == true {
                     game.declareWinner()
-                    router.reset()
-                    router.path.append(4)
+                    reset()
+                    path.append(4)
                 } else {
-                    router.reset()
-                    router.path.append(1)
+                    reset()
+                    path.append(1)
                 }
             }, label: {
                 Text("Update Scores")
             })
+            .padding()
             .buttonStyle(.borderedProminent)
             .tint(.accentColor)
             .disabled(game.team1TricksWonStr == "--" || game.team1SluffsWonStr == "--"  || game.team2SluffsWonStr == "--")
+
             
+            Spacer()
            
         } // end Vstack
             
@@ -183,7 +206,7 @@ struct ScoreHandView: View {
 
 
 #Preview {
-    ScoreHandView()
+    ScoreHandView(path: Binding.constant(NavigationPath()))
         .environment(Game())
 }
 

@@ -13,107 +13,122 @@ import Observation
 struct HistoryView: View {
     
     @Environment(Game.self) private var game
-    @EnvironmentObject var router: Router
     
-    let threeColumnGrid = [GridItem(.fixed(80)), GridItem(.fixed(150)), GridItem(.fixed(150))]
-//    let threeColumnGrid = [GridItem(.fixed(80)), GridItem(.flexible()), GridItem(.flexible())]
+    @Binding var path: NavigationPath
 
-
+    @Environment(\.verticalSizeClass) var heightSizeClass: UserInterfaceSizeClass?
+    @Environment(\.horizontalSizeClass) var widthSizeClass: UserInterfaceSizeClass?
     
     var body: some View {
 
+        VStack(alignment: .center){
             
-            VStack(alignment: .center){
-
-            Image("color sluff scorecard")
+            Image("SluffScorecardTitleSVG")
                 .resizable()
-                .frame(width: 200, height: 80)
+                .frame(width: 250, height: 140)
+                .padding(.top, -10)
+                .padding(.bottom, -30)
+                
             
-                Text("")
-                Text("")
+            Text("(Round by Round History)")
+                .padding(.bottom, 5)
 
-
-                LazyVGrid(columns: threeColumnGrid, alignment: .center, spacing: 3) {
-
-                Text("Round")
-                        .padding(.leading, 3)
-                    .font(.title3)
-                    .foregroundColor(.black)
-                
-
-                
-                Text(game.team1Name)
-                    .padding(.horizontal, 20)
-                    .padding(.vertical, 2)
-                    .font(.title3)
-                    .background(.blue.opacity(0.3))
-                    .foregroundStyle(.black)
-                    .cornerRadius(8)
-//                    .padding()
-
-
-                
-                Text(game.team2Name)
-                    .padding(.horizontal, 20)
-                    .padding(.vertical, 2)
-                    .font(.title3)
-                    .background(.gray.opacity(0.3))
-                    .foregroundStyle(.black)
-                    .cornerRadius(8)
-//                    .padding()
-
-                
-
-                           
-            }
-
- 
             VStack {
+                
+                Grid(alignment: .center, horizontalSpacing: 0, verticalSpacing: 2) {
+                    
+                    GridRow {
+                        Text("Score")
+                            .padding(.leading, 3)
+                            .foregroundColor(.black)
+                        
+                        Text (String(game.team1TotalScore))
+                            .font(.largeTitle)
+                        
+                        Text (String(game.team2TotalScore))
+                            .font(.largeTitle)
+                        
+                    }
+                    .font(widthSizeClass == .regular ? .title : .title2)
+                    .padding(.bottom, 5)
 
-                    List {
-                        ForEach(game.runningScores.indices, id: \.self) { index in
+                    
+                    GridRow {
+                        Text("Round")
+                            .padding(.leading, 3)
+                            .foregroundColor(.black)
+                        
+                        Text(game.team1Name)
+                            .padding(.horizontal, 20)
+                            .padding(.vertical, 2)
+                            .background(.blue.opacity(0.3))
+                            .foregroundStyle(.black)
+                            .cornerRadius(8)
+                        
+                        Text(game.team2Name)
+                            .padding(.horizontal, 20)
+                            .padding(.vertical, 2)
+                            .background(.gray.opacity(0.3))
+                            .foregroundStyle(.black)
+                            .cornerRadius(8)
+                        
+                    }
+                    .font(widthSizeClass == .regular ? .title : .title2)
+                    .padding(.bottom, 10)
+                    .padding(.top, 10)
+
+                    Divider()
+                    
+                    ForEach(Array(zip(game.runningScores.indices, game.runningScores)) , id: \.1) { index, score in
+                        
+                        GridRow {
                             
-                            LazyVGrid(columns: threeColumnGrid, alignment: .center, spacing: 3) {
-
-                                Text(String(game.runningScores[index].round))
-                                    .font(.title3)
-                                    .foregroundColor((index + 1) < game.round ? .black : .clear)
- 
-                                HStack{
-                                    Text("(\(String(game.runningScores[index].t1ChangeInScore))) ")
-                                        .font(.title3)
-                                        .foregroundColor((index + 1)  < game.round ? .black : .clear)
-                                    
-                                    Text("\(String(game.runningScores[index].t1Score)) ")
-                                        .font(.title3)
-                                        .fontWeight(.bold)
-                                        .foregroundColor((index + 1)  < game.round ? .black : .clear)
-                                }
-
-                                HStack{
-                                    Text("(\(String(game.runningScores[index].t2ChangeInScore))) ")
-                                        .font(.title3)
-                                        .foregroundColor((index + 1)  < game.round ? .black : .clear)
-                                    
-                                    Text("\(String(game.runningScores[index].t2Score)) ")
-                                        .font(.title3)
-                                        .fontWeight(.bold)
-                                        .foregroundColor((index + 1)  < game.round ? .black : .clear)
-                                }
-                               
-                            } // end HStack
+                            Text(String(game.runningScores[index].round))
+                                .foregroundColor(.black)
                             
-                        }
-                    }// end List
-                    .listStyle(.plain)
+                            HStack{
+                                Text("(\(String(game.runningScores[index].t1ChangeInScore))) ")
+                                
+                                Text("\(String(game.runningScores[index].t1Score)) ")
+                            }
+                            .padding(.horizontal, 20)
+                            .padding(.vertical, 2)
+                            .foregroundColor((index + 1) < game.round ? .black : .clear)
+                            .background((index + 1) < game.round ? .blue.opacity(0.3) : .clear)
+                            .cornerRadius(8)
+                            
+                            HStack{
+                                Text("(\(String(game.runningScores[index].t2ChangeInScore))) ")
+                                    .foregroundColor((index + 1)  < game.round ? .black : .clear)
+                                
+                                Text("\(String(game.runningScores[index].t2Score)) ")
+                                    .fontWeight(.bold)
+                            }
+                            .padding(.horizontal, 20)
+                            .padding(.vertical, 2)
+                            .foregroundColor((index + 1) < game.round ? .black : .clear)
+                            .background((index + 1) < game.round ? .gray.opacity(0.3) : .clear)
+                            .cornerRadius(8)
+
+                    }// end GridRow
+                    .font(widthSizeClass == .regular ? .title2 : .title3)
+
+                        Divider()
+                        
+                    } // end ForEach
                     
                 }
+                .padding(.horizontal, 5)
+                
+                Spacer()
+                
+                }
             }
+        }
     }
-}
+
 
 #Preview {
-    HistoryView()
+    HistoryView(path: Binding.constant(NavigationPath()))
         .environment(Game())
-        .environmentObject(Router())
 }

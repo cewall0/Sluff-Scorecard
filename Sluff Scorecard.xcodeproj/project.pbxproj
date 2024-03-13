@@ -14,9 +14,7 @@
 		0B4821F82B43B8B1001FDA98 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4821F72B43B8B1001FDA98 /* Player.swift */; };
 		0BB1F1F92B6984DE006201F8 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB1F1F82B6984DE006201F8 /* SettingsView.swift */; };
 		0BB1F1FB2B6B032F006201F8 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB1F1FA2B6B032F006201F8 /* Game.swift */; };
-		0BB1F1FD2B6B4786006201F8 /* NumPlayersPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB1F1FC2B6B4786006201F8 /* NumPlayersPickerView.swift */; };
 		0BB1F2012B6C0059006201F8 /* BidPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB1F2002B6C0059006201F8 /* BidPickerView.swift */; };
-		0BB1F2032B6E8E76006201F8 /* PlayerNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB1F2022B6E8E76006201F8 /* PlayerNameView.swift */; };
 		0BB1F2052B6EBB1F006201F8 /* TeamNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB1F2042B6EBB1F006201F8 /* TeamNameView.swift */; };
 		0BB1F2072B70961D006201F8 /* ScoreHandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB1F2062B70961D006201F8 /* ScoreHandView.swift */; };
 		0BB1F20B2B71D48C006201F8 /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB1F20A2B71D48C006201F8 /* TitleView.swift */; };
@@ -24,10 +22,12 @@
 		0BB1F22A2B72B14C006201F8 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB1F2292B72B14C006201F8 /* Router.swift */; };
 		0BD384D82B7EDF750003C98E /* WinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD384D72B7EDF750003C98E /* WinnerView.swift */; };
 		0BD384DC2B8075430003C98E /* AskNumPlayersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD384DB2B8075430003C98E /* AskNumPlayersView.swift */; };
+		C801CE7D2BA0ABF7007488A0 /* RoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C801CE7C2BA0ABF7007488A0 /* RoundView.swift */; };
 		C84C58512B9A19EC00459472 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84C58502B9A19EC00459472 /* HistoryView.swift */; };
 		C84C58532B9A22F800459472 /* RunningScores.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84C58522B9A22F800459472 /* RunningScores.swift */; };
 		C85DEA9F2B9A6AB4004C79C0 /* SluffChoice.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85DEA9E2B9A6AB4004C79C0 /* SluffChoice.swift */; };
 		C8A2DB5E2B7FF92600569050 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8A2DB5D2B7FF92600569050 /* SplashScreenView.swift */; };
+		C8D346292B9CBE650058F3EC /* PlayerNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8D346282B9CBE650058F3EC /* PlayerNameView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,20 +39,21 @@
 		0B4821F72B43B8B1001FDA98 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		0BB1F1F82B6984DE006201F8 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		0BB1F1FA2B6B032F006201F8 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
-		0BB1F1FC2B6B4786006201F8 /* NumPlayersPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumPlayersPickerView.swift; sourceTree = "<group>"; };
 		0BB1F2002B6C0059006201F8 /* BidPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BidPickerView.swift; sourceTree = "<group>"; };
-		0BB1F2022B6E8E76006201F8 /* PlayerNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerNameView.swift; sourceTree = "<group>"; };
 		0BB1F2042B6EBB1F006201F8 /* TeamNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamNameView.swift; sourceTree = "<group>"; };
 		0BB1F2062B70961D006201F8 /* ScoreHandView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreHandView.swift; sourceTree = "<group>"; };
 		0BB1F20A2B71D48C006201F8 /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
 		0BB1F20C2B71D614006201F8 /* TeamScoresView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamScoresView.swift; sourceTree = "<group>"; };
 		0BB1F2292B72B14C006201F8 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		0BD384D72B7EDF750003C98E /* WinnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinnerView.swift; sourceTree = "<group>"; };
-		0BD384DB2B8075430003C98E /* AskNumPlayersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskNumPlayersView.swift; sourceTree = "<group>"; };
+		0BD384DB2B8075430003C98E /* AskNumPlayersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskNumPlayersView.swift; sourceTree = "<group>"; usesTabs = 0; };
+		C801CE7C2BA0ABF7007488A0 /* RoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundView.swift; sourceTree = "<group>"; };
 		C84C58502B9A19EC00459472 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		C84C58522B9A22F800459472 /* RunningScores.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningScores.swift; sourceTree = "<group>"; };
 		C85DEA9E2B9A6AB4004C79C0 /* SluffChoice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SluffChoice.swift; sourceTree = "<group>"; };
 		C8A2DB5D2B7FF92600569050 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
+		C8B11FEC2B9E351C004D8BF9 /* Sluff-Scorecard-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Sluff-Scorecard-Info.plist"; sourceTree = SOURCE_ROOT; };
+		C8D346282B9CBE650058F3EC /* PlayerNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerNameView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +86,7 @@
 		0B4821E42B43B712001FDA98 /* Sluff Scorecard */ = {
 			isa = PBXGroup;
 			children = (
+				C8B11FEC2B9E351C004D8BF9 /* Sluff-Scorecard-Info.plist */,
 				0B4821E52B43B712001FDA98 /* Sluff_ScorecardApp.swift */,
 				0B4B15282B656A4700A4E9CD /* Other */,
 				0B4B15262B656A2500A4E9CD /* Models */,
@@ -150,10 +152,10 @@
 			children = (
 				0BB1F20C2B71D614006201F8 /* TeamScoresView.swift */,
 				0BB1F20A2B71D48C006201F8 /* TitleView.swift */,
+				C801CE7C2BA0ABF7007488A0 /* RoundView.swift */,
 				0BB1F2042B6EBB1F006201F8 /* TeamNameView.swift */,
+				C8D346282B9CBE650058F3EC /* PlayerNameView.swift */,
 				0BB1F2002B6C0059006201F8 /* BidPickerView.swift */,
-				0BB1F2022B6E8E76006201F8 /* PlayerNameView.swift */,
-				0BB1F1FC2B6B4786006201F8 /* NumPlayersPickerView.swift */,
 			);
 			path = ViewPieces;
 			sourceTree = "<group>";
@@ -233,10 +235,8 @@
 				C8A2DB5E2B7FF92600569050 /* SplashScreenView.swift in Sources */,
 				0B4821F82B43B8B1001FDA98 /* Player.swift in Sources */,
 				0BB1F22A2B72B14C006201F8 /* Router.swift in Sources */,
-				0BB1F1FD2B6B4786006201F8 /* NumPlayersPickerView.swift in Sources */,
 				0BB1F1FB2B6B032F006201F8 /* Game.swift in Sources */,
 				0BB1F20B2B71D48C006201F8 /* TitleView.swift in Sources */,
-				0BB1F2032B6E8E76006201F8 /* PlayerNameView.swift in Sources */,
 				0B4821E82B43B712001FDA98 /* ScorecardView.swift in Sources */,
 				C84C58532B9A22F800459472 /* RunningScores.swift in Sources */,
 				0BB1F2072B70961D006201F8 /* ScoreHandView.swift in Sources */,
@@ -246,6 +246,8 @@
 				0BB1F2052B6EBB1F006201F8 /* TeamNameView.swift in Sources */,
 				0B4821E62B43B712001FDA98 /* Sluff_ScorecardApp.swift in Sources */,
 				C84C58512B9A19EC00459472 /* HistoryView.swift in Sources */,
+				C801CE7D2BA0ABF7007488A0 /* RoundView.swift in Sources */,
+				C8D346292B9CBE650058F3EC /* PlayerNameView.swift in Sources */,
 				0BB1F20D2B71D614006201F8 /* TeamScoresView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -311,6 +313,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -367,6 +370,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_COMPILATION_MODE = wholemodule;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -378,26 +382,27 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"Sluff Scorecard/Preview Content\"";
 				DEVELOPMENT_TEAM = YZ8ZVD6D26;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Sluff-Scorecard-Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.card-games";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Wallace.Sluff-Scorecard";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -413,26 +418,27 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"Sluff Scorecard/Preview Content\"";
 				DEVELOPMENT_TEAM = YZ8ZVD6D26;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Sluff-Scorecard-Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.card-games";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Wallace.Sluff-Scorecard";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;

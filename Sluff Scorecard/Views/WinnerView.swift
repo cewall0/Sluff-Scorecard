@@ -5,50 +5,78 @@
 //  Created by Chad Wallace on 2/15/24.
 //
 
+import Foundation
 import SwiftUI
+import Observation
+
 
 struct WinnerView: View {
     
     @Environment(Game.self) private var game
-    @EnvironmentObject var router: Router
+    
+    @Binding var path: NavigationPath
+    
+    func reset() {
+        self.path = NavigationPath()
+    }
+
+    @Environment(\.verticalSizeClass) var heightSizeClass: UserInterfaceSizeClass?
+    @Environment(\.horizontalSizeClass) var widthSizeClass: UserInterfaceSizeClass?
+
+
 
     var body: some View {
         @Bindable var game = game
         
         VStack{
-            TitleView()
+            Image("SluffScorecardTitleSVG")
+                .resizable()
+                .frame(width: 250, height: 140)
+
 
             TeamNameView()
             
             TeamScoresView()
             
-            Spacer()
-            
-            Text("Game Over!").font(.title)
-            Text("")
-            HStack{
-                if game.winner == "Tie" {
-                    Text("We have a tie!")
-                } else {
-                    Text("\(game.winner) wins!!")
+            VStack{
+                Text("Game Over").font(.largeTitle)
+                Text("")
+                HStack{
+                    if game.winner == "Tie" {
+                        Text("We have a tie!")
+                    } else {
+                        Text("Way to go \(game.winner)!!")
+                    }
                 }
-            }.font(.title)
+                .font(.title)
+            }
+            .padding()
             
-            Spacer()
             
             Button {
                 game.resetGame()
-                router.reset()
-                router.path.append(1)
+                reset()
+                path.append(1)
             } label: {
                 Text("New Game")
             }.buttonStyle(.borderedProminent)
                 .tint(.accentColor)
+                .font(.title)
+                .padding()
+            
+            Spacer()
+            
+            Spacer()
+            
+            Spacer()
+            
         }.navigationBarBackButtonHidden(true)
+
+        
     }
 }
 
 #Preview {
-    WinnerView()
+    WinnerView(path: Binding.constant(NavigationPath()))
         .environment(Game())
 }

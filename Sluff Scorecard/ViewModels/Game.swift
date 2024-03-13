@@ -36,8 +36,8 @@ final class Game {
     var winner: String = "Tie"
     
     
-    var sluffTeam1ChoiceList: [SluffChoice] = [SluffChoice(option: "0")]
-    var sluffTeam2ChoiceList: [SluffChoice] = [SluffChoice(option: "0")]
+    var sluffTeam1ChoiceList: [String] = ["--"]
+    var sluffTeam2ChoiceList: [String] = ["--"]
 
 
 
@@ -81,13 +81,17 @@ final class Game {
             }
         }
         
+       setRunningScores()
+        
+    } // end func setNumberOfPlayers
+    
+    func setRunningScores() {
         for index in 1...numberOfPlayers {
 
             runningScores.append(RunningScores(round: index, t1ChangeInScore: 0, t1Score: 0, t2ChangeInScore: 0, t2Score: 0))
 
         }
-        
-    } // end func setNumberOfPlayers
+    }
     
     
     /// setTeamBids function with a parameter of the playersList array of Player structs. This function keeps track of the current bid for each team (how many tricks they bid they can win) during one round.
@@ -122,17 +126,17 @@ final class Game {
     
     func setSluffOptions() {
         sluffTeam1ChoiceList.removeAll()
-        sluffTeam1ChoiceList.append(SluffChoice(option: "--"))
+        sluffTeam1ChoiceList.append("--")
         sluffTeam2ChoiceList.removeAll()
-        sluffTeam2ChoiceList.append(SluffChoice(option: "--"))
+        sluffTeam2ChoiceList.append("--")
 
         
         for index in 0...team1TotalSluffs {
-                sluffTeam1ChoiceList.append(SluffChoice(option: String(index)))
+                sluffTeam1ChoiceList.append(String(index))
                 }
         
         for index in 0...team2TotalSluffs {
-                sluffTeam2ChoiceList.append(SluffChoice(option: String(index)))
+                sluffTeam2ChoiceList.append(String(index))
                 }
         
     }
@@ -207,6 +211,7 @@ final class Game {
         team2TotalScore = team2TotalScore + t2ChangeInScore
         
         // Update the RunningScore struct in the runningScores array for the history view
+        
         runningScores[round - 1].t1ChangeInScore = t1ChangeInScore
         runningScores[round - 1].t1Score = team1TotalScore
         runningScores[round - 1].t2ChangeInScore = t2ChangeInScore
@@ -242,18 +247,22 @@ final class Game {
     /// this function moves the dealer indicator to the next player. We call this at the conclusion of each hand.
     func nextDealer() -> () {
         for index in playersList.indices {
+            
+            // if I am looking at the dealer
             if playersList[index].isDealer == true {
-                playersList[index].isDealer = false
-                if index+1 < playersList.count {
-                    playersList[index+1].isDealer = true
+                playersList[index].isDealer = false // make this not the dealer
+                if index+1 < playersList.count { // If then next player can still deal because they are not the last dealer...
+                    playersList[index+1].isDealer = true // make them the dealer
                 } else {
-                    playersList[0].isDealer = true
+                    playersList[0].isDealer = true // make the first player the dealer getting ready for the next game
                 }
                 
                 break
             }
         }
-        round = round + 1
+        
+        
+
     }
     
     func checkAllBid() -> () {
@@ -272,8 +281,11 @@ final class Game {
     
     /// This function changes the gameOver boolean to true after each of the players in the game had dealt one hand.
     func isGameOver() -> () {
-        if round > numberOfPlayers {
+        if round >= numberOfPlayers {
            gameOver = true
+            declareWinner()
+        } else {
+            round = round + 1
         }
     }
     
@@ -305,6 +317,9 @@ final class Game {
         notAllBid = true
         dontUpdateScores = true
         winner = ""
+        runningScores.removeAll()
+        setRunningScores()
+
     }
    
     

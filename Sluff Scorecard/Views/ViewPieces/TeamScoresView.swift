@@ -11,6 +11,9 @@ struct TeamScoresView: View {
     
     @Environment(Game.self) private var game
     @EnvironmentObject var router: Router
+    
+    @Environment(\.verticalSizeClass) var heightSizeClass: UserInterfaceSizeClass?
+    @Environment(\.horizontalSizeClass) var widthSizeClass: UserInterfaceSizeClass?
 
     @State var teamBids: (team1Bids: Int, team2Bids: Int) = (0, 0)
     let twoColumnGrid = [GridItem(.flexible()), GridItem(.flexible())]
@@ -21,7 +24,7 @@ struct TeamScoresView: View {
                 LazyVGrid(columns: twoColumnGrid, alignment: .center, spacing: 10) {
                     Text (String(game.team1TotalScore))
                     Text (String(game.team2TotalScore))
-                }.font(.title)
+                }.font(.largeTitle)
                 
             if game.gameOver == false {
                 LazyVGrid(columns: twoColumnGrid, alignment: .center, spacing: 10) {
@@ -31,7 +34,8 @@ struct TeamScoresView: View {
                     HStack{
                         Text("Team Bid: \(game.team2TotalBid)").foregroundColor(game.team2TotalBid <= 14 ? .black : .red)
                     }
-                }.font(.headline)
+                }.font(widthSizeClass == .regular ? .title2 : .title3)
+                    .padding(.vertical, -3)
             
             LazyVGrid(columns: twoColumnGrid, alignment: .center, spacing: 10) {
                 HStack{
@@ -40,18 +44,18 @@ struct TeamScoresView: View {
                 HStack{
                     Text("Team Sluffs: \(game.team2TotalSluffs)")
                 }
-            }.font(.headline)
+            }.font(widthSizeClass == .regular ? .title2 : .title3).padding(.vertical, -3)
             } else if game.gameOver == true && game.winner == game.team1Name {
                 LazyVGrid(columns: twoColumnGrid, alignment: .center, spacing: 10) {
                     HStack{
                         Text("Winner!")
-                            .font(.largeTitle)
                             .foregroundColor(.yellow)
                     }
                     HStack{
                         Text(" ")
                     }
-                }.font(.headline)
+                }.font(widthSizeClass == .regular ? .largeTitle : .title)
+                
             } else if game.gameOver == true && game.winner == game.team2Name {
                 LazyVGrid(columns: twoColumnGrid, alignment: .center, spacing: 10) {
                     HStack{
@@ -59,16 +63,15 @@ struct TeamScoresView: View {
                     }
                     HStack{
                         Text("Winner!")
-                            .font(.largeTitle)
+                            
                             .foregroundColor(.yellow)
                     }
-                }.font(.headline)
+                }.font(widthSizeClass == .regular ? .largeTitle : .title)
             } else {
                 HStack{
                     Text("We have a tie!")
-                        .font(.largeTitle)
                         .foregroundColor(.yellow)
-                }
+                }.font(widthSizeClass == .regular ? .largeTitle : .title)
             }
                 
         }

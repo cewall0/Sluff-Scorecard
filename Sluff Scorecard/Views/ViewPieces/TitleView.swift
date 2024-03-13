@@ -10,44 +10,57 @@ import SwiftUI
 struct TitleView: View {
     
     @Environment(Game.self) private var game
-    @EnvironmentObject var router: Router
+    
+    @Binding var path: NavigationPath
+    
+    func reset() {
+        self.path = NavigationPath()
+    }
+    
+    @Environment(\.verticalSizeClass) var heightSizeClass: UserInterfaceSizeClass?
+    @Environment(\.horizontalSizeClass) var widthSizeClass: UserInterfaceSizeClass?
+    
     
     var body: some View {
         
         HStack{
             
             Button {
-                router.path.append(5)
+                path.append(5)
             } label: {
                 Image(systemName: "list.clipboard")
+                    .font(widthSizeClass == .regular ? .title2 : .title3)
             }
             .padding(.leading)
             .foregroundColor(.gray)
             
             Spacer()
-            Image("color sluff scorecard")
+            
+            Image("SluffScorecardTitleSVG")
                 .resizable()
-                .frame(width: 200, height: 80)
+                .frame(width: (CGFloat(15 * 100/game.numberOfPlayers)), height: (CGFloat(8 * 100/game.numberOfPlayers)))
                 
             Spacer()
+            
             Button {
-                router.path.append(3)
+                path.append(3)
             } label: {
                 Image(systemName: "gear")
+                    .font(widthSizeClass == .regular ? .title2 : .title3)
             }
             .padding(.trailing)
             .foregroundColor(.gray)
 
         }
-        Text("(Round: \(game.round)/\(game.numberOfPlayers))")
-            .environment(Game())
-            .environmentObject(Router())
+        .padding(.top, -15)
+        .padding(.bottom, -20)
+
     }
 }
 
-//
-//#Preview {
-//    TitleView()
-//        .environment(Game())
-//}
-// 
+
+#Preview {
+    TitleView(path: Binding.constant(NavigationPath()))
+        .environment(Game())
+}
+ 
