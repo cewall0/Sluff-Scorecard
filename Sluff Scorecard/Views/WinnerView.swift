@@ -29,10 +29,8 @@ struct WinnerView: View {
         @Bindable var game = game
         
         VStack{
-            Image("SluffScorecardTitleSVG")
-                .resizable()
-                .frame(width: 250, height: 140)
 
+            TitleView(path: $path)
 
             TeamNameView()
             
