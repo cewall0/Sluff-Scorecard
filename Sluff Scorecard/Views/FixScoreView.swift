@@ -89,7 +89,6 @@ struct FixScoreView: View {
                                 game.runningScores[game.roundToFix-1].t2TricksWon = 14-game.runningScores[game.roundToFix-1].t1TricksWon
                                 game.runningScores[game.roundToFix-1].t1TricksWonStr = String(game.runningScores[game.roundToFix-1].t1TricksWon)
                                 game.runningScores[game.roundToFix-1].t2TricksWonStr = String(game.runningScores[game.roundToFix-1].t2TricksWon)
-//                                game.calculateScore()
                             }
                         }
                     } // end HStack

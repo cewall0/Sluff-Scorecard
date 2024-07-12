@@ -14,8 +14,8 @@
             filePath = "Sluff Scorecard/ViewModels/Game.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "309"
-            endingLineNumber = "309"
+            startingLineNumber = "216"
+            endingLineNumber = "216"
             landmarkName = "calculateScore()"
             landmarkType = "7">
          </BreakpointContent>
@@ -30,8 +30,8 @@
             filePath = "Sluff Scorecard/ViewModels/Game.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "283"
-            endingLineNumber = "283"
+            startingLineNumber = "190"
+            endingLineNumber = "190"
             landmarkName = "calculateScore()"
             landmarkType = "7">
          </BreakpointContent>
@@ -46,8 +46,8 @@
             filePath = "Sluff Scorecard/ViewModels/Game.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "308"
-            endingLineNumber = "308"
+            startingLineNumber = "215"
+            endingLineNumber = "215"
             landmarkName = "calculateScore()"
             landmarkType = "7">
          </BreakpointContent>
@@ -62,8 +62,8 @@
             filePath = "Sluff Scorecard/ViewModels/Game.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "337"
-            endingLineNumber = "337"
+            startingLineNumber = "244"
+            endingLineNumber = "244"
             landmarkName = "calculateScore()"
             landmarkType = "7">
          </BreakpointContent>
@@ -78,8 +78,8 @@
             filePath = "Sluff Scorecard/ViewModels/Game.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "324"
-            endingLineNumber = "324"
+            startingLineNumber = "231"
+            endingLineNumber = "231"
             landmarkName = "calculateScore()"
             landmarkType = "7">
          </BreakpointContent>
