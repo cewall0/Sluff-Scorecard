@@ -15,34 +15,34 @@ struct TeamScoresView: View {
     @Environment(\.verticalSizeClass) var heightSizeClass: UserInterfaceSizeClass?
     @Environment(\.horizontalSizeClass) var widthSizeClass: UserInterfaceSizeClass?
 
-    @State var teamBids: (team1Bids: Int, team2Bids: Int) = (0, 0)
+//    @State var teamBids: (team1Bids: Int, team2Bids: Int) = (0, 0)
     let twoColumnGrid = [GridItem(.flexible()), GridItem(.flexible())]
     
     var body: some View {
         VStack{
 
-                LazyVGrid(columns: twoColumnGrid, alignment: .center, spacing: 10) {
-                    Text (String(game.team1TotalScore))
-                    Text (String(game.team2TotalScore))
-                }.font(.largeTitle)
+            LazyVGrid(columns: twoColumnGrid, alignment: .center, spacing: 10) {
+                    Text (String(game.runningScores[game.round-1].t1RoundScore)).font(.largeTitle)
+                    Text (String(game.runningScores[game.round-1].t2RoundScore)).font(.largeTitle)
+            }
                 
             if game.gameOver == false {
                 LazyVGrid(columns: twoColumnGrid, alignment: .center, spacing: 10) {
                     HStack{
-                        Text("Team Bid: \(game.team1TotalBid)").foregroundColor(game.team1TotalBid <= 14 ? .black : .red)
+                        Text("Team Bid: \(game.runningScores[game.round-1].t1TricksBid)").foregroundColor(game.runningScores[game.round-1].t1TricksBid <= 14 ? .black : .red)
                     }
                     HStack{
-                        Text("Team Bid: \(game.team2TotalBid)").foregroundColor(game.team2TotalBid <= 14 ? .black : .red)
+                        Text("Team Bid: \(game.runningScores[game.round-1].t2TricksBid)").foregroundColor(game.runningScores[game.round-1].t2TricksBid <= 14 ? .black : .red)
                     }
                 }.font(widthSizeClass == .regular ? .title2 : .title3)
                     .padding(.vertical, -3)
             
             LazyVGrid(columns: twoColumnGrid, alignment: .center, spacing: 10) {
                 HStack{
-                    Text("Team Sluffs: \(game.team1TotalSluffs)")
+                    Text("Team Sluffs: \(game.runningScores[game.round-1].t1SluffsBid)")
                 }
                 HStack{
-                    Text("Team Sluffs: \(game.team2TotalSluffs)")
+                    Text("Team Sluffs: \(game.runningScores[game.round-1].t2SluffsBid)")
                 }
             }.font(widthSizeClass == .regular ? .title2 : .title3).padding(.vertical, -3)
             } else if game.gameOver == true && game.winner == game.team1Name {

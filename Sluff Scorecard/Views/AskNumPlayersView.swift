@@ -97,6 +97,8 @@ struct AskNumPlayersView: View {
                     WinnerView(path: $path)
                 case 5:
                     HistoryView(path: $path)
+                case 6:
+                    FixScoreView(path: $path)
                 default:
                     EmptyView()
                 }

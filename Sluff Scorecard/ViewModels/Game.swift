@@ -11,25 +11,51 @@ import Observation
 @Observable
 final class Game {
     var playersList: [Player] = [Player(name:"Player1", isDealer: true), Player(name:"Player2", isDealer: false), Player(name:"Player3", isDealer: false), Player(name:"Player4", isDealer: false), Player(name:"Player5", isDealer: false), Player(name:"Player6", isDealer: false)]
-    var runningScores: [RunningScores] = [RunningScores(round: 1, t1ChangeInScore: 0, t1Score: 0, t2ChangeInScore: 0, t2Score: 0)]
+    var runningScores: [RunningScores] = [
+        RunningScores(
+            thisRound: 1,
+            t1ChangeInScore: 0,
+            t1RoundScore: 0,
+            t1TricksBid: 0,
+            t1TricksWonStr: "--",
+            t1TricksWon: 0,
+            t1TrickPoints: 0,
+            t1SluffsBid: 0,
+            t1SluffsWonStr: "--",
+            t1SluffsWon: 0,
+            t1SluffPoints: 0,
+            t2ChangeInScore: 0,
+            t2RoundScore: 0,
+            t2TricksBid: 0,
+            t2TricksWonStr: "--",
+            t2TricksWon: 0,
+            t2TrickPoints: 0,
+            t2SluffsBid: 0,
+            t2SluffsWonStr: "--",
+            t2SluffsWon: 0,
+            t2SluffPoints: 0
+        )
+    ]
+  
     var numberOfPlayers: Int = 6
     
     var team1Name: String = "Team 1"
     var team2Name: String = "Team 2"
     
-    var team1RoundScore: Int = 0 // The current round score
-    var team2RoundScore: Int = 0
-    var team1TotalScore: Int = 0 // The total team score
-    var team2TotalScore: Int = 0
-    var team1TotalBid: Int = 0 // The total team bid
-    var team2TotalBid: Int = 0
-    var team1TotalSluffs: Int = 0// The total team sluffs
-    var team2TotalSluffs: Int = 0
+    var team1CurrentRoundScore: Int = 0 // The current round score
+    var team2CurrentRoundScore: Int = 0
+//    var team1CurrentRoundTotalScore: Int = 0 // The total team score
+//    var team2CurrentRoundTotalScore: Int = 0
+    var team1CurrentRoundTotalBid: Int = 0 // The total team bid
+    var team2CurrentRoundTotalBid: Int = 0
+    var team1CurrentRoundTotalSluffs: Int = 0// The total team sluffs
+    var team2CurrentRoundTotalSluffs: Int = 0
     var team1TricksWonStr: String = "--" // The total tricks won for a team on that round
     var team2TricksWonStr: String = "--"
     var team1SluffsWonStr: String = "--" // The total sluffs won for a team on that round
     var team2SluffsWonStr: String = "--"
     var round: Int = 1 // What is the current round
+    var roundToFix: Int = 1 // The round we are fixing if a score needs fixed.
     var gameOver: Bool = false
     var notAllBid: Bool = true
     var dontUpdateScores: Bool = true
@@ -46,14 +72,14 @@ final class Game {
         self.numberOfPlayers = numberOfPlayers
         self.team1Name = team1Name
         self.team2Name = team2Name
-        self.team1RoundScore = team1RoundScore
-        self.team2RoundScore = team2RoundScore
-        self.team1TotalScore = team1TotalScore
-        self.team2TotalScore = team2TotalScore
-        self.team1TotalBid = team1TotalBid
-        self.team2TotalBid = team2TotalBid
-        self.team1TotalSluffs = team1TotalSluffs
-        self.team2TotalSluffs = team2TotalSluffs
+        self.team1CurrentRoundScore = team1CurrentRoundScore
+        self.team2CurrentRoundScore = team2CurrentRoundScore
+//        self.team1CurrentRoundTotalScore = team1CurrentRoundTotalScore
+//        self.team2CurrentRoundTotalScore = team2CurrentRoundTotalScore
+        self.team1CurrentRoundTotalBid = team1CurrentRoundTotalBid
+        self.team2CurrentRoundTotalBid = team2CurrentRoundTotalBid
+        self.team1CurrentRoundTotalSluffs = team1CurrentRoundTotalSluffs
+        self.team2CurrentRoundTotalSluffs = team2CurrentRoundTotalSluffs
         self.team1TricksWonStr = team1TricksWonStr
         self.team2TricksWonStr = team2TricksWonStr
         self.team1SluffsWonStr = team1SluffsWonStr
@@ -88,18 +114,21 @@ final class Game {
     func setRunningScores() {
         for index in 1...numberOfPlayers {
 
-            runningScores.append(RunningScores(round: index, t1ChangeInScore: 0, t1Score: 0, t2ChangeInScore: 0, t2Score: 0))
+            runningScores.append(RunningScores(thisRound: index, t1ChangeInScore: 0, t1RoundScore: 0, t1TricksBid: 0, t1TricksWonStr: "--", t1TricksWon: 0, t1TrickPoints: 0, t1SluffsBid: 0, t1SluffsWonStr: "--", t1SluffsWon: 0, t1SluffPoints: 0, t2ChangeInScore: 0, t2RoundScore: 0, t2TricksBid: 0, t2TricksWonStr: "--", t2TricksWon: 0, t2TrickPoints: 0, t2SluffsBid: 0, t2SluffsWonStr: "--", t2SluffsWon: 0, t2SluffPoints: 0))
 
         }
     }
     
     
-    /// setTeamBids function with a parameter of the playersList array of Player structs. This function keeps track of the current bid for each team (how many tricks they bid they can win) during one round.
+    /// setTeamBids function with a parameter of the playersList array of Player structs. This function keeps track of the current bid for each team (how many tricks they bid and can win) during one round.
     func setTeamBids(from playersList: [Player]) -> () {
-        team1TotalBid = 0
-        team2TotalBid = 0
-        team1TotalSluffs = 0
-        team2TotalSluffs = 0
+        runningScores[round-1].t1TricksBid = 0
+        runningScores[round-1].t2TricksBid = 0
+        runningScores[round-1].t1SluffsBid = 0
+        runningScores[round-1].t2SluffsBid = 0
+//        team2CurrentRoundTotalBid = 0
+//        team1CurrentRoundTotalSluffs = 0
+//        team2CurrentRoundTotalSluffs = 0
         
         for index in playersList.indices {
             
@@ -108,18 +137,23 @@ final class Game {
             if sluffOrBid == "--" { continue }
             
             if (sluffOrBid == "Sluff") && (index % 2 == 0) {
-                    team1TotalSluffs += 1
+//                team1CurrentRoundTotalSluffs += 1
+                runningScores[round-1].t1SluffsBid += 1
                 continue
                 } else if (sluffOrBid == "Sluff") && (index % 2 == 1) {
-                    team2TotalSluffs += 1
+//                    team2CurrentRoundTotalSluffs += 1
+                    runningScores[round-1].t2SluffsBid += 1
                     continue
                 }
             
             guard let bid = Int(playersList[index].playerBid) else { continue }
             if index % 2 == 0 {
-                team1TotalBid += bid
+//                team1CurrentRoundTotalBid += bid
+                runningScores[round-1].t1TricksBid += bid
+
             } else {
-                team2TotalBid += bid
+//                team2CurrentRoundTotalBid += bid
+                runningScores[round-1].t2TricksBid += bid
             }
         }
     }
@@ -131,11 +165,13 @@ final class Game {
         sluffTeam2ChoiceList.append("--")
 
         
-        for index in 0...team1TotalSluffs {
+//        for index in 0...team1CurrentRoundTotalSluffs {
+        for index in 0...runningScores[round-1].t1SluffsBid {
                 sluffTeam1ChoiceList.append(String(index))
                 }
         
-        for index in 0...team2TotalSluffs {
+//        for index in 0...team2CurrentRoundTotalSluffs {
+        for index in 0...runningScores[round-1].t2SluffsBid {
                 sluffTeam2ChoiceList.append(String(index))
                 }
         
@@ -143,98 +179,198 @@ final class Game {
     
     
     /// updateScore function calculates the score for each time at the conclusion of a hand and updates each team's total score.
-    func updateScore() -> () {
+//    func updateScore() -> () {
+//
+//        var team1TrickPoints = 0
+//        var team1SluffPoints = 0
+//        var team2TrickPoints = 0
+//        var team2SluffPoints = 0
+//        
+//        let team1TricksWon = Int(team1TricksWonStr)
+//        let team2TricksWon = 14-team1TricksWon!
+//        let team1SluffsWon = Int(team1SluffsWonStr)
+//        let team2SluffsWon = Int(team2SluffsWonStr)
+//        
+//        var t1ChangeInScore = 0
+//        var t2ChangeInScore = 0
+//        
+//        // if team1 won the their bid for tricks, they get some points. If not, they get 0.
+//
+//        // a successful bid gets 10 points for each trick bid + 1 for every bonus trick
+//        if team1TricksWon! >= team1CurrentRoundTotalBid {
+//            team1TrickPoints = (10 * team1TotalBid) + ((team1TricksWon!)-team1TotalBid)
+//        } else {
+//            team1TrickPoints = 0
+//        }
+//        
+//        
+//        // if team1 won the their bid for tricks, they get some points. If not, they get 0.
+//
+//        if team1TricksWon! >= team1TotalBid {
+//            if team1SluffsWon! == team1TotalSluffs {
+//                team1SluffPoints = team1TotalSluffs * 50
+//            } else {
+//                team1SluffPoints = (team1SluffsWon! * 50) - ((team1TotalSluffs - team1SluffsWon!) * 50)
+//            }
+//            team1SluffPoints = (team1SluffsWon! * 50) - ((team1TotalSluffs - team1SluffsWon!) * 50)
+//        } else {
+//            team1TrickPoints = 0
+//            team1SluffPoints = 0
+//        }
+//        
+//        t1ChangeInScore = team1TrickPoints + team1SluffPoints
+//        
+//        team1TotalScore = team1TotalScore + t1ChangeInScore
+//
+//// if team2 won the their bid for tricks, they get some points. If not, they get 0.
+//
+//        if team2TricksWon >= team2TotalBid {
+//            team2TrickPoints = (10 * team2TotalBid) + (team2TricksWon-team2TotalBid)
+//        } else {
+//            team1TrickPoints = 0
+//        }
+//        
+//// if team2 won the their bid for tricks, they get some points. If not, they get 0.
+//        if team2TricksWon >= team2TotalBid {
+//            if team2SluffsWon! == team2TotalSluffs {
+//                team2SluffPoints = team2TotalSluffs * 50
+//            } else {
+//                team2SluffPoints = (team2SluffsWon! * 50) - ((team2TotalSluffs - team2SluffsWon!) * 50)
+//            }
+//        } else {
+//            team2TrickPoints = 0
+//            team2SluffPoints = 0
+//        }
+//
+//        t2ChangeInScore = team2TrickPoints + team2SluffPoints
+//
+//        team2TotalScore = team2TotalScore + t2ChangeInScore
+//        
+//        // Update the RunningScore struct in the runningScores array for the history view
+//        
+//        runningScores[round - 1].t1ChangeInScore = t1ChangeInScore
+//        runningScores[round - 1].t1TricksBid = team1TotalBid
+//        runningScores[round - 1].t1TricksWon = team1TricksWon!
+//        runningScores[round - 1].t1SluffsBid = team1TotalSluffs
+//        runningScores[round - 1].t1SluffsWon = team1SluffsWon!
+//        runningScores[round - 1].t2ChangeInScore = t2ChangeInScore
+//        runningScores[round - 1].t2TricksBid = team2TotalBid
+//        runningScores[round - 1].t2TricksWon = team2TricksWon
+//        runningScores[round - 1].t2SluffsBid = team2TotalSluffs
+//        runningScores[round - 1].t2SluffsWon = team2SluffsWon!
+//        
+//    }
+    
+    /// calculateScore function calculates the score for each time at the conclusion of a hand and updates each team's total score.
+    func calculateScore() -> () {
+        
+        for index in 0...(numberOfPlayers-1) { // loop through all of the rounds.
+            if runningScores[index].t1TricksWonStr != "--" {
+                runningScores[index].t1TricksWon = Int(runningScores[index].t1TricksWonStr)!
+                runningScores[index].t2TricksWon = 14-runningScores[index].t1TricksWon
+                runningScores[index].t2TricksWonStr = String(runningScores[index].t2TricksWon)
+            }
+            
 
-        var team1TrickPoints = 0
-        var team1SluffPoints = 0
-        var team2TrickPoints = 0
-        var team2SluffPoints = 0
-        
-        let team1TricksWon = Int(team1TricksWonStr)
-        let team2TricksWon = 14-team1TricksWon!
-        let team1SluffsWon = Int(team1SluffsWonStr)
-        let team2SluffsWon = Int(team2SluffsWonStr)
-        
-        var t1ChangeInScore = 0
-        var t2ChangeInScore = 0
-        
+            if runningScores[index].t1SluffsWonStr != "--" {
+                runningScores[index].t1SluffsWon = Int(runningScores[index].t1SluffsWonStr)!
+            }
+            
+            if runningScores[index].t2SluffsWonStr != "--" {
+                runningScores[index].t2SluffsWon = Int(runningScores[index].t2SluffsWonStr)!
+            }
+
+            
         // if team1 won the their bid for tricks, they get some points. If not, they get 0.
 
         // a successful bid gets 10 points for each trick bid + 1 for every bonus trick
-        if team1TricksWon! >= team1TotalBid {
-            team1TrickPoints = (10 * team1TotalBid) + ((team1TricksWon!)-team1TotalBid)
+            if runningScores[index].t1TricksWon >= runningScores[index].t1TricksBid {
+                runningScores[index].t1TrickPoints = (10 * runningScores[index].t1TricksBid) + ((runningScores[index].t1TricksWon)-runningScores[index].t1TricksBid)
         } else {
-            team1TrickPoints = 0
+            runningScores[index].t1TrickPoints = 0
         }
         
         
         // if team1 won the their bid for tricks, they get some points. If not, they get 0.
 
-        if team1TricksWon! >= team1TotalBid {
-            if team1SluffsWon! == team1TotalSluffs {
-                team1SluffPoints = team1TotalSluffs * 50
+            if runningScores[index].t1TricksWon >= runningScores[index].t1TricksBid {
+                if runningScores[index].t1SluffsWon == runningScores[index].t1SluffsBid {
+                    runningScores[index].t1SluffPoints = runningScores[index].t1SluffsWon * 50
             } else {
-                team1SluffPoints = (team1SluffsWon! * 50) - ((team1TotalSluffs - team1SluffsWon!) * 50)
+                runningScores[index].t1SluffPoints = (runningScores[index].t1SluffsWon * 50) - ((runningScores[index].t1SluffsBid - runningScores[index].t1SluffsWon) * 50)
             }
-            team1SluffPoints = (team1SluffsWon! * 50) - ((team1TotalSluffs - team1SluffsWon!) * 50)
+                runningScores[index].t1SluffPoints = (runningScores[index].t1SluffsWon * 50) - ((runningScores[index].t1SluffsBid - runningScores[index].t1SluffsWon) * 50)
         } else {
-            team1TrickPoints = 0
-            team1SluffPoints = 0
+            runningScores[index].t1TrickPoints = 0
+            runningScores[index].t1SluffPoints = 0
         }
         
-        t1ChangeInScore = team1TrickPoints + team1SluffPoints
+            runningScores[index].t1ChangeInScore = runningScores[index].t1TrickPoints + runningScores[index].t1SluffPoints
         
-        team1TotalScore = team1TotalScore + t1ChangeInScore
+            if index >= 1 {
+                runningScores[index].t1RoundScore = runningScores[index-1].t1RoundScore + runningScores[index].t1ChangeInScore
+            } else {
+                runningScores[index].t1RoundScore = runningScores[index].t1ChangeInScore
+            }
+            
 
 // if team2 won the their bid for tricks, they get some points. If not, they get 0.
 
-        if team2TricksWon >= team2TotalBid {
-            team2TrickPoints = (10 * team2TotalBid) + (team2TricksWon-team2TotalBid)
+            if runningScores[index].t2TricksWon >= runningScores[index].t2TricksBid {
+                runningScores[index].t2TrickPoints = (10 * runningScores[index].t2TricksBid) + (runningScores[index].t2TricksWon - runningScores[index].t2TricksBid)
         } else {
-            team1TrickPoints = 0
+            runningScores[index].t2TrickPoints = 0
         }
         
 // if team2 won the their bid for tricks, they get some points. If not, they get 0.
-        if team2TricksWon >= team2TotalBid {
-            if team2SluffsWon! == team2TotalSluffs {
-                team2SluffPoints = team2TotalSluffs * 50
+            if runningScores[index].t2TricksWon  >= runningScores[index].t2TricksBid {
+                if runningScores[index].t2SluffsWon == runningScores[index].t2SluffsWon {
+                    runningScores[index].t2SluffPoints = runningScores[index].t2SluffsWon * 50
             } else {
-                team2SluffPoints = (team2SluffsWon! * 50) - ((team2TotalSluffs - team2SluffsWon!) * 50)
+                runningScores[index].t2SluffPoints = (runningScores[index].t2SluffsWon * 50) - ((runningScores[index].t2SluffsBid - runningScores[index].t2SluffsWon) * 50)
             }
         } else {
-            team2TrickPoints = 0
-            team2SluffPoints = 0
+            runningScores[index].t2TrickPoints = 0
+            runningScores[index].t2SluffPoints = 0
         }
 
-        t2ChangeInScore = team2TrickPoints + team2SluffPoints
-
-        team2TotalScore = team2TotalScore + t2ChangeInScore
+        runningScores[index].t2ChangeInScore = runningScores[index].t2TrickPoints + runningScores[index].t2SluffPoints
+       
+            if index >= 1 {
+                runningScores[index].t2RoundScore = runningScores[index-1].t2RoundScore + runningScores[index].t2ChangeInScore
+            } else {
+                runningScores[index].t2RoundScore = runningScores[index].t2ChangeInScore
+            }
+            
         
-        // Update the RunningScore struct in the runningScores array for the history view
+    }// end for loop
         
-        runningScores[round - 1].t1ChangeInScore = t1ChangeInScore
-        runningScores[round - 1].t1Score = team1TotalScore
-        runningScores[round - 1].t2ChangeInScore = t2ChangeInScore
-        runningScores[round - 1].t2Score = team2TotalScore
-        
-    }
+    }// end calculateScore function
+    
     
     
     /// resetBids function resets the bids and number of sluffs at the conclusion of a round (hand), so the bids and sluffs for the next hand can be shown.
-    func resetBids() -> () {
-        team1TotalBid = 0
-        team2TotalBid = 0
-        team1TotalSluffs = 0
-        team2TotalSluffs = 0
-        notAllBid = true
-        
-        for index in playersList.indices {
-            
-            playersList[index].playerBid = "--" // reset all playerBid's to --
-            
-        }
-    }
+//    func resetBids() -> () {
+//        team1TotalBid = 0
+//        team2TotalBid = 0
+//        team1TotalSluffs = 0
+//        team2TotalSluffs = 0
+//        notAllBid = true
+//        
+//        for index in playersList.indices {
+//            
+//            playersList[index].playerBid = "--" // reset all playerBid's to --
+//            
+//        }
+//    }
     
+    /// This function resets the player bids so a new round can begin wiht -- for each player's bid in the scorecard.
+    func resetPlayerBids() -> () {
+        for index in playersList.indices {
+            playersList[index].playerBid = "--"
+        }
+        notAllBid = true
+    }
     
     ///This resets the number of tricks and sluffs each team won so we can begin a new hand.
     func resetTricksSluffsWon() -> () {
@@ -243,6 +379,8 @@ final class Game {
         team2TricksWonStr = "--"
         team2SluffsWonStr = "--"
     }
+    
+    
     
     /// this function moves the dealer indicator to the next player. We call this at the conclusion of each hand.
     func nextDealer() -> () {
@@ -290,9 +428,9 @@ final class Game {
     }
     
     func declareWinner() -> () {
-        if team1TotalScore > team2TotalScore {
+        if runningScores[numberOfPlayers-1].t1RoundScore > runningScores[numberOfPlayers-1].t2RoundScore {
             winner = team1Name
-        } else if team1TotalScore < team2TotalScore {
+        } else if runningScores[numberOfPlayers-1].t1RoundScore < runningScores[numberOfPlayers-1].t2RoundScore {
             winner = team2Name
         } else {
             winner = "Tie"
@@ -300,23 +438,24 @@ final class Game {
     }
     
     func resetGame() -> () {
-        team1RoundScore = 0 // The current round score
-        team2RoundScore = 0
-        team1TotalScore = 0 // The total team score
-        team2TotalScore = 0
-        team1TotalBid = 0 // The total team bid
-        team2TotalBid = 0
-        team1TotalSluffs = 0// The total team sluffs
-        team2TotalSluffs = 0
-        team1TricksWonStr = "--" // The total tricks won for a team on that round
-        team2TricksWonStr = "--"
-        team1SluffsWonStr = "--" // The total sluffs won for a team on that round
-        team2SluffsWonStr = "--"
+//        team1RoundScore = 0 // The current round score
+//        team2RoundScore = 0
+//        team1TotalScore = 0 // The total team score
+//        team2TotalScore = 0
+//        team1TotalBid = 0 // The total team bid
+//        team2TotalBid = 0
+//        team1TotalSluffs = 0// The total team sluffs
+//        team2TotalSluffs = 0
+//        team1TricksWonStr = "--" // The total tricks won for a team on that round
+//        team2TricksWonStr = "--"
+//        team1SluffsWonStr = "--" // The total sluffs won for a team on that round
+//        team2SluffsWonStr = "--"
         round = 1 // What is the current round
         gameOver = false
         notAllBid = true
         dontUpdateScores = true
         winner = ""
+        resetPlayerBids()
         runningScores.removeAll()
         setRunningScores()
 

@@ -66,33 +66,33 @@ struct ScoreHandView: View {
                 }
                 
                 GridRow{
-                    Text(String(game.team1TotalScore))
+                    Text(String(game.runningScores[game.round-1].t1RoundScore))
 //                        .font(widthSizeClass == .regular ? .largeTitle : .title)
                         .font(.largeTitle)
                         .frame(maxWidth: .infinity, alignment: .center)
 
-                    Text(String(game.team2TotalScore))
+                    Text(String(game.runningScores[game.round-1].t2RoundScore))
 //                        .font(widthSizeClass == .regular ? .largeTitle : .title)
                         .font(.largeTitle)
                         .frame(maxWidth: .infinity, alignment: .center)
                 }
                 
                 GridRow{
-                    Text("Team Bid: \(game.team1TotalBid)")
+                    Text("Team Bid: \(game.runningScores[game.round-1].t1TricksBid)")
                         .font(widthSizeClass == .regular ? .title : .title2)
                         .frame(maxWidth: .infinity, alignment: .center)
 
-                    Text("Team Bid: \(game.team2TotalBid)")
+                    Text("Team Bid: \(game.runningScores[game.round-1].t2TricksBid)")
                         .font(widthSizeClass == .regular ? .title : .title2)
                         .frame(maxWidth: .infinity, alignment: .center)
                 }
                 
                 GridRow{
-                    Text("Team Sluffs: \(game.team1TotalSluffs)")
+                    Text("Team Sluffs: \(game.runningScores[game.round-1].t1SluffsBid)")
                         .font(widthSizeClass == .regular ? .title : .title2)
                         .frame(maxWidth: .infinity, alignment: .center)
 
-                    Text("Team Sluffs: \(game.team2TotalSluffs)")
+                    Text("Team Sluffs: \(game.runningScores[game.round-1].t2SluffsBid)")
                         .font(widthSizeClass == .regular ? .title : .title2)
                         .frame(maxWidth: .infinity, alignment: .center)
                 }
@@ -103,7 +103,7 @@ struct ScoreHandView: View {
                     
                     HStack{
                         Text("Tricks Won:")
-                        Picker("Tricks Won:", selection: $game.team1TricksWonStr) {
+                        Picker("Tricks Won:", selection: $game.runningScores[game.round-1].t1TricksWonStr) {
                             Text("--").tag("--")
                             ForEach(0...14, id:\.self){ tricksWon in
                                 Text("\(tricksWon)").tag("\(tricksWon)")
@@ -114,8 +114,8 @@ struct ScoreHandView: View {
                     
                     HStack{
                         Text("Tricks Won:")
-                        if game.team1TricksWonStr != "--" {
-                            Text(String(14-Int(game.team1TricksWonStr)!)).foregroundColor(.accentColor)
+                        if game.runningScores[game.round-1].t1TricksWonStr != "--" {
+                            Text(String(14-Int(game.runningScores[game.round-1].t1TricksWonStr)!)).foregroundColor(.accentColor)
                         } else {
                             Text("--").foregroundColor(.accentColor)
                         }
@@ -127,8 +127,8 @@ struct ScoreHandView: View {
                     HStack{
                         Text("Sluffs Won: ")
 
-                        if game.team1TotalSluffs != 0{
-                            Picker("Sluffs Won:", selection: $game.team1SluffsWonStr) {
+                        if game.runningScores[game.round-1].t1SluffsBid != 0{
+                            Picker("Sluffs Won:", selection: $game.runningScores[game.round-1].t1SluffsWonStr) {
                                 
                                 ForEach(game.sluffTeam1ChoiceList, id:\.self){
                                     Text($0)
@@ -141,8 +141,8 @@ struct ScoreHandView: View {
                         }
                     }// end HStack for Team 1 sluffs
                     .onAppear {
-                                if game.team1TotalSluffs == 0 {
-                                    game.team1SluffsWonStr = "0"
+                                if game.runningScores[game.round-1].t1SluffsBid == 0 {
+                                    game.runningScores[game.round-1].t1SluffsWonStr = "0"
                                 }
                             }
                     .scaleEffect(widthSizeClass == .regular ? 1.4 : 1.1)
@@ -150,8 +150,8 @@ struct ScoreHandView: View {
                     HStack{
                         Text("Sluffs Won: ")
 
-                        if game.team2TotalSluffs != 0 {
-                            Picker("Sluffs Won:", selection: $game.team2SluffsWonStr) {
+                        if game.runningScores[game.round-1].t2SluffsBid != 0 {
+                            Picker("Sluffs Won:", selection: $game.runningScores[game.round-1].t2SluffsWonStr) {
                                 
                                 ForEach(game.sluffTeam2ChoiceList, id:\.self){
                                     Text($0)
@@ -164,8 +164,8 @@ struct ScoreHandView: View {
                         }
                     }// end HStack for Team 2 sluffs
                     .onAppear {
-                                if game.team2TotalSluffs == 0 {
-                                    game.team2SluffsWonStr = "0"
+                                if game.runningScores[game.round-1].t2SluffsBid == 0 {
+                                    game.runningScores[game.round-1].t2SluffsWonStr = "0"
                                 }
                             }
                     .scaleEffect(widthSizeClass == .regular ? 1.4 : 1.1)
@@ -175,8 +175,8 @@ struct ScoreHandView: View {
             
             Button(action: {
                 
-                self.game.updateScore()
-                self.game.resetBids()
+                self.game.calculateScore()
+                self.game.resetPlayerBids()
                 self.game.nextDealer()
                 self.game.isGameOver()
                 
@@ -194,7 +194,7 @@ struct ScoreHandView: View {
             .padding()
             .buttonStyle(.borderedProminent)
             .tint(.accentColor)
-            .disabled(game.team1TricksWonStr == "--" || game.team1SluffsWonStr == "--"  || game.team2SluffsWonStr == "--")
+            .disabled(game.runningScores[game.round-1].t1TricksWonStr == "--" || game.runningScores[game.round-1].t1SluffsWonStr == "--"  || game.runningScores[game.round-1].t2SluffsWonStr == "--")
 
             
             Spacer()
