@@ -67,12 +67,10 @@ struct ScoreHandView: View {
                 
                 GridRow{
                     Text(String(game.runningScores[game.round-1].t1RoundScore))
-//                        .font(widthSizeClass == .regular ? .largeTitle : .title)
                         .font(.largeTitle)
                         .frame(maxWidth: .infinity, alignment: .center)
 
                     Text(String(game.runningScores[game.round-1].t2RoundScore))
-//                        .font(widthSizeClass == .regular ? .largeTitle : .title)
                         .font(.largeTitle)
                         .frame(maxWidth: .infinity, alignment: .center)
                 }
@@ -143,6 +141,8 @@ struct ScoreHandView: View {
                     .onAppear {
                                 if game.runningScores[game.round-1].t1SluffsBid == 0 {
                                     game.runningScores[game.round-1].t1SluffsWonStr = "0"
+                                    game.runningScores[game.round-1].t1SluffsBidStr = "0"
+
                                 }
                             }
                     .scaleEffect(widthSizeClass == .regular ? 1.4 : 1.1)
@@ -166,6 +166,7 @@ struct ScoreHandView: View {
                     .onAppear {
                                 if game.runningScores[game.round-1].t2SluffsBid == 0 {
                                     game.runningScores[game.round-1].t2SluffsWonStr = "0"
+                                    game.runningScores[game.round-1].t2SluffsBidStr = "0"
                                 }
                             }
                     .scaleEffect(widthSizeClass == .regular ? 1.4 : 1.1)

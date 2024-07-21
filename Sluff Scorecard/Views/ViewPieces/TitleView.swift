@@ -32,7 +32,8 @@ struct TitleView: View {
                     .font(widthSizeClass == .regular ? .title2 : .title3)
             }
             .padding(.leading)
-            .foregroundColor(.gray)
+            .foregroundStyle(game.round<2 ? .clear: .gray)
+            .disabled(game.round<2)
             
             Spacer()
             

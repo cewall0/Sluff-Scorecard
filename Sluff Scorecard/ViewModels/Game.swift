@@ -16,20 +16,24 @@ final class Game {
             thisRound: 1,
             t1ChangeInScore: 0,
             t1RoundScore: 0,
+            t1TricksBidStr: "--",
             t1TricksBid: 0,
             t1TricksWonStr: "--",
             t1TricksWon: 0,
             t1TrickPoints: 0,
+            t1SluffsBidStr: "--",
             t1SluffsBid: 0,
             t1SluffsWonStr: "--",
             t1SluffsWon: 0,
             t1SluffPoints: 0,
             t2ChangeInScore: 0,
             t2RoundScore: 0,
+            t2TricksBidStr: "--",
             t2TricksBid: 0,
             t2TricksWonStr: "--",
             t2TricksWon: 0,
             t2TrickPoints: 0,
+            t2SluffsBidStr: "--",
             t2SluffsBid: 0,
             t2SluffsWonStr: "--",
             t2SluffsWon: 0,
@@ -114,7 +118,7 @@ final class Game {
     func setRunningScores() {
         for index in 1...numberOfPlayers {
 
-            runningScores.append(RunningScores(thisRound: index, t1ChangeInScore: 0, t1RoundScore: 0, t1TricksBid: 0, t1TricksWonStr: "--", t1TricksWon: 0, t1TrickPoints: 0, t1SluffsBid: 0, t1SluffsWonStr: "--", t1SluffsWon: 0, t1SluffPoints: 0, t2ChangeInScore: 0, t2RoundScore: 0, t2TricksBid: 0, t2TricksWonStr: "--", t2TricksWon: 0, t2TrickPoints: 0, t2SluffsBid: 0, t2SluffsWonStr: "--", t2SluffsWon: 0, t2SluffPoints: 0))
+            runningScores.append(RunningScores(thisRound: index, t1ChangeInScore: 0, t1RoundScore: 0, t1TricksBidStr: "--", t1TricksBid: 0, t1TricksWonStr: "--", t1TricksWon: 0, t1TrickPoints: 0, t1SluffsBidStr: "--", t1SluffsBid: 0, t1SluffsWonStr: "--", t1SluffsWon: 0, t1SluffPoints: 0, t2ChangeInScore: 0, t2RoundScore: 0, t2TricksBidStr: "--",t2TricksBid: 0, t2TricksWonStr: "--", t2TricksWon: 0, t2TrickPoints: 0, t2SluffsBidStr: "--", t2SluffsBid: 0, t2SluffsWonStr: "--", t2SluffsWon: 0, t2SluffPoints: 0))
 
         }
     }
@@ -135,18 +139,25 @@ final class Game {
             
             if (sluffOrBid == "Sluff") && (index % 2 == 0) {
                 runningScores[round-1].t1SluffsBid += 1
+                runningScores[round-1].t1SluffsBidStr = String(runningScores[round-1].t1SluffsBid)
                 continue
                 } else if (sluffOrBid == "Sluff") && (index % 2 == 1) {
                     runningScores[round-1].t2SluffsBid += 1
+                    runningScores[round-1].t2SluffsBidStr = String(runningScores[round-1].t2SluffsBid)
+
                     continue
                 }
             
             guard let bid = Int(playersList[index].playerBid) else { continue }
             if index % 2 == 0 {
                 runningScores[round-1].t1TricksBid += bid
+                runningScores[round-1].t1TricksBidStr = String(runningScores[round-1].t1TricksBid)
+
 
             } else {
                 runningScores[round-1].t2TricksBid += bid
+                runningScores[round-1].t2TricksBidStr = String(runningScores[round-1].t2TricksBid)
+
             }
         }
     }
@@ -231,7 +242,7 @@ final class Game {
         
 // if team2 won the their bid for tricks, they get some points. If not, they get 0.
             if runningScores[index].t2TricksWon  >= runningScores[index].t2TricksBid {
-                if runningScores[index].t2SluffsWon == runningScores[index].t2SluffsWon {
+                if runningScores[index].t2SluffsWon == runningScores[index].t2SluffsBid {
                     runningScores[index].t2SluffPoints = runningScores[index].t2SluffsWon * 50
             } else {
                 runningScores[index].t2SluffPoints = (runningScores[index].t2SluffsWon * 50) - ((runningScores[index].t2SluffsBid - runningScores[index].t2SluffsWon) * 50)

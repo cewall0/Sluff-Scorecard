@@ -81,7 +81,7 @@ struct FixScoreView: View {
                     
                     HStack{
                         Text("Tricks Won:")
-                        Text("\(String(game.runningScores[game.roundToFix-1].t1TricksWon))")
+//                        Text("\(String(game.runningScores[game.roundToFix-1].t1TricksWon))")
                         Picker("Tricks Won:", selection: $game.runningScores[game.roundToFix-1].t1TricksWon) {
                             ForEach(0...14, id:\.self){ tricksWon in
                                 Text("\(tricksWon)").tag("\(tricksWon)")
@@ -106,7 +106,7 @@ struct FixScoreView: View {
                         
                         HStack{
                             Text("Tricks Bid:")
-                            Text("\(String(game.runningScores[game.roundToFix-1].t1TricksBid))")
+//                            Text("\(String(game.runningScores[game.roundToFix-1].t1TricksBid))")
                             Picker("Tricks Bid:", selection: $game.runningScores[game.roundToFix-1].t1TricksBid) {
                                 ForEach(0...14, id:\.self){ tricksBid in
                                     Text("\(tricksBid)").tag("\(tricksBid)")
@@ -117,7 +117,7 @@ struct FixScoreView: View {
                         
                         HStack{
                             Text("Tricks Bid:")
-                            Text("\(String(game.runningScores[game.roundToFix-1].t2TricksBid))")
+//                            Text("\(String(game.runningScores[game.roundToFix-1].t2TricksBid))")
                             Picker("Tricks Bid:", selection: $game.runningScores[game.roundToFix-1].t2TricksBid) {
                                 ForEach(0...14, id:\.self){ tricksBid in
                                     Text("\(tricksBid)").tag("\(tricksBid)")
@@ -131,10 +131,12 @@ struct FixScoreView: View {
                         
                         HStack{
                             Text("Sluffs Won:")
-                            Text("\(String(game.runningScores[game.roundToFix-1].t1SluffsWon))")
+//                            Text("\(String(game.runningScores[game.roundToFix-1].t1SluffsWon))")
                             Picker("Sluffs Won:", selection: $game.runningScores[game.roundToFix-1].t1SluffsWon) {
                                 ForEach(0...game.runningScores[game.roundToFix-1].t1SluffsBid, id:\.self){ sluffsWon in
                                     Text("\(sluffsWon)").tag("\(sluffsWon)")
+                                }.onChange(of: game.runningScores[game.roundToFix-1].t1SluffsWon) { _, _ in
+                                    game.runningScores[game.roundToFix-1].t1SluffsWonStr =  String(game.runningScores[game.roundToFix-1].t1SluffsWon)
                                 }
                             }
                         } // end HStack
@@ -142,10 +144,12 @@ struct FixScoreView: View {
                         
                         HStack{
                             Text("Sluffs Won:")
-                            Text("\(String(game.runningScores[game.roundToFix-1].t2SluffsWon))")
+//                            Text("\(String(game.runningScores[game.roundToFix-1].t2SluffsWon))")
                             Picker("Sluffs Won:", selection: $game.runningScores[game.roundToFix-1].t2SluffsWon) {
                                 ForEach(0...game.runningScores[game.roundToFix-1].t2SluffsBid, id:\.self){ sluffsWon in
                                     Text("\(sluffsWon)").tag("\(sluffsWon)")
+                                }.onChange(of: game.runningScores[game.roundToFix-1].t2SluffsWon) { _, _ in
+                                    game.runningScores[game.roundToFix-1].t2SluffsWonStr =  String(game.runningScores[game.roundToFix-1].t2SluffsWon)
                                 }
                             }
                         } // end HStack
@@ -156,10 +160,18 @@ struct FixScoreView: View {
                         
                         HStack{
                             Text("Sluffs Bid:")
-                            Text("\(String(game.runningScores[game.roundToFix-1].t1SluffsBid))")
-                            Picker("Tricks Won:", selection: $game.runningScores[game.roundToFix-1].t1SluffsBid) {
+//                            Text("\(String(game.runningScores[game.roundToFix-1].t1SluffsBid))")
+                            Picker("Sluffs Bid:", selection: $game.runningScores[game.roundToFix-1].t1SluffsBid) {
                                 ForEach(0...14, id:\.self){ sluffsBid in
                                     Text("\(sluffsBid)").tag("\(sluffsBid)")
+                                }.onChange(of: game.runningScores[game.roundToFix-1].t1SluffsBid) { _, _ in
+                                    
+                                    if game.runningScores[game.roundToFix-1].t1SluffsBid < game.runningScores[game.roundToFix-1].t1SluffsWon {
+                                        game.runningScores[game.roundToFix-1].t1SluffsWon = game.runningScores[game.roundToFix-1].t1SluffsBid
+                                    } // end if
+                                    
+                                    game.runningScores[game.roundToFix-1].t1SluffsBidStr =  String(game.runningScores[game.roundToFix-1].t1SluffsBid)
+                                    
                                 }
                             }
                         } // end HStack
@@ -167,10 +179,17 @@ struct FixScoreView: View {
                         
                         HStack{
                             Text("Sluffs Bid:")
-                            Text("\(String(game.runningScores[game.roundToFix-1].t2SluffsBid))")
-                            Picker("Tricks Won:", selection: $game.runningScores[game.roundToFix-1].t2SluffsBid) {
+//                            Text("\(String(game.runningScores[game.roundToFix-1].t2SluffsBid))")
+                            Picker("Sluffs Bid:", selection: $game.runningScores[game.roundToFix-1].t2SluffsBid) {
                                 ForEach(0...14, id:\.self){ sluffsBid in
                                     Text("\(sluffsBid)").tag("\(sluffsBid)")
+                                }.onChange(of: game.runningScores[game.roundToFix-1].t2SluffsBid) { _, _ in
+                                    
+                                    if game.runningScores[game.roundToFix-1].t2SluffsBid < game.runningScores[game.roundToFix-1].t2SluffsWon {
+                                        game.runningScores[game.roundToFix-1].t2SluffsWon = game.runningScores[game.roundToFix-1].t2SluffsBid
+                                    } // end if
+                                    
+                                    game.runningScores[game.roundToFix-1].t2SluffsBidStr =  String(game.runningScores[game.roundToFix-1].t2SluffsBid)
                                 }
                             }
                         } // end HStack
