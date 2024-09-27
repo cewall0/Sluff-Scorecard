@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B09C6742CA4B4A7003ADC3C /* AdUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF98BE2CA36C62003EEF9E /* AdUnit.swift */; };
+		0B09C6752CA4B4AC003ADC3C /* BannerAdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF98BF2CA36C62003EEF9E /* BannerAdView.swift */; };
+		0B09C6762CA4B4B1003ADC3C /* AdSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF98C02CA36C62003EEF9E /* AdSettings.swift */; };
+		0B09C6792CA4B517003ADC3C /* GoogleMobileAds in Frameworks */ = {isa = PBXBuildFile; productRef = 0B09C6782CA4B517003ADC3C /* GoogleMobileAds */; };
+		0B09C67C2CA4B528003ADC3C /* GoogleUserMessagingPlatform in Frameworks */ = {isa = PBXBuildFile; productRef = 0B09C67B2CA4B528003ADC3C /* GoogleUserMessagingPlatform */; };
 		0B4821E62B43B712001FDA98 /* Sluff_ScorecardApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4821E52B43B712001FDA98 /* Sluff_ScorecardApp.swift */; };
 		0B4821E82B43B712001FDA98 /* ScorecardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4821E72B43B712001FDA98 /* ScorecardView.swift */; };
 		0B4821EA2B43B713001FDA98 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B4821E92B43B713001FDA98 /* Assets.xcassets */; };
@@ -47,6 +52,9 @@
 		0BB1F20A2B71D48C006201F8 /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
 		0BB1F20C2B71D614006201F8 /* TeamScoresView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamScoresView.swift; sourceTree = "<group>"; };
 		0BB1F2292B72B14C006201F8 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		0BBF98BE2CA36C62003EEF9E /* AdUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdUnit.swift; sourceTree = "<group>"; };
+		0BBF98BF2CA36C62003EEF9E /* BannerAdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerAdView.swift; sourceTree = "<group>"; };
+		0BBF98C02CA36C62003EEF9E /* AdSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdSettings.swift; sourceTree = "<group>"; };
 		0BD384D72B7EDF750003C98E /* WinnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinnerView.swift; sourceTree = "<group>"; };
 		0BD384DB2B8075430003C98E /* AskNumPlayersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskNumPlayersView.swift; sourceTree = "<group>"; usesTabs = 0; };
 		C801CE7C2BA0ABF7007488A0 /* RoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundView.swift; sourceTree = "<group>"; };
@@ -63,6 +71,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B09C67C2CA4B528003ADC3C /* GoogleUserMessagingPlatform in Frameworks */,
+				0B09C6792CA4B517003ADC3C /* GoogleMobileAds in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,7 +100,7 @@
 			children = (
 				C8B11FEC2B9E351C004D8BF9 /* Sluff-Scorecard-Info.plist */,
 				0B4821E52B43B712001FDA98 /* Sluff_ScorecardApp.swift */,
-				0B4B15282B656A4700A4E9CD /* Other */,
+				0BBF98C12CA36C62003EEF9E /* Ad */,
 				0B4B15262B656A2500A4E9CD /* Models */,
 				0B4B15272B656A3B00A4E9CD /* ViewModels */,
 				0B4B15252B656A0100A4E9CD /* Views */,
@@ -143,13 +153,6 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
-		0B4B15282B656A4700A4E9CD /* Other */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Other;
-			sourceTree = "<group>";
-		};
 		0BB1F2282B727FE5006201F8 /* ViewPieces */ = {
 			isa = PBXGroup;
 			children = (
@@ -161,6 +164,16 @@
 				0BB1F2002B6C0059006201F8 /* BidPickerView.swift */,
 			);
 			path = ViewPieces;
+			sourceTree = "<group>";
+		};
+		0BBF98C12CA36C62003EEF9E /* Ad */ = {
+			isa = PBXGroup;
+			children = (
+				0BBF98BE2CA36C62003EEF9E /* AdUnit.swift */,
+				0BBF98BF2CA36C62003EEF9E /* BannerAdView.swift */,
+				0BBF98C02CA36C62003EEF9E /* AdSettings.swift */,
+			);
+			path = Ad;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -207,6 +220,10 @@
 				Base,
 			);
 			mainGroup = 0B4821D92B43B711001FDA98;
+			packageReferences = (
+				0B09C6772CA4B517003ADC3C /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */,
+				0B09C67A2CA4B528003ADC3C /* XCRemoteSwiftPackageReference "swift-package-manager-google-user-messaging-platform" */,
+			);
 			productRefGroup = 0B4821E32B43B712001FDA98 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -233,6 +250,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0B09C6762CA4B4B1003ADC3C /* AdSettings.swift in Sources */,
 				0BB1F2012B6C0059006201F8 /* BidPickerView.swift in Sources */,
 				0BD384D82B7EDF750003C98E /* WinnerView.swift in Sources */,
 				C8A2DB5E2B7FF92600569050 /* SplashScreenView.swift in Sources */,
@@ -241,6 +259,7 @@
 				0BB1F1FB2B6B032F006201F8 /* Game.swift in Sources */,
 				0BB1F20B2B71D48C006201F8 /* TitleView.swift in Sources */,
 				0B4821E82B43B712001FDA98 /* ScorecardView.swift in Sources */,
+				0B09C6742CA4B4A7003ADC3C /* AdUnit.swift in Sources */,
 				C84C58532B9A22F800459472 /* RunningScores.swift in Sources */,
 				0BB1F2072B70961D006201F8 /* ScoreHandView.swift in Sources */,
 				0BB1F1F92B6984DE006201F8 /* SettingsView.swift in Sources */,
@@ -249,6 +268,7 @@
 				0BB1F2052B6EBB1F006201F8 /* TeamNameView.swift in Sources */,
 				0B4821E62B43B712001FDA98 /* Sluff_ScorecardApp.swift in Sources */,
 				C84C58512B9A19EC00459472 /* HistoryView.swift in Sources */,
+				0B09C6752CA4B4AC003ADC3C /* BannerAdView.swift in Sources */,
 				C801CE7D2BA0ABF7007488A0 /* RoundView.swift in Sources */,
 				C8D346292B9CBE650058F3EC /* PlayerNameView.swift in Sources */,
 				0BB1F20D2B71D614006201F8 /* TeamScoresView.swift in Sources */,
@@ -474,6 +494,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0B09C6772CA4B517003ADC3C /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googleads/swift-package-manager-google-mobile-ads";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.10.0;
+			};
+		};
+		0B09C67A2CA4B528003ADC3C /* XCRemoteSwiftPackageReference "swift-package-manager-google-user-messaging-platform" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googleads/swift-package-manager-google-user-messaging-platform";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.6.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0B09C6782CA4B517003ADC3C /* GoogleMobileAds */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0B09C6772CA4B517003ADC3C /* XCRemoteSwiftPackageReference "swift-package-manager-google-mobile-ads" */;
+			productName = GoogleMobileAds;
+		};
+		0B09C67B2CA4B528003ADC3C /* GoogleUserMessagingPlatform */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0B09C67A2CA4B528003ADC3C /* XCRemoteSwiftPackageReference "swift-package-manager-google-user-messaging-platform" */;
+			productName = GoogleUserMessagingPlatform;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 0B4821DA2B43B711001FDA98 /* Project object */;
 }

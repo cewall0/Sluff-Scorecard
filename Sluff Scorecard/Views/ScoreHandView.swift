@@ -175,7 +175,7 @@ struct ScoreHandView: View {
 
             
             Button(action: {
-                
+              
                 self.game.calculateScore()
                 self.game.resetPlayerBids()
                 self.game.nextDealer()
@@ -201,9 +201,17 @@ struct ScoreHandView: View {
             Spacer()
            
         } // end Vstack
-            
+
         }
+    
     }
+
+func getRootViewController() -> UIViewController? {
+       guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else {
+           return nil
+       }
+       return windowScene.windows.first?.rootViewController
+   }
 
 
 #Preview {
