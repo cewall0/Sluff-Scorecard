@@ -42,6 +42,7 @@ final class Game {
     ]
   
     var numberOfPlayers: Int = 6
+    var totalTricks: Int = 14 // The total number of possible tricks in a round. This is changed to 11 for a 10-person game.
     
     var team1Name: String = "Team 1"
     var team2Name: String = "Team 2"
@@ -102,6 +103,13 @@ final class Game {
     func setNumberOfPlayers() {
         playersList.removeAll()
         runningScores.removeAll()
+        
+        // Fix the number of total tricks available for a round. It is always 14 unless 10 players are playing, then there are 11 tricks.
+        if numberOfPlayers == 10 {
+            totalTricks = 11
+        } else {
+            totalTricks = 14
+        }
                 
         for index in 1...numberOfPlayers {
             if index == 1{
@@ -185,7 +193,7 @@ final class Game {
         for index in 0...(numberOfPlayers-1) { // loop through all of the rounds.
             if runningScores[index].t1TricksWonStr != "--" {
                 runningScores[index].t1TricksWon = Int(runningScores[index].t1TricksWonStr)!
-                runningScores[index].t2TricksWon = 14-runningScores[index].t1TricksWon
+                runningScores[index].t2TricksWon = totalTricks-runningScores[index].t1TricksWon
                 runningScores[index].t2TricksWonStr = String(runningScores[index].t2TricksWon)
             }
             

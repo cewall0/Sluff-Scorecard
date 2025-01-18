@@ -26,7 +26,7 @@ struct BidPickerView: View {
             Picker("Bid:", selection: $game.playersList[playerIndex].playerBid) {
                 Text("--").tag("--")
                 Text("Sluff").tag("Sluff")
-                ForEach(1...14, id:\.self){ bid in
+                ForEach(1...game.totalTricks, id:\.self){ bid in
                     Text("\(bid)").tag("\(bid)")
                 }.onChange(of: game.playersList[playerIndex].playerBid) { _, _ in
                     onBidChanged()

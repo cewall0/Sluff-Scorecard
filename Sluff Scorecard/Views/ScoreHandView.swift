@@ -103,7 +103,7 @@ struct ScoreHandView: View {
                         Text("Tricks Won:")
                         Picker("Tricks Won:", selection: $game.runningScores[game.round-1].t1TricksWonStr) {
                             Text("--").tag("--")
-                            ForEach(0...14, id:\.self){ tricksWon in
+                            ForEach(0...game.totalTricks, id:\.self){ tricksWon in
                                 Text("\(tricksWon)").tag("\(tricksWon)")
                             }
                         }
@@ -113,7 +113,7 @@ struct ScoreHandView: View {
                     HStack{
                         Text("Tricks Won:")
                         if game.runningScores[game.round-1].t1TricksWonStr != "--" {
-                            Text(String(14-Int(game.runningScores[game.round-1].t1TricksWonStr)!)).foregroundColor(.accentColor)
+                            Text(String(game.totalTricks-Int(game.runningScores[game.round-1].t1TricksWonStr)!)).foregroundColor(.accentColor)
                         } else {
                             Text("--").foregroundColor(.accentColor)
                         }

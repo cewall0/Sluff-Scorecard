@@ -29,10 +29,10 @@ struct TeamScoresView: View {
             if game.gameOver == false {
                 LazyVGrid(columns: twoColumnGrid, alignment: .center, spacing: 10) {
                     HStack{
-                        Text("Team Bid: \(game.runningScores[game.round-1].t1TricksBid)").foregroundColor(game.runningScores[game.round-1].t1TricksBid <= 14 ? .black : .red)
+                        Text("Team Bid: \(game.runningScores[game.round-1].t1TricksBid)").foregroundColor(game.runningScores[game.round-1].t1TricksBid <= game.totalTricks ? .black : .red)
                     }
                     HStack{
-                        Text("Team Bid: \(game.runningScores[game.round-1].t2TricksBid)").foregroundColor(game.runningScores[game.round-1].t2TricksBid <= 14 ? .black : .red)
+                        Text("Team Bid: \(game.runningScores[game.round-1].t2TricksBid)").foregroundColor(game.runningScores[game.round-1].t2TricksBid <= game.totalTricks ? .black : .red)
                     }
                 }.font(widthSizeClass == .regular ? .title2 : .title3)
                     .padding(.vertical, -3)

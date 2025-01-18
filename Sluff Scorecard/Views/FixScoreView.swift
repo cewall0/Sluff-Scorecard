@@ -83,10 +83,10 @@ struct FixScoreView: View {
                         Text("Tricks Won:")
 //                        Text("\(String(game.runningScores[game.roundToFix-1].t1TricksWon))")
                         Picker("Tricks Won:", selection: $game.runningScores[game.roundToFix-1].t1TricksWon) {
-                            ForEach(0...14, id:\.self){ tricksWon in
+                            ForEach(0...game.totalTricks, id:\.self){ tricksWon in
                                 Text("\(tricksWon)").tag("\(tricksWon)")
                             }.onChange(of: game.runningScores[game.roundToFix-1].t1TricksWon) { _, _ in
-                                game.runningScores[game.roundToFix-1].t2TricksWon = 14-game.runningScores[game.roundToFix-1].t1TricksWon
+                                game.runningScores[game.roundToFix-1].t2TricksWon = game.totalTricks-game.runningScores[game.roundToFix-1].t1TricksWon
                                 game.runningScores[game.roundToFix-1].t1TricksWonStr = String(game.runningScores[game.roundToFix-1].t1TricksWon)
                                 game.runningScores[game.roundToFix-1].t2TricksWonStr = String(game.runningScores[game.roundToFix-1].t2TricksWon)
                             }
@@ -108,7 +108,7 @@ struct FixScoreView: View {
                             Text("Tricks Bid:")
 //                            Text("\(String(game.runningScores[game.roundToFix-1].t1TricksBid))")
                             Picker("Tricks Bid:", selection: $game.runningScores[game.roundToFix-1].t1TricksBid) {
-                                ForEach(0...14, id:\.self){ tricksBid in
+                                ForEach(0...game.totalTricks, id:\.self){ tricksBid in
                                     Text("\(tricksBid)").tag("\(tricksBid)")
                                 }
                             }
@@ -119,7 +119,7 @@ struct FixScoreView: View {
                             Text("Tricks Bid:")
 //                            Text("\(String(game.runningScores[game.roundToFix-1].t2TricksBid))")
                             Picker("Tricks Bid:", selection: $game.runningScores[game.roundToFix-1].t2TricksBid) {
-                                ForEach(0...14, id:\.self){ tricksBid in
+                                ForEach(0...game.totalTricks, id:\.self){ tricksBid in
                                     Text("\(tricksBid)").tag("\(tricksBid)")
                                 }
                             }
@@ -162,7 +162,7 @@ struct FixScoreView: View {
                             Text("Sluffs Bid:")
 //                            Text("\(String(game.runningScores[game.roundToFix-1].t1SluffsBid))")
                             Picker("Sluffs Bid:", selection: $game.runningScores[game.roundToFix-1].t1SluffsBid) {
-                                ForEach(0...14, id:\.self){ sluffsBid in
+                                ForEach(0...game.totalTricks, id:\.self){ sluffsBid in
                                     Text("\(sluffsBid)").tag("\(sluffsBid)")
                                 }.onChange(of: game.runningScores[game.roundToFix-1].t1SluffsBid) { _, _ in
                                     
@@ -181,7 +181,7 @@ struct FixScoreView: View {
                             Text("Sluffs Bid:")
 //                            Text("\(String(game.runningScores[game.roundToFix-1].t2SluffsBid))")
                             Picker("Sluffs Bid:", selection: $game.runningScores[game.roundToFix-1].t2SluffsBid) {
-                                ForEach(0...14, id:\.self){ sluffsBid in
+                                ForEach(0...game.totalTricks, id:\.self){ sluffsBid in
                                     Text("\(sluffsBid)").tag("\(sluffsBid)")
                                 }.onChange(of: game.runningScores[game.roundToFix-1].t2SluffsBid) { _, _ in
                                     
