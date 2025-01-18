@@ -10,6 +10,7 @@
 		0B09C6742CA4B4A7003ADC3C /* AdUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF98BE2CA36C62003EEF9E /* AdUnit.swift */; };
 		0B09C6752CA4B4AC003ADC3C /* BannerAdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF98BF2CA36C62003EEF9E /* BannerAdView.swift */; };
 		0B09C6762CA4B4B1003ADC3C /* AdSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF98C02CA36C62003EEF9E /* AdSettings.swift */; };
+		0B2FFDD62D3C5D5200CE0DCB /* RulesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2FFDD52D3C5D5200CE0DCB /* RulesView.swift */; };
 		0B4821E62B43B712001FDA98 /* Sluff_ScorecardApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4821E52B43B712001FDA98 /* Sluff_ScorecardApp.swift */; };
 		0B4821E82B43B712001FDA98 /* ScorecardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4821E72B43B712001FDA98 /* ScorecardView.swift */; };
 		0B4821EA2B43B713001FDA98 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B4821E92B43B713001FDA98 /* Assets.xcassets */; };
@@ -36,6 +37,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0B2FFDD52D3C5D5200CE0DCB /* RulesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesView.swift; sourceTree = "<group>"; };
 		0B4821E22B43B712001FDA98 /* Sluff Scorecard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sluff Scorecard.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B4821E52B43B712001FDA98 /* Sluff_ScorecardApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sluff_ScorecardApp.swift; sourceTree = "<group>"; };
 		0B4821E72B43B712001FDA98 /* ScorecardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScorecardView.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 				0BD384DB2B8075430003C98E /* AskNumPlayersView.swift */,
 				C84C58502B9A19EC00459472 /* HistoryView.swift */,
 				0B5B153B2C2DBFB800AE356F /* FixScoreView.swift */,
+				0B2FFDD52D3C5D5200CE0DCB /* RulesView.swift */,
 				0BB1F2282B727FE5006201F8 /* ViewPieces */,
 			);
 			path = Views;
@@ -318,6 +321,7 @@
 				0BB1F22A2B72B14C006201F8 /* Router.swift in Sources */,
 				0BB1F1FB2B6B032F006201F8 /* Game.swift in Sources */,
 				0BB1F20B2B71D48C006201F8 /* TitleView.swift in Sources */,
+				0B2FFDD62D3C5D5200CE0DCB /* RulesView.swift in Sources */,
 				0B4821E82B43B712001FDA98 /* ScorecardView.swift in Sources */,
 				0B09C6742CA4B4A7003ADC3C /* AdUnit.swift in Sources */,
 				C84C58532B9A22F800459472 /* RunningScores.swift in Sources */,

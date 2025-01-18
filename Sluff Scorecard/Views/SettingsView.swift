@@ -61,12 +61,16 @@ struct SettingsView: View {
                     Divider()
                     
                     HStack(alignment: .top){
-                        Text("• ")
-                        Link("Click here to read the rules of Sluff.", destination: URL(string: "https://sites.google.com/view/sluff-scorecard/rules")!)
-                        Spacer()
+                        Text("• ").foregroundColor(.black)
+                        Button {
+                            reset()
+                            path.append(7)
+                        } label: {
+                            Text("Click here to read the rules of the game.")
+                                .multilineTextAlignment(.leading)
+                                .foregroundColor(.black)
+                        }
                     }
-                    .foregroundColor(.black)
-                    .multilineTextAlignment(.leading)
                     
                     Divider()
                     
@@ -90,6 +94,8 @@ struct SettingsView: View {
                                 .foregroundColor(.black)
                         }
                     }
+                    
+                    
                     
                     
                     Spacer()
