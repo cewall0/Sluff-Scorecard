@@ -41,7 +41,7 @@ final class Game {
         )
     ]
   
-    var numberOfPlayers: Int = 6
+    var numberOfPlayers: Int = 4
     var totalTricks: Int = 14 // The total number of possible tricks in a round. This is changed to 11 for a 10-person game.
     
     var team1Name: String = "Team 1"

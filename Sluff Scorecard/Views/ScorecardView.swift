@@ -69,7 +69,7 @@ struct ScorecardView: View {
                             .tint(.black)
                             .background(index % 2 == 0 ? Color.blue.opacity(0.3) : Color.gray.opacity(0.3))
                             .cornerRadius(8)
-                            .padding(.horizontal, 5)
+                            .padding(.horizontal, 15)
                         }
                     }
                     

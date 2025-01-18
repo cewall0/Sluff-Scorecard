@@ -15,7 +15,6 @@ struct TeamScoresView: View {
     @Environment(\.verticalSizeClass) var heightSizeClass: UserInterfaceSizeClass?
     @Environment(\.horizontalSizeClass) var widthSizeClass: UserInterfaceSizeClass?
 
-//    @State var teamBids: (team1Bids: Int, team2Bids: Int) = (0, 0)
     let twoColumnGrid = [GridItem(.flexible()), GridItem(.flexible())]
     
     var body: some View {

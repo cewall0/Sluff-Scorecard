@@ -39,7 +39,14 @@ struct TitleView: View {
             
             Image("SluffScorecardTitleSVG")
                 .resizable()
-                .frame(width: (CGFloat(15 * 100/game.numberOfPlayers)), height: (CGFloat(8 * 100/game.numberOfPlayers)))
+                .frame(
+                    minWidth: 130, // Minimum width
+                    idealWidth: CGFloat(13 * 100 / game.numberOfPlayers), // Your calculated width
+                    maxWidth: 250, // Maximum width
+                    minHeight: 120, // Minimum height
+                    idealHeight: CGFloat(8 * 100 / game.numberOfPlayers), // Your calculated height
+                    maxHeight: 150 // Maximum height
+                )
                 
             Spacer()
             

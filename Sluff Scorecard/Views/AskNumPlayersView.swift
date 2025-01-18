@@ -53,6 +53,9 @@ struct AskNumPlayersView: View {
                 Text("How many players will be playing?").font(widthSizeClass == .regular ? .title : .title2)
                 
                 Picker("", selection: $game.numberOfPlayers) {
+                    
+                    Text("4").tag(4)
+                    
                     Text("6").tag(6)
                     
                     Text("8").tag(8)
@@ -61,8 +64,11 @@ struct AskNumPlayersView: View {
                     
                 }
                 .pickerStyle(.segmented)
+                .tint(.blue)
                 .padding()
-                
+                .background(Color(uiColor: .systemGray6)) // Subtle background color
+                .cornerRadius(8) // Rounded edges
+                .shadow(color: .gray.opacity(0.4), radius: 4, x: 0, y: 2) // Add a shadow
                 
                 Button(action: {
                     game.setNumberOfPlayers()
