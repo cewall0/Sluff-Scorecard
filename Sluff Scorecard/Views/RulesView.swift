@@ -109,7 +109,7 @@ struct RulesView: View {
                         .fontWeight(.semibold)
                         .padding(.bottom, 4)
                     
-                    Text("A regular rook deck does not have the four traditional suits. Instead, it has four colors (red, black, green, and yellow). Each color contains 1 through 14. Two cards have a bird on them. ")
+                    Text("Sluff is played with two rook decks. A regular rook deck does not have the four traditional suits. Instead, it has four colors (red, black, green, and yellow). Each color contains 1 through 14. Two cards have a bird on them. ")
                     Text("The ranking of the cards from high to low is: 1, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2. In Sluff, the black cards are always trump.")
                     Image("cards")
                         .resizable()

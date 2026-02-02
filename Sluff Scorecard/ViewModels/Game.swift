@@ -273,6 +273,97 @@ final class Game {
         
     }// end calculateScore function
     
+    
+    /// This function calculated scores for one round, given prior totals
+    func calculateRound(
+        index: Int,
+        previousT1: Int,
+        previousT2: Int
+    ) {
+        // ---- Parse tricks & sluffs ----
+        if runningScores[index].t1TricksWonStr != "--" {
+            runningScores[index].t1TricksWon = Int(runningScores[index].t1TricksWonStr)!
+            runningScores[index].t2TricksWon = totalTricks - runningScores[index].t1TricksWon
+            runningScores[index].t2TricksWonStr = String(runningScores[index].t2TricksWon)
+        }
+
+        if runningScores[index].t1SluffsWonStr != "--" {
+            runningScores[index].t1SluffsWon = Int(runningScores[index].t1SluffsWonStr)!
+        }
+
+        if runningScores[index].t2SluffsWonStr != "--" {
+            runningScores[index].t2SluffsWon = Int(runningScores[index].t2SluffsWonStr)!
+        }
+
+        // ---- Team 1 scoring ----
+        if runningScores[index].t1TricksWon >= runningScores[index].t1TricksBid {
+            runningScores[index].t1TrickPoints =
+                (10 * runningScores[index].t1TricksBid)
+                + (runningScores[index].t1TricksWon - runningScores[index].t1TricksBid)
+
+            runningScores[index].t1SluffPoints =
+                (runningScores[index].t1SluffsWon * 50)
+                - ((runningScores[index].t1SluffsBid - runningScores[index].t1SluffsWon) * 50)
+        } else {
+            runningScores[index].t1TrickPoints = 0
+            runningScores[index].t1SluffPoints = 0
+        }
+
+        runningScores[index].t1ChangeInScore =
+            runningScores[index].t1TrickPoints + runningScores[index].t1SluffPoints
+
+        runningScores[index].t1RoundScore =
+            previousT1 + runningScores[index].t1ChangeInScore
+
+        // ---- Team 2 scoring ----
+        if runningScores[index].t2TricksWon >= runningScores[index].t2TricksBid {
+            runningScores[index].t2TrickPoints =
+                (10 * runningScores[index].t2TricksBid)
+                + (runningScores[index].t2TricksWon - runningScores[index].t2TricksBid)
+
+            runningScores[index].t2SluffPoints =
+                (runningScores[index].t2SluffsWon * 50)
+                - ((runningScores[index].t2SluffsBid - runningScores[index].t2SluffsWon) * 50)
+        } else {
+            runningScores[index].t2TrickPoints = 0
+            runningScores[index].t2SluffPoints = 0
+        }
+
+        runningScores[index].t2ChangeInScore =
+            runningScores[index].t2TrickPoints + runningScores[index].t2SluffPoints
+
+        runningScores[index].t2RoundScore =
+            previousT2 + runningScores[index].t2ChangeInScore
+    }
+    
+    /// This function recalculates all scores starting from an edited round
+    func recalculateScores(from editedRound: Int) {
+        let startIndex = editedRound - 1
+        guard startIndex >= 0 else { return }
+
+        var currentT1 =
+            startIndex > 0 ? runningScores[startIndex - 1].t1RoundScore : 0
+        var currentT2 =
+            startIndex > 0 ? runningScores[startIndex - 1].t2RoundScore : 0
+
+        for index in startIndex..<numberOfPlayers {
+            // Clear old totals
+            runningScores[index].t1RoundScore = 0
+            runningScores[index].t2RoundScore = 0
+
+            calculateRound(
+                index: index,
+                previousT1: currentT1,
+                previousT2: currentT2
+            )
+
+            currentT1 = runningScores[index].t1RoundScore
+            currentT2 = runningScores[index].t2RoundScore
+        }
+    }
+
+
+    
     /// This function resets the player bids so a new round can begin wiht -- for each player's bid in the scorecard.
     func resetPlayerBids() -> () {
         for index in playersList.indices {
@@ -327,7 +418,8 @@ final class Game {
     /// This function changes the gameOver boolean to true after each of the players in the game had dealt one hand.
     func isGameOver() -> () {
         if round >= numberOfPlayers {
-           gameOver = true
+            gameOver = true
+            roundToFix = round // preserve last round
             declareWinner()
         } else {
             round = round + 1
