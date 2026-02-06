@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B0970B02F35486A007ECFA7 /* StartupAdManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0970AF2F35485A007ECFA7 /* StartupAdManager.swift */; };
+		0B0970B22F3548E1007ECFA7 /* StartupAdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0970B12F3548C1007ECFA7 /* StartupAdView.swift */; };
+		0B0970B62F35492C007ECFA7 /* StartupAdCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0970B52F354929007ECFA7 /* StartupAdCoordinator.swift */; };
 		0B09C6742CA4B4A7003ADC3C /* AdUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF98BE2CA36C62003EEF9E /* AdUnit.swift */; };
 		0B09C6752CA4B4AC003ADC3C /* BannerAdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF98BF2CA36C62003EEF9E /* BannerAdView.swift */; };
 		0B09C6762CA4B4B1003ADC3C /* AdSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF98C02CA36C62003EEF9E /* AdSettings.swift */; };
@@ -37,6 +40,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0B0970AF2F35485A007ECFA7 /* StartupAdManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupAdManager.swift; sourceTree = "<group>"; };
+		0B0970B12F3548C1007ECFA7 /* StartupAdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupAdView.swift; sourceTree = "<group>"; };
+		0B0970B52F354929007ECFA7 /* StartupAdCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartupAdCoordinator.swift; sourceTree = "<group>"; };
 		0B2FFDD52D3C5D5200CE0DCB /* RulesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesView.swift; sourceTree = "<group>"; };
 		0B4821E22B43B712001FDA98 /* Sluff Scorecard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sluff Scorecard.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B4821E52B43B712001FDA98 /* Sluff_ScorecardApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sluff_ScorecardApp.swift; sourceTree = "<group>"; };
@@ -184,6 +190,9 @@
 		0BBF98C12CA36C62003EEF9E /* Ad */ = {
 			isa = PBXGroup;
 			children = (
+				0B0970B52F354929007ECFA7 /* StartupAdCoordinator.swift */,
+				0B0970B12F3548C1007ECFA7 /* StartupAdView.swift */,
+				0B0970AF2F35485A007ECFA7 /* StartupAdManager.swift */,
 				0BBF98BE2CA36C62003EEF9E /* AdUnit.swift */,
 				0BBF98BF2CA36C62003EEF9E /* BannerAdView.swift */,
 				0BBF98C02CA36C62003EEF9E /* AdSettings.swift */,
@@ -318,8 +327,11 @@
 				0BD384D82B7EDF750003C98E /* WinnerView.swift in Sources */,
 				C8A2DB5E2B7FF92600569050 /* SplashScreenView.swift in Sources */,
 				0B4821F82B43B8B1001FDA98 /* Player.swift in Sources */,
+				0B0970B02F35486A007ECFA7 /* StartupAdManager.swift in Sources */,
 				0BB1F22A2B72B14C006201F8 /* Router.swift in Sources */,
+				0B0970B22F3548E1007ECFA7 /* StartupAdView.swift in Sources */,
 				0BB1F1FB2B6B032F006201F8 /* Game.swift in Sources */,
+				0B0970B62F35492C007ECFA7 /* StartupAdCoordinator.swift in Sources */,
 				0BB1F20B2B71D48C006201F8 /* TitleView.swift in Sources */,
 				0B2FFDD62D3C5D5200CE0DCB /* RulesView.swift in Sources */,
 				0B4821E82B43B712001FDA98 /* ScorecardView.swift in Sources */,
@@ -488,7 +500,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.9;
+				MARKETING_VERSION = 1.92;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Wallace.Sluff-Scorecard";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
@@ -525,7 +537,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.9;
+				MARKETING_VERSION = 1.92;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Wallace.Sluff-Scorecard";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";

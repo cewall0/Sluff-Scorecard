@@ -10,7 +10,7 @@ import SwiftUI
 struct FixScoreView: View {
     @Environment(Game.self) private var game
     @Binding var path: NavigationPath
-    
+
     @Environment(\.verticalSizeClass) var heightSizeClass: UserInterfaceSizeClass?
     @Environment(\.horizontalSizeClass) var widthSizeClass: UserInterfaceSizeClass?
 
@@ -46,6 +46,7 @@ struct FixScoreView: View {
 
             // Grid for scores and pickers
             Grid(alignment: .center, horizontalSpacing: 0, verticalSpacing: 2) {
+
                 // Team Names
                 GridRow {
                     scoreHeader(game.team1Name, color: .blue.opacity(0.3))
@@ -63,14 +64,14 @@ struct FixScoreView: View {
                     pickerWithLabel(
                         label: "Tricks Won",
                         selection: $game.runningScores[game.roundToFix-1].t1TricksWon,
-                        range: 0...game.totalTricks,
-                        onChange: { newValue in
-                            let index = game.roundToFix - 1
-                            game.runningScores[index].t2TricksWon = game.totalTricks - newValue
-                            game.runningScores[index].t1TricksWonStr = String(newValue)
-                            game.runningScores[index].t2TricksWonStr = String(game.runningScores[index].t2TricksWon)
-                        }
-                    )
+                        range: 0...game.totalTricks
+                    ) { newValue in
+                        let index = game.roundToFix - 1
+                        game.runningScores[index].t2TricksWon = game.totalTricks - newValue
+                        game.runningScores[index].t1TricksWonStr = String(newValue)
+                        game.runningScores[index].t2TricksWonStr = String(game.runningScores[index].t2TricksWon)
+                    }
+
                     HStack {
                         Text("Tricks Won:")
                         Text("\(game.runningScores[game.roundToFix-1].t2TricksWon)")
@@ -83,29 +84,28 @@ struct FixScoreView: View {
                     pickerWithLabel(
                         label: "Tricks Bid",
                         selection: $game.runningScores[game.roundToFix-1].t1TricksBid,
-                        range: 0...game.totalTricks,
-                        onChange: { newValue in
-                            let index = game.roundToFix - 1
-                            game.runningScores[index].t1TricksBidStr = String(newValue)
-                            if game.runningScores[index].t1TricksWon > newValue {
-                                game.runningScores[index].t1TricksWon = newValue
-                                game.runningScores[index].t1TricksWonStr = String(newValue)
-                            }
+                        range: 0...game.totalTricks
+                    ) { newValue in
+                        let index = game.roundToFix - 1
+                        game.runningScores[index].t1TricksBidStr = String(newValue)
+                        if game.runningScores[index].t1TricksWon > newValue {
+                            game.runningScores[index].t1TricksWon = newValue
+                            game.runningScores[index].t1TricksWonStr = String(newValue)
                         }
-                    )
+                    }
+
                     pickerWithLabel(
                         label: "Tricks Bid",
                         selection: $game.runningScores[game.roundToFix-1].t2TricksBid,
-                        range: 0...game.totalTricks,
-                        onChange: { newValue in
-                            let index = game.roundToFix - 1
-                            game.runningScores[index].t2TricksBidStr = String(newValue)
-                            if game.runningScores[index].t2TricksWon > newValue {
-                                game.runningScores[index].t2TricksWon = newValue
-                                game.runningScores[index].t2TricksWonStr = String(newValue)
-                            }
+                        range: 0...game.totalTricks
+                    ) { newValue in
+                        let index = game.roundToFix - 1
+                        game.runningScores[index].t2TricksBidStr = String(newValue)
+                        if game.runningScores[index].t2TricksWon > newValue {
+                            game.runningScores[index].t2TricksWon = newValue
+                            game.runningScores[index].t2TricksWonStr = String(newValue)
                         }
-                    )
+                    }
                 }
 
                 // Sluffs Won
@@ -113,29 +113,28 @@ struct FixScoreView: View {
                     pickerWithLabel(
                         label: "Sluffs Won",
                         selection: $game.runningScores[game.roundToFix-1].t1SluffsWon,
-                        range: 0...game.runningScores[game.roundToFix-1].t1SluffsBid,
-                        onChange: { newValue in
-                            let index = game.roundToFix - 1
-                            game.runningScores[index].t1SluffsWonStr = String(newValue)
-                            if newValue > game.runningScores[index].t1SluffsBid {
-                                game.runningScores[index].t1SluffsWon = game.runningScores[index].t1SluffsBid
-                                game.runningScores[index].t1SluffsWonStr = String(game.runningScores[index].t1SluffsBid)
-                            }
+                        range: 0...game.runningScores[game.roundToFix-1].t1SluffsBid
+                    ) { newValue in
+                        let index = game.roundToFix - 1
+                        game.runningScores[index].t1SluffsWonStr = String(newValue)
+                        if newValue > game.runningScores[index].t1SluffsBid {
+                            game.runningScores[index].t1SluffsWon = game.runningScores[index].t1SluffsBid
+                            game.runningScores[index].t1SluffsWonStr = String(game.runningScores[index].t1SluffsBid)
                         }
-                    )
+                    }
+
                     pickerWithLabel(
                         label: "Sluffs Won",
                         selection: $game.runningScores[game.roundToFix-1].t2SluffsWon,
-                        range: 0...game.runningScores[game.roundToFix-1].t2SluffsBid,
-                        onChange: { newValue in
-                            let index = game.roundToFix - 1
-                            game.runningScores[index].t2SluffsWonStr = String(newValue)
-                            if newValue > game.runningScores[index].t2SluffsBid {
-                                game.runningScores[index].t2SluffsWon = game.runningScores[index].t2SluffsBid
-                                game.runningScores[index].t2SluffsWonStr = String(game.runningScores[index].t2SluffsBid)
-                            }
+                        range: 0...game.runningScores[game.roundToFix-1].t2SluffsBid
+                    ) { newValue in
+                        let index = game.roundToFix - 1
+                        game.runningScores[index].t2SluffsWonStr = String(newValue)
+                        if newValue > game.runningScores[index].t2SluffsBid {
+                            game.runningScores[index].t2SluffsWon = game.runningScores[index].t2SluffsBid
+                            game.runningScores[index].t2SluffsWonStr = String(game.runningScores[index].t2SluffsBid)
                         }
-                    )
+                    }
                 }
 
                 // Sluffs Bid
@@ -143,29 +142,28 @@ struct FixScoreView: View {
                     pickerWithLabel(
                         label: "Sluffs Bid",
                         selection: $game.runningScores[game.roundToFix-1].t1SluffsBid,
-                        range: 0...game.totalTricks,
-                        onChange: { newValue in
-                            let index = game.roundToFix - 1
-                            game.runningScores[index].t1SluffsBidStr = String(newValue)
-                            if game.runningScores[index].t1SluffsWon > newValue {
-                                game.runningScores[index].t1SluffsWon = newValue
-                                game.runningScores[index].t1SluffsWonStr = String(newValue)
-                            }
+                        range: 0...game.totalTricks
+                    ) { newValue in
+                        let index = game.roundToFix - 1
+                        game.runningScores[index].t1SluffsBidStr = String(newValue)
+                        if game.runningScores[index].t1SluffsWon > newValue {
+                            game.runningScores[index].t1SluffsWon = newValue
+                            game.runningScores[index].t1SluffsWonStr = String(newValue)
                         }
-                    )
+                    }
+
                     pickerWithLabel(
                         label: "Sluffs Bid",
                         selection: $game.runningScores[game.roundToFix-1].t2SluffsBid,
-                        range: 0...game.totalTricks,
-                        onChange: { newValue in
-                            let index = game.roundToFix - 1
-                            game.runningScores[index].t2SluffsBidStr = String(newValue)
-                            if game.runningScores[index].t2SluffsWon > newValue {
-                                game.runningScores[index].t2SluffsWon = newValue
-                                game.runningScores[index].t2SluffsWonStr = String(newValue)
-                            }
+                        range: 0...game.totalTricks
+                    ) { newValue in
+                        let index = game.roundToFix - 1
+                        game.runningScores[index].t2SluffsBidStr = String(newValue)
+                        if game.runningScores[index].t2SluffsWon > newValue {
+                            game.runningScores[index].t2SluffsWon = newValue
+                            game.runningScores[index].t2SluffsWonStr = String(newValue)
                         }
-                    )
+                    }
                 }
             } // end Grid
 
@@ -189,7 +187,6 @@ struct FixScoreView: View {
 
 // MARK: - Helper Views
 extension FixScoreView {
-    // Header for score cells
     func scoreHeader(_ text: String, color: Color) -> some View {
         Text(text)
             .font(widthSizeClass == .regular ? .largeTitle : .title)
@@ -200,7 +197,6 @@ extension FixScoreView {
             .cornerRadius(8)
     }
 
-    // Score cell
     func scoreCell(_ text: String, color: Color) -> some View {
         Text(text)
             .font(widthSizeClass == .regular ? .largeTitle : .title)
@@ -211,8 +207,12 @@ extension FixScoreView {
             .cornerRadius(8)
     }
 
-    // Generic picker with label
-    func pickerWithLabel(label: String, selection: Binding<Int>, range: ClosedRange<Int>, onChange: @escaping (Int) -> Void) -> some View {
+    func pickerWithLabel(
+        label: String,
+        selection: Binding<Int>,
+        range: ClosedRange<Int>,
+        onChange: @escaping (Int) -> Void
+    ) -> some View {
         HStack {
             Text("\(label):")
             Picker(label, selection: selection) {
@@ -220,7 +220,10 @@ extension FixScoreView {
                     Text("\(value)").tag(value)
                 }
             }
-            .onChange(of: selection.wrappedValue, perform: onChange)
+            // ✅ iOS 17 style, no deprecation warning
+            .onChange(of: selection.wrappedValue) { oldValue, newValue in
+                onChange(newValue)
+            }
         }
         .scaleEffect(widthSizeClass == .regular ? 1.4 : 1.1)
     }
