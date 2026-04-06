@@ -122,7 +122,7 @@ struct RulesView: View {
                     + Text("red 2")
                         .foregroundColor(.red)
                     + Text(".")
-                    Text("• 6 players: Discard all 2, 3, 4, and 5. Add back into the deck one  ")
+                    Text("• 6 players: Discard all 2, 3, 4, and 5. Add back into the deck one  ")//fixed on 4/6/26
                     + Text("red 2")
                         .foregroundColor(.red)
                     + Text(", one ")
