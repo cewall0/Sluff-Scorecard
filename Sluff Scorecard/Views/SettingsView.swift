@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 import Observation
+import WallaceAds
 
 
 struct SettingsView: View {
@@ -94,10 +95,22 @@ struct SettingsView: View {
                                 .foregroundColor(.black)
                         }
                     }
-                    
-                    
-                    
-                    
+
+                    if WallaceAds.privacyOptionsRequired {
+                        Divider()
+
+                        HStack(alignment: .top){
+                            Text("• ").foregroundColor(.black)
+                            Button {
+                                WallaceAds.presentPrivacyOptions()
+                            } label: {
+                                Text("Privacy settings for ads.")
+                                    .multilineTextAlignment(.leading)
+                                    .foregroundColor(.black)
+                            }
+                        }
+                    }
+
                     Spacer()
                     
 

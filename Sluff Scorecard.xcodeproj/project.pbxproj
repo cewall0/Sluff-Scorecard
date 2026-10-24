@@ -7,10 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0B0970B02F35486A007ECFA7 /* InterstitialAdManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B0970AF2F35485A007ECFA7 /* InterstitialAdManager.swift */; };
-		0B09C6742CA4B4A7003ADC3C /* AdUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF98BE2CA36C62003EEF9E /* AdUnit.swift */; };
-		0B09C6752CA4B4AC003ADC3C /* BannerAdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF98BF2CA36C62003EEF9E /* BannerAdView.swift */; };
-		0B09C6762CA4B4B1003ADC3C /* AdSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBF98C02CA36C62003EEF9E /* AdSettings.swift */; };
+		0ADF56497BF724126BC32D2B /* WallaceAds in Frameworks */ = {isa = PBXBuildFile; productRef = C5396D39739836512BB2305F /* WallaceAds */; };
 		0B2FFDD62D3C5D5200CE0DCB /* RulesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2FFDD52D3C5D5200CE0DCB /* RulesView.swift */; };
 		0B4821E62B43B712001FDA98 /* Sluff_ScorecardApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4821E52B43B712001FDA98 /* Sluff_ScorecardApp.swift */; };
 		0B4821E82B43B712001FDA98 /* ScorecardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4821E72B43B712001FDA98 /* ScorecardView.swift */; };
@@ -28,7 +25,6 @@
 		0BB1F22A2B72B14C006201F8 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BB1F2292B72B14C006201F8 /* Router.swift */; };
 		0BD384D82B7EDF750003C98E /* WinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD384D72B7EDF750003C98E /* WinnerView.swift */; };
 		0BD384DC2B8075430003C98E /* AskNumPlayersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD384DB2B8075430003C98E /* AskNumPlayersView.swift */; };
-		A25CE21514EE5BF021D66E8A /* Pods_Sluff_Scorecard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90358A270536FEC2EC54F0EF /* Pods_Sluff_Scorecard.framework */; };
 		C801CE7D2BA0ABF7007488A0 /* RoundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C801CE7C2BA0ABF7007488A0 /* RoundView.swift */; };
 		C84C58512B9A19EC00459472 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84C58502B9A19EC00459472 /* HistoryView.swift */; };
 		C84C58532B9A22F800459472 /* RunningScores.swift in Sources */ = {isa = PBXBuildFile; fileRef = C84C58522B9A22F800459472 /* RunningScores.swift */; };
@@ -38,7 +34,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0B0970AF2F35485A007ECFA7 /* InterstitialAdManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterstitialAdManager.swift; sourceTree = "<group>"; };
 		0B2FFDD52D3C5D5200CE0DCB /* RulesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesView.swift; sourceTree = "<group>"; };
 		0B4821E22B43B712001FDA98 /* Sluff Scorecard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sluff Scorecard.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B4821E52B43B712001FDA98 /* Sluff_ScorecardApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sluff_ScorecardApp.swift; sourceTree = "<group>"; };
@@ -55,14 +50,8 @@
 		0BB1F20A2B71D48C006201F8 /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
 		0BB1F20C2B71D614006201F8 /* TeamScoresView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamScoresView.swift; sourceTree = "<group>"; };
 		0BB1F2292B72B14C006201F8 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
-		0BBF98BE2CA36C62003EEF9E /* AdUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdUnit.swift; sourceTree = "<group>"; };
-		0BBF98BF2CA36C62003EEF9E /* BannerAdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerAdView.swift; sourceTree = "<group>"; };
-		0BBF98C02CA36C62003EEF9E /* AdSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdSettings.swift; sourceTree = "<group>"; };
 		0BD384D72B7EDF750003C98E /* WinnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinnerView.swift; sourceTree = "<group>"; };
 		0BD384DB2B8075430003C98E /* AskNumPlayersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AskNumPlayersView.swift; sourceTree = "<group>"; usesTabs = 0; };
-		2DD9BB8B37F2E6581B9E1005 /* Pods-Sluff Scorecard.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sluff Scorecard.debug.xcconfig"; path = "Target Support Files/Pods-Sluff Scorecard/Pods-Sluff Scorecard.debug.xcconfig"; sourceTree = "<group>"; };
-		32E493768A20B70B810E386F /* Pods-Sluff Scorecard.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sluff Scorecard.release.xcconfig"; path = "Target Support Files/Pods-Sluff Scorecard/Pods-Sluff Scorecard.release.xcconfig"; sourceTree = "<group>"; };
-		90358A270536FEC2EC54F0EF /* Pods_Sluff_Scorecard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sluff_Scorecard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C801CE7C2BA0ABF7007488A0 /* RoundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundView.swift; sourceTree = "<group>"; };
 		C84C58502B9A19EC00459472 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		C84C58522B9A22F800459472 /* RunningScores.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningScores.swift; sourceTree = "<group>"; };
@@ -77,7 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A25CE21514EE5BF021D66E8A /* Pods_Sluff_Scorecard.framework in Frameworks */,
+				0ADF56497BF724126BC32D2B /* WallaceAds in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,8 +76,6 @@
 		020333F6DB56986E539AAE45 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				2DD9BB8B37F2E6581B9E1005 /* Pods-Sluff Scorecard.debug.xcconfig */,
-				32E493768A20B70B810E386F /* Pods-Sluff Scorecard.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -99,7 +86,6 @@
 				0B4821E42B43B712001FDA98 /* Sluff Scorecard */,
 				0B4821E32B43B712001FDA98 /* Products */,
 				020333F6DB56986E539AAE45 /* Pods */,
-				0C4D0F1858F4963D447E76F6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -186,20 +172,8 @@
 		0BBF98C12CA36C62003EEF9E /* Ad */ = {
 			isa = PBXGroup;
 			children = (
-				0B0970AF2F35485A007ECFA7 /* InterstitialAdManager.swift */,
-				0BBF98BE2CA36C62003EEF9E /* AdUnit.swift */,
-				0BBF98BF2CA36C62003EEF9E /* BannerAdView.swift */,
-				0BBF98C02CA36C62003EEF9E /* AdSettings.swift */,
 			);
 			path = Ad;
-			sourceTree = "<group>";
-		};
-		0C4D0F1858F4963D447E76F6 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				90358A270536FEC2EC54F0EF /* Pods_Sluff_Scorecard.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -209,17 +183,18 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0B4821F02B43B713001FDA98 /* Build configuration list for PBXNativeTarget "Sluff Scorecard" */;
 			buildPhases = (
-				69C2E11A373FD89461E8A906 /* [CP] Check Pods Manifest.lock */,
 				0B4821DE2B43B712001FDA98 /* Sources */,
 				0B4821DF2B43B712001FDA98 /* Frameworks */,
 				0B4821E02B43B712001FDA98 /* Resources */,
-				4F2A9395FC6B8F98F5401561 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = "Sluff Scorecard";
+			packageProductDependencies = (
+				C5396D39739836512BB2305F /* WallaceAds */,
+			);
 			productName = "Sluff Scorecard";
 			productReference = 0B4821E22B43B712001FDA98 /* Sluff Scorecard.app */;
 			productType = "com.apple.product-type.application";
@@ -248,6 +223,9 @@
 				Base,
 			);
 			mainGroup = 0B4821D92B43B711001FDA98;
+			packageReferences = (
+				A90A9E1F51144B6290486BE9 /* XCRemoteSwiftPackageReference "WallaceAds" */,
+			);
 			productRefGroup = 0B4821E32B43B712001FDA98 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -269,65 +247,20 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		4F2A9395FC6B8F98F5401561 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Sluff Scorecard/Pods-Sluff Scorecard-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Sluff Scorecard/Pods-Sluff Scorecard-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Sluff Scorecard/Pods-Sluff Scorecard-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		69C2E11A373FD89461E8A906 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Sluff Scorecard-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		0B4821DE2B43B712001FDA98 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0B09C6762CA4B4B1003ADC3C /* AdSettings.swift in Sources */,
 				0BB1F2012B6C0059006201F8 /* BidPickerView.swift in Sources */,
 				0BD384D82B7EDF750003C98E /* WinnerView.swift in Sources */,
 				C8A2DB5E2B7FF92600569050 /* SplashScreenView.swift in Sources */,
 				0B4821F82B43B8B1001FDA98 /* Player.swift in Sources */,
-				0B0970B02F35486A007ECFA7 /* InterstitialAdManager.swift in Sources */,
 				0BB1F22A2B72B14C006201F8 /* Router.swift in Sources */,
 				0BB1F1FB2B6B032F006201F8 /* Game.swift in Sources */,
 				0BB1F20B2B71D48C006201F8 /* TitleView.swift in Sources */,
 				0B2FFDD62D3C5D5200CE0DCB /* RulesView.swift in Sources */,
 				0B4821E82B43B712001FDA98 /* ScorecardView.swift in Sources */,
-				0B09C6742CA4B4A7003ADC3C /* AdUnit.swift in Sources */,
 				C84C58532B9A22F800459472 /* RunningScores.swift in Sources */,
 				0BB1F2072B70961D006201F8 /* ScoreHandView.swift in Sources */,
 				0BB1F1F92B6984DE006201F8 /* SettingsView.swift in Sources */,
@@ -336,7 +269,6 @@
 				0BB1F2052B6EBB1F006201F8 /* TeamNameView.swift in Sources */,
 				0B4821E62B43B712001FDA98 /* Sluff_ScorecardApp.swift in Sources */,
 				C84C58512B9A19EC00459472 /* HistoryView.swift in Sources */,
-				0B09C6752CA4B4AC003ADC3C /* BannerAdView.swift in Sources */,
 				C801CE7D2BA0ABF7007488A0 /* RoundView.swift in Sources */,
 				C8D346292B9CBE650058F3EC /* PlayerNameView.swift in Sources */,
 				0BB1F20D2B71D614006201F8 /* TeamScoresView.swift in Sources */,
@@ -470,7 +402,6 @@
 		};
 		0B4821F12B43B713001FDA98 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2DD9BB8B37F2E6581B9E1005 /* Pods-Sluff Scorecard.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -507,7 +438,6 @@
 		};
 		0B4821F22B43B713001FDA98 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 32E493768A20B70B810E386F /* Pods-Sluff Scorecard.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -564,6 +494,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A90A9E1F51144B6290486BE9 /* XCRemoteSwiftPackageReference "WallaceAds" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/cewall0/WallaceAds.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C5396D39739836512BB2305F /* WallaceAds */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A90A9E1F51144B6290486BE9 /* XCRemoteSwiftPackageReference "WallaceAds" */;
+			productName = WallaceAds;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 0B4821DA2B43B711001FDA98 /* Project object */;
 }

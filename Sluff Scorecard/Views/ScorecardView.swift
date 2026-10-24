@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 import Observation
+import WallaceAds
 
 struct ScorecardView: View {
     
@@ -88,9 +89,8 @@ struct ScorecardView: View {
                 }
                 
                 // BannerAdView is outside of ScrollView to ensure it's at the bottom of the screen
-                BannerAdView(adFormat: UIDevice.current.userInterfaceIdiom == .pad ? .leaderboard : .standardBanner, onShow: { print("Show Banner") })
-                    .frame(height: 50) // Set appropriate height for the banner
-                    .padding(.bottom) // Add padding if needed
+                BannerAdView()
+                    .padding(.bottom)
             }
             .navigationBarBackButtonHidden(true)
         } else {

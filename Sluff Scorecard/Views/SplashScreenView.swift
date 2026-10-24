@@ -4,6 +4,7 @@
 //
 
 import SwiftUI
+import WallaceAds
 
 struct SplashScreenView: View {
 
@@ -77,7 +78,7 @@ struct SplashScreenView: View {
             AskNumPlayersView()
         }
         .onAppear {
-            startAds() // ATT permission, then start ads and preload interstitial
+            WallaceAds.start() // consent, ATT, then start ads and preload interstitial
 
             DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
                 withAnimation {

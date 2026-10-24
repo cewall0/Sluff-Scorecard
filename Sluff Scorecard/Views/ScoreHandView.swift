@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 import Observation
+import WallaceAds
 
 
 struct ScoreHandView: View {
@@ -184,7 +185,7 @@ struct ScoreHandView: View {
                 if game.gameOver == true {
                     game.declareWinner()
                     // Natural break: show an interstitial (if ready) before the winner screen
-                    InterstitialAdManager.shared.showIfReady {
+                    Interstitials.shared.showIfReady {
                         reset()
                         path.append(4)
                     }
