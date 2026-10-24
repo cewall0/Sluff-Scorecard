@@ -16,9 +16,6 @@ struct SplashScreenView: View {
     @State private var showPlayersView = false
     @State private var isTransitioningToGame = false   // ✅ NEW FLAG
 
-    // MARK: - Ads
-    @StateObject private var adManager = StartupAdManager()
-
     var body: some View {
         ZStack {
 
@@ -55,22 +52,11 @@ struct SplashScreenView: View {
                         .padding()
 
 
-                    Button {
+                    Button("Let’s Go") {
                         // 🔒 Lock UI immediately
                         isTransitioningToGame = true
-
-                        adManager.showAdIfReady {
-                            // Navigate AFTER ad dismiss
-                            showPlayersView = true
-                        }
-                    } label: {
-                        if adManager.isAdReady {
-                            Text("Let’s Go")
-                        } else {
-                            ProgressView()
-                        }
+                        showPlayersView = true
                     }
-                    .disabled(!adManager.isAdReady)
                     .padding()
                     .buttonStyle(.borderedProminent)
                     .tint(.accentColor)
@@ -91,9 +77,8 @@ struct SplashScreenView: View {
             AskNumPlayersView()
         }
         .onAppear {
-            requestPermission() // ATT permission
+            startAds() // ATT permission, then start ads and preload interstitial
 
-            // Extra 0.5s for ad preload (total 3.0s)
             DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
                 withAnimation {
                     isActive = true

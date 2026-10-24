@@ -183,8 +183,11 @@ struct ScoreHandView: View {
                 
                 if game.gameOver == true {
                     game.declareWinner()
-                    reset()
-                    path.append(4)
+                    // Natural break: show an interstitial (if ready) before the winner screen
+                    InterstitialAdManager.shared.showIfReady {
+                        reset()
+                        path.append(4)
+                    }
                 } else {
                     reset()
                     path.append(1)
