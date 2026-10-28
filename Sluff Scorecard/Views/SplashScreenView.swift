@@ -8,6 +8,8 @@ import WallaceAds
 
 struct SplashScreenView: View {
 
+    @Environment(Game.self) private var game
+
     // MARK: - Splash animation
     @State private var isActive = false
     @State private var size: CGFloat = 0.05
@@ -16,6 +18,7 @@ struct SplashScreenView: View {
     // MARK: - Navigation control
     @State private var showPlayersView = false
     @State private var isTransitioningToGame = false   // ✅ NEW FLAG
+    @State private var resumeGame = false
 
     var body: some View {
         ZStack {
@@ -53,14 +56,34 @@ struct SplashScreenView: View {
                         .padding()
 
 
-                    Button("Let’s Go") {
-                        // 🔒 Lock UI immediately
-                        isTransitioningToGame = true
-                        showPlayersView = true
+                    if game.hasStarted && !game.gameOver {
+                        // A game was in progress when the app last closed
+                        Button("Resume Game") {
+                            isTransitioningToGame = true
+                            resumeGame = true
+                            showPlayersView = true
+                        }
+                        .padding()
+                        .buttonStyle(.borderedProminent)
+                        .tint(.accentColor)
+
+                        Button("New Game") {
+                            game.newGame()
+                            isTransitioningToGame = true
+                            showPlayersView = true
+                        }
+                        .buttonStyle(.bordered)
+                        .tint(.accentColor)
+                    } else {
+                        Button("Let’s Go") {
+                            // 🔒 Lock UI immediately
+                            isTransitioningToGame = true
+                            showPlayersView = true
+                        }
+                        .padding()
+                        .buttonStyle(.borderedProminent)
+                        .tint(.accentColor)
                     }
-                    .padding()
-                    .buttonStyle(.borderedProminent)
-                    .tint(.accentColor)
 
                     Button("Remove Ads Option (Coming Soon)") {
                                           // Stub for future IAP
@@ -75,7 +98,7 @@ struct SplashScreenView: View {
         }
         // ✅ Present AskNumPlayersView directly
         .fullScreenCover(isPresented: $showPlayersView) {
-            AskNumPlayersView()
+            AskNumPlayersView(resume: resumeGame)
         }
         .onAppear {
             WallaceAds.start() // consent, ATT, then start ads and preload interstitial

@@ -18,13 +18,18 @@ struct AskNumPlayersView: View {
     @Environment(\.horizontalSizeClass) var widthSizeClass: UserInterfaceSizeClass?
     
     @State var path = NavigationPath()
+
+    // Opens straight to the scorecard of a saved game
+    let resume: Bool
+    @State private var didResume = false
     
     func reset() {
         self.path = NavigationPath()
     }
     
     
-    init() {
+    init(resume: Bool = false) {
+        self.resume = resume
         
         //This will change the font size
         UISegmentedControl.appearance().setTitleTextAttributes([.font : UIFont.preferredFont(forTextStyle: .headline)], for: .highlighted)
@@ -90,6 +95,12 @@ struct AskNumPlayersView: View {
                 
                 Spacer()
                 
+            }
+            .onAppear {
+                if resume && !didResume {
+                    didResume = true
+                    path.append(1)
+                }
             }
             .navigationDestination(for: Int.self) { destination in
                 switch destination {

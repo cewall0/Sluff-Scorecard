@@ -12,7 +12,8 @@ import WallaceAds
 @main
 struct Sluff_ScorecardApp: App {
     
-    @State private var game = Game()
+    @State private var game = Game.loadSaved() ?? Game()
+    @Environment(\.scenePhase) private var scenePhase
 
     init() {
         #if DEBUG
@@ -31,6 +32,10 @@ struct Sluff_ScorecardApp: App {
         WindowGroup {
                 SplashScreenView()
                 .environment(game)
+                .onChange(of: scenePhase) { _, phase in
+                    if phase != .active { game.save() } // keep the game if iOS closes the app
+                }
+                .onAppear { UIApplication.shared.isIdleTimerDisabled = true } // keep the screen awake during play
         }
     }
 }

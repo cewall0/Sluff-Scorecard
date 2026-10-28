@@ -34,6 +34,8 @@ struct TitleView: View {
             .padding(.leading)
             .foregroundStyle(game.round<2 ? .clear: .gray)
             .disabled(game.round<2)
+            .accessibilityLabel("Score history")
+            .accessibilityHidden(game.round<2)
             
             Spacer()
             
@@ -54,6 +56,7 @@ struct TitleView: View {
             }
             .padding(.trailing)
             .foregroundColor(.gray)
+            .accessibilityLabel("Settings")
 
         }
         .padding(.top, -15)

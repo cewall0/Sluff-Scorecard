@@ -9,7 +9,7 @@ import SwiftUI
 import Observation
 
 @Observable
-final class Game {
+final class Game: Codable {
     var playersList: [Player] = [Player(name:"Player1", isDealer: true), Player(name:"Player2", isDealer: false), Player(name:"Player3", isDealer: false), Player(name:"Player4", isDealer: false), Player(name:"Player5", isDealer: false), Player(name:"Player6", isDealer: false)]
     var runningScores: [RunningScores] = [
         RunningScores(
@@ -70,6 +70,55 @@ final class Game {
     var sluffTeam1ChoiceList: [String] = ["--"]
     var sluffTeam2ChoiceList: [String] = ["--"]
 
+    var hasStarted: Bool = false // true once players are chosen, so there is a game worth saving
+
+    // MARK: - Saving a game in progress
+
+    // The underscored names are the @Observable backing storage.
+    enum CodingKeys: String, CodingKey {
+        case _playersList = "playersList"
+        case _runningScores = "runningScores"
+        case _numberOfPlayers = "numberOfPlayers"
+        case _totalTricks = "totalTricks"
+        case _team1Name = "team1Name"
+        case _team2Name = "team2Name"
+        case _round = "round"
+        case _roundToFix = "roundToFix"
+        case _gameOver = "gameOver"
+        case _notAllBid = "notAllBid"
+        case _dontUpdateScores = "dontUpdateScores"
+        case _winner = "winner"
+        case _sluffTeam1ChoiceList = "sluffTeam1ChoiceList"
+        case _sluffTeam2ChoiceList = "sluffTeam2ChoiceList"
+        case _hasStarted = "hasStarted"
+    }
+
+    static let savedGameKey = "savedGame"
+
+    /// The game that was in progress when the app last closed, if any.
+    static func loadSaved() -> Game? {
+        guard let data = UserDefaults.standard.data(forKey: savedGameKey) else { return nil }
+        return try? JSONDecoder().decode(Game.self, from: data)
+    }
+
+    /// Saves an unfinished game so it survives the app being closed; forgets a finished one.
+    func save() {
+        if hasStarted && !gameOver, let data = try? JSONEncoder().encode(self) {
+            UserDefaults.standard.set(data, forKey: Game.savedGameKey)
+        } else {
+            UserDefaults.standard.removeObject(forKey: Game.savedGameKey)
+        }
+    }
+
+    /// Clears the saved game and team names before starting over from the player count screen.
+    func newGame() {
+        resetGame()
+        team1Name = "Team 1"
+        team2Name = "Team 2"
+        hasStarted = false
+        save()
+    }
+
 
 
     init() {
@@ -105,6 +154,8 @@ final class Game {
         runningScores.removeAll()
         
         // Fix the number of total tricks available for a round. It is always 14 unless 10 players are playing, then there are 11 tricks.
+        hasStarted = true
+
         if numberOfPlayers == 10 {
             totalTricks = 11
         } else {

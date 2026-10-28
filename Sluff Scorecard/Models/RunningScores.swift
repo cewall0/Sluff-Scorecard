@@ -9,8 +9,8 @@ import Foundation
 
 
 // Use Codable so any of the data that is codable can use an extension (encodable) to turn this data into a nice dictionary.
-struct RunningScores: Identifiable {
-    let id = UUID()
+struct RunningScores: Identifiable, Codable {
+    var id = UUID()
     var thisRound: Int
     var t1ChangeInScore: Int
     var t1RoundScore: Int
