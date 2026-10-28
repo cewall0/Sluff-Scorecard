@@ -16,6 +16,8 @@ struct ScoreHandView: View {
     @Environment(Game.self) private var game
     
     @Binding var path: NavigationPath
+
+    @AppStorage("completedGames") private var completedGames = 0
     
     func reset() {
         self.path = NavigationPath()
@@ -184,10 +186,16 @@ struct ScoreHandView: View {
                 
                 if game.gameOver == true {
                     game.declareWinner()
-                    // Natural break: show an interstitial (if ready) before the winner screen
-                    Interstitials.shared.showIfReady {
+                    let showWinner = {
                         reset()
                         path.append(4)
+                    }
+                    // Natural break: show an interstitial (if ready) before the winner screen,
+                    // except when the winner screen is about to ask for a rating
+                    if WinnerView.asksForReview(afterGame: completedGames + 1) {
+                        showWinner()
+                    } else {
+                        Interstitials.shared.showIfReady(onFinish: showWinner)
                     }
                 } else {
                     reset()

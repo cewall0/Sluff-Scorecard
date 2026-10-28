@@ -25,6 +25,11 @@ struct WinnerView: View {
         self.path = NavigationPath()
     }
 
+    /// Ask for a rating after the 3rd finished game, then every 10th.
+    static func asksForReview(afterGame count: Int) -> Bool {
+        count == 3 || count % 10 == 0
+    }
+
     @Environment(\.verticalSizeClass) var heightSizeClass: UserInterfaceSizeClass?
     @Environment(\.horizontalSizeClass) var widthSizeClass: UserInterfaceSizeClass?
 
@@ -79,7 +84,7 @@ struct WinnerView: View {
                 guard !countedThisGame else { return }
                 countedThisGame = true
                 completedGames += 1
-                if completedGames == 3 || completedGames % 10 == 0 {
+                if WinnerView.asksForReview(afterGame: completedGames) {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { requestReview() }
                 }
             }
