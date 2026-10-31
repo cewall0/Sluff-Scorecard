@@ -77,7 +77,7 @@ struct SettingsView: View {
                     
                     HStack(alignment: .top){
                         Text("• ")
-                        Link("Click here to learn how to use this app.", destination: URL(string: "https://sites.google.com/view/sluff-scorecard/")!)
+                        Link("Click here to learn how to use this app.", destination: URL(string: "https://wallacewaysoftware.com/sluff-scorecard/")!)
                         Spacer()
                     }
                     .foregroundColor(.black)
