@@ -24,7 +24,8 @@ struct Sluff_ScorecardApp: App {
         WallaceAds.configure(.init(
             bannerID: "ca-app-pub-5511806561009019/9452121329",
             interstitialID: "ca-app-pub-5511806561009019/7451771809",
-            useTestAds: useTestAds
+            useTestAds: useTestAds,
+            removeAdsProductID: "com.Wallace.SluffScorecard.removeads"
         ))
     }
 

@@ -12,6 +12,7 @@ import WallaceAds
 
 
 struct SettingsView: View {
+    @AppStorage(WallaceAds.adsRemovedKey) private var adsRemoved = false
     
     @Environment(Game.self) private var game
     @EnvironmentObject var router: Router
@@ -105,6 +106,19 @@ struct SettingsView: View {
                                 WallaceAds.presentPrivacyOptions()
                             } label: {
                                 Text("Privacy settings for ads.")
+                                    .multilineTextAlignment(.leading)
+                                    .foregroundColor(.black)
+                            }
+                        }
+                    }
+
+                    if !adsRemoved {
+                        Divider()
+
+                        HStack(alignment: .top){
+                            Text("• ").foregroundColor(.black)
+                            RemoveAdsLink {
+                                Text("Remove ads.")
                                     .multilineTextAlignment(.leading)
                                     .foregroundColor(.black)
                             }
