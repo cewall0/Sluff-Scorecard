@@ -85,11 +85,9 @@ struct SplashScreenView: View {
                         .tint(.accentColor)
                     }
 
-                    Button("Remove Ads Option (Coming Soon)") {
-                                          // Stub for future IAP
-                                      }
-                                      .font(.footnote)
-                                      .foregroundColor(.secondary)
+                    RemoveAdsLink { Text("Remove Ads") }
+                        .font(.footnote)
+                        .foregroundColor(.secondary)
 
                     
                     Spacer()
