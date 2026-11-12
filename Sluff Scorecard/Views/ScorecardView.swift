@@ -90,6 +90,7 @@ struct ScorecardView: View {
                 
                 // BannerAdView is outside of ScrollView to ensure it's at the bottom of the screen
                 BannerAdView()
+                    .padding(.top, 12) // clear of the buttons above, against accidental taps
                     .padding(.bottom)
             }
             .navigationBarBackButtonHidden(true)
